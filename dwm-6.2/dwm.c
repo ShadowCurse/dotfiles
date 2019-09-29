@@ -203,6 +203,7 @@ static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setgaps(const Arg *arg);
 static void fullscreen(const Arg *arg);
+static void movestack(const Arg *arg);
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
@@ -734,15 +735,17 @@ drawbar(Monitor *m)
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - sw - x) > bh) {
-		if (m->sel) {
-			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
-			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
-			if (m->sel->isfloating)
-				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
-		} else {
-			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_rect(drw, x, 0, w, bh, 1, 1);
-		}
+//		if (m->sel) {
+//			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+//			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+//			if (m->sel->isfloating)
+//				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
+//		} else {
+//			drw_setscheme(drw, scheme[SchemeNorm]);
+//			drw_rect(drw, x, 0, w, bh, 1, 1);
+//		}	
+	    drw_setscheme(drw, scheme[SchemeNorm]);
+	    drw_rect(drw, x, 0, w, bh, 1, 1);
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
 }
@@ -1387,7 +1390,7 @@ run(void)
 
 void
 runAutostart(void) {
-	system("cd ~/.config/dwm; ./autostart.sh");
+	system("cd ~/.config/dwm; ./autostart.sh &");
 }
 
 void
@@ -1522,12 +1525,61 @@ void
 fullscreen(const Arg *arg)
 {
 	if (selmon->showbar) {
-		for(last_layout = (Layout *)layouts; last_layout != selmon->lt[selmon->sellt]; last_layout++);
+	        for(last_layout = (Layout *)layouts; last_layout != selmon->lt[selmon->sellt]; last_layout++);
 		setlayout(&((Arg) { .v = &layouts[2] }));
-	} else {
+        } else {
 		setlayout(&((Arg) { .v = last_layout }));
 	}
 	togglebar(arg);
+}
+
+void
+movestack(const Arg *arg) {
+        Client *c = NULL, *p = NULL, *pc = NULL, *i;
+
+	if(arg->i > 0) {
+		/* find the client after selmon->sel */
+		for(c = selmon->sel->next; c && (!ISVISIBLE(c) || c->isfloating); c = c->next);
+		if(!c)
+			for(c = selmon->clients; c && (!ISVISIBLE(c) || c->isfloating); c = c->next);
+
+	}
+	else {
+		/* find the client before selmon->sel */
+		for(i = selmon->clients; i != selmon->sel; i = i->next)
+			if(ISVISIBLE(i) && !i->isfloating)
+				c = i;
+		if(!c)
+			for(; i; i = i->next)
+				if(ISVISIBLE(i) && !i->isfloating)
+					c = i;
+	}
+	/* find the client before selmon->sel and c */
+	for(i = selmon->clients; i && (!p || !pc); i = i->next) {
+		if(i->next == selmon->sel)
+			p = i;
+		if(i->next == c)
+			pc = i;
+	}
+
+	/* swap c and selmon->sel selmon->clients in the selmon->clients list */
+	if(c && c != selmon->sel) {
+		Client *temp = selmon->sel->next==c?selmon->sel:selmon->sel->next;
+		selmon->sel->next = c->next==selmon->sel?c:c->next;
+		c->next = temp;
+
+		if(p && p != c)
+			p->next = c;
+		if(pc && pc != selmon->sel)
+			pc->next = selmon->sel;
+
+		if(selmon->sel == selmon->clients)
+			selmon->clients = c;
+		else if(c == selmon->clients)
+			selmon->clients = selmon->sel;
+
+		arrange(selmon);
+	}
 }
 
 void
@@ -2175,8 +2227,8 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
-	run();
 	runAutostart();
+	run();
 	cleanup();
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;
