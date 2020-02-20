@@ -1,0 +1,35 @@
+sudo dnf install dwm git dmenu st
+mkdir ~/git && cd ~/git
+git clone git://git.suckless.org/dwm
+cd dwm 
+
+sudo dnf install libX11-devel
+sudo dnf install libXft-devel
+sudo dnf install libXinerama-devel
+
+sudo dnf install nitrogen
+sudo dnf install xorg-x11-xinit-session
+
+edit config.mk file
+
+-X11INC = /usr/X11R6/include
+-X11LIB = /usr/X11R6/lib
++X11INC = /usr/include/X11
++X11LIB = /usr/lib64/X11
+
+sudo make clean install
+
+edit ~/.xinitrc file
+
+exec nitrogen --restore &
+while true ; do xsetroot -name "`date '+%Y-%m-%d %H:%M.%S'` `uptime |sed 's/.*,//'`"; sleep 1 ; done &
+exec ~/git/dwm/dwm
+
+ln -s ~/.xinitrc ~/.xsession
+chmod 755 ~/.xsession
+on next login select User Script session
+sudo nano /usr/share/xsessions/custom-dwm.desktop
+
+[Desktop Entry]
+Name=Custom-DWM
+Exec=/usr/libexec/xinit-compat

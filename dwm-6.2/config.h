@@ -9,11 +9,11 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "CascadiaCode Nerd Font:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "CascadiaCode Nerd Font:size=10:antialias=true:autohint=true";
 //colors
-static const char col_gray1[]       = "#191b1f";
-static const char col_gray2[]       = "#000000";
-static const char col_gray3[]       = "#d6d6d6";
-static const char col_gray4[]       = "#d6d6d6";
-static const char col_cyan[]        = "#36667a";
+static const char col_gray1[]       = "#282828"; //= "#191b1f";
+static const char col_gray2[]       = "#49483e"; //= "#000000";
+static const char col_gray3[]       = "#a1efe4"; //= "#d6d6d6";
+static const char col_gray4[]       = "#383830"; //= "#d6d6d6";
+static const char col_cyan[]        = "#a6e22e"; //= "#36667a";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -31,6 +31,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 0,       0,           -1 },
+        { "QtCreator", NULL,      NULL,       1 << 1,       0,           -1 },
+        { "Google-chrome", NULL,   NULL,       1 << 4,       0,           -1 },
 };
 
 /* layout(s) */
@@ -59,7 +61,8 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "termite", NULL };
+static const char *termcmd[]  = { "st", NULL };
+static const char *lock[] = { "i3lock", "-i", "~/Pictures/lockscreen.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -74,6 +77,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_o,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+        { MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock}  },
 	//{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
