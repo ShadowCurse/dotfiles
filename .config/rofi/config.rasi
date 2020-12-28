@@ -1,0 +1,19 @@
+configuration {
+	modi: "window,run,drun";
+	width: 700;
+	lines: 10;
+	font: "Pilcrow 15";
+	bw: 0;
+	location: 0;
+	padding: 50;
+	show-icons: false;
+	sidebar-mode: true;
+	eh: 1;
+	line-margin: 5;
+	separator-style: "none";
+	hide-scrollbar: true;
+	color-normal: "argb:00171717, #a4a4a4, argb:00535c5c, argb:00171717, #f90053";
+	color-urgent: "argb:00171717, #cc6666, argb:e54b5160, argb:00171717, #f90053";
+	color-active: "argb:00171717, #65acff, argb:e44b5160, argb:00171717, #f90053";
+	color-window: "argb:f2171717, #535c5c,         #a4a4a4";
+}
