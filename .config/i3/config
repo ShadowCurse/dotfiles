@@ -65,7 +65,7 @@ bindsym $mod+n exec termite -e nnn
 #bindsym $mod+Control+S exec gnome-screenshot -i
 
 # Open Rofi
-bindsym $mod+d exec "rofi -modi run,drun,window -show drun"
+bindsym $mod+d exec "rofi -modi run,drun,window -show drun -show-icons"
 bindsym $mod+Ctrl+space exec "rofi -modi run,drun,window -show run"
 bindsym $mod+Ctrl+w exec "rofi -modi run,drun,window -show window"
 
