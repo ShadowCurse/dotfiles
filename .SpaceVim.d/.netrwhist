@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/home/antaraz/Projects/University/DB/GAS/src/core'
-let g:netrw_dirhist_2='/home/antaraz/Projects/University/DB/GAS/src'
-let g:netrw_dirhist_1='/home/antaraz/Projects/University/DB/GAS'
