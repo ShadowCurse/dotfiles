@@ -100,5 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim='nvim'
-alias ll='ls -la --color=always'
+alias ll='exa -lah --color=always --icons'
+alias l='exa -lah --color=always --icons'
+
+export PATH=~/Side/zig:$PATH
+
 eval "$(starship init zsh)"
