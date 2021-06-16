@@ -1,2 +1,0 @@
-dnf copr enable skidnik/termite
-dnf install termite
