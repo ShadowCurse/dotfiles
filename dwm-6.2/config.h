@@ -6,14 +6,17 @@ static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "CascadiaCode:size=10:antialias=true:autohint=true" };
-static const char dmenufont[]       = "CascadiaCode:size=10:antialias=true:autohint=true";
+static const char *fonts[]          = { "monaco:size=10:antialias=true:autohint=true" };
+ //{ "CascadiaCode:size=10:antialias=true:autohint=true" };
+static const char dmenufont[]       = "monaco:size=10:antialias=true:autohint=true";
+//"CascadiaCode:size=10:antialias=true:autohint=true";
+
 //colors
-static const char col_gray1[]       = "#282828"; //= "#191b1f";
-static const char col_gray2[]       = "#49483e"; //= "#000000";
-static const char col_gray3[]       = "#a1efe4"; //= "#d6d6d6";
-static const char col_gray4[]       = "#383830"; //= "#d6d6d6";
-static const char col_cyan[]        = "#a6e22e"; //= "#36667a";
+static const char col_gray1[]       = "#2b2d3a"; //"#282828"; //"#191b1f";
+static const char col_gray2[]       = "#49483e"; //"#000000";
+static const char col_gray3[]       = "#e1e3e4";//"#a1efe4"; //"#d6d6d6";
+static const char col_gray4[]       = "#383830"; //"#d6d6d6";
+static const char col_cyan[]        = "#fb617e"; //"#a6e22e"; //"#36667a";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -29,10 +32,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class           instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",          NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",       NULL,       NULL,       1 << 0,       0,           -1 },
-        { "QtCreator",     NULL,       NULL,       1 << 1,       0,           -1 },
-        { "Google-chrome", NULL,       NULL,       1 << 4,       0,           -1 },
+//	{ "Gimp",          NULL,       NULL,       0,            1,           -1 },
+//	{ "Firefox",       NULL,       NULL,       1 << 0,       0,           -1 },
+//        { "QtCreator",     NULL,       NULL,       1 << 1,       0,           -1 },
+//        { "Google-chrome", NULL,       NULL,       1 << 4,       0,           -1 },
         { "clion",         NULL,       NULL,       0,            0,           -1 },
 };
 
@@ -45,7 +48,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
-//	{ "[M]",      monocle },
+	{ "[M]",      monocle },
 	{ "|||",      tcl },
 };
 
@@ -88,7 +91,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, setlayout,      {.v = &layouts[0]} },
 	//{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_f,      fullscreen,     {0} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
