@@ -1,0 +1,14 @@
+base-devel
+vim
+neovim
+tmux
+git
+fish
+starship
+htop
+ttf-hack
+bat
+exa
+fd
+ripgrep
+dmenu

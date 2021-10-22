@@ -1,0 +1,10 @@
+xorg-server
+xorg-xinit
+libx11
+libxinerama
+libxft
+rofi
+nitrogen
+lxappearance
+sddm
+alacritty
