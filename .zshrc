@@ -103,6 +103,4 @@ alias vim='nvim'
 alias ll='exa -lah --color=always --icons'
 alias l='exa -lah --color=always --icons'
 
-export PATH=~/Side/zig:$PATH
-
 eval "$(starship init zsh)"
