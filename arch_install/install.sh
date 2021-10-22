@@ -29,6 +29,15 @@ echo "=-=-=-=-=-=-=-=-=-=-=-=-=-="
 echo "Install gui?"
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-="
 
+while true; do
+  read -p "Install gui? [Y/n] " yn
+  case $yn in
+      [Yy]* ) break;;
+      [Nn]* ) exit;;
+      * ) echo "Please answer yes or no.";;
+  esac
+done
+
 echo "=========================="
 echo "installing gui"
 echo "=========================="
