@@ -6,5 +6,4 @@ libxft
 rofi
 nitrogen
 lxappearance
-sddm
 alacritty

@@ -15,7 +15,6 @@ function ll
 end
 
 set -x CARGO_INCREMENTAL 1
-set -x RUSTFLAGS DEFAULT="-C target-cpu=native"
 set -x RUST_BACKTRACE 1
 
 starship init fish | source
