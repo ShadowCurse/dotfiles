@@ -19,11 +19,11 @@ echo "=========================="
 
 [ ! -d ~/.config ] && mkdir ~/.config
 
-ln -s ../.vimrc/ ~/.vimrc
-ln -s ../.vim/ ~/.vim
-ln -s ../.config/tmux/ ~/.config/tmux
-ln -s ../.config/nvim/ ~/.config/nvim
-ln -s ../.fish/ ~/.config/fish
+ln -s $PWD/../.vimrc/ ~/.vimrc
+ln -s $PWD/../.vim/ ~/.vim
+ln -s $PWD/../.config/tmux/ ~/.config/tmux
+ln -s $PWD/../.config/nvim/ ~/.config/nvim
+ln -s $PWD/../.fish/ ~/.config/fish
 
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-="
 echo "Install gui?"
@@ -52,6 +52,6 @@ echo "=========================="
 echo "copying gui configs"
 echo "=========================="
 
-cp -r ../.config/dwm ~/.config/dwm
-cp -r ../.config/rofi ~/.config/rofi
+ln -s $PWD/../.config/dwm ~/.config/dwm
+ln -s $PWD/../.config/rofi ~/.config/rofi
 
