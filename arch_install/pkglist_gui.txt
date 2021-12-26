@@ -1,9 +1,15 @@
 xorg-server
 xorg-xinit
+xorg-xrandr
+xorg-xinput
+xorg-xset
+xorg-xsetroot
 libx11
 libxinerama
 libxft
+dmenu
 rofi
 nitrogen
 lxappearance
 alacritty
+firefox

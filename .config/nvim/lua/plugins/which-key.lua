@@ -43,3 +43,61 @@ require("which-key").setup({
   triggers = "auto", -- automatically setup triggers
   -- triggers = {"<leader>"} -- or specifiy a list manually
 })
+
+require("which-key").register({
+  ["/"] = "Comment",
+  ["<CR>"] = "Open Terminal (Buffer)",
+  ["`"] = "Open Terminal (Horizontal)",
+  ["1"] = "Go to Buffer 1",
+  ["2"] = "Go to Buffer 2",
+  ["3"] = "Go to Buffer 3",
+  ["4"] = "Go to Buffer 4",
+  ["5"] = "Go to Buffer 5",
+  ["6"] = "Go to Buffer 6",
+  ["7"] = "Go to Buffer 7",
+  ["8"] = "Go to Buffer 8",
+  ["9"] = "Go to Buffer 9",
+  a = "Select all",
+  b = {
+    name = "+Buffer",
+    b = "Show blame for line",
+    d = "Delete a Buffer",
+  },
+  c = {
+    name = "+Code Action",
+    a = "Code Actions",
+    c = "Cursor Diagnostics",
+    d = "Line Diagnostics",
+  },
+  e = "Show Line diagnostics",
+  -- fc-commands, fz-current_buff_fuzzy_find, fs-workspacesymols;
+  f = {
+    name = "+Search",
+    b = "Find buffer",
+    f = "Find file",
+    g = "Find changed file",
+    h = "Find help",
+    i = "Find text in current workspace",
+    o = "Find recent files",
+    c = "Find commands",
+    z = "Find text in current file",
+    s = "Find symbols in the current workspace",
+  },
+  g = {
+    name = "+New Buffer",
+    g = "New Buffer",
+  },
+  h = "Errors Dashboard",
+  k = {
+    name = "+Kyoto.nvim",
+    c = "Edit kyotorc",
+  },
+  lg = "LazyGit",
+  n = "Explorer",
+  s = {
+    name = "+SymbolsFinder",
+    o = "Toggle Symbols Finder",
+  },
+}, {
+  prefix = "<leader>",
+})
