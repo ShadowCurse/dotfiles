@@ -1,16 +1,70 @@
+local cmd = vim.cmd
+
+cmd("packadd packer.nvim")
+
+local present, packer = pcall(require, "packer")
+
+if not present then
+  local packer_path = vim.fn.stdpath("data")
+    .. "/site/pack/packer/opt/packer.nvim"
+
+  print("Cloning packer..")
+  -- remove the dir before cloning
+  vim.fn.delete(packer_path, "rf")
+  vim.fn.system({
+    "git",
+    "clone",
+    "https://github.com/wbthomason/packer.nvim",
+    "--depth",
+    "20",
+    packer_path,
+  })
+
+  cmd("packadd packer.nvim")
+  present, packer = pcall(require, "packer")
+
+  if present then
+    print("Packer cloned successfully.")
+  else
+    error(
+      "Couldn't clone packer !\nPacker path: " .. packer_path .. "\n" .. packer
+    )
+  end
+end
+
+packer.init({
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "single" })
+    end,
+    prompt_border = "single",
+  },
+  git = {
+    clone_timeout = 600, -- Timeout, in seconds, for git clones
+  },
+  auto_clean = true,
+  compile_on_sync = true,
+  --    auto_reload_compiled = true
+})
+
 local vim = vim
 require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
-  use({ "kyazdani42/nvim-tree.lua", opt = true, cmd = { "NvimTreeToggle" } })
+  use({
+    "NvChad/nvim-base16.lua",
+  })
+  use({
+    "kyazdani42/nvim-tree.lua",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("nvim-tree").setup({})
+    end,
+  })
   use("glepnir/lspsaga.nvim")
-  use("kabouzeid/nvim-lspinstall")
+  --use("kabouzeid/nvim-lspinstall")
+  use("williamboman/nvim-lsp-installer")
   use("nvim-treesitter/nvim-treesitter")
   use("neovim/nvim-lspconfig")
-  use("folke/tokyonight.nvim")
-  use({
-    "hoob3rt/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-  })
   use({
     "nvim-telescope/telescope.nvim",
     requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
@@ -43,32 +97,22 @@ require("packer").startup(function(use)
       "nvim-lua/plenary.nvim",
     },
   })
-  use("simrat39/symbols-outline.nvim")
   use("folke/which-key.nvim")
   use("tpope/vim-commentary")
   use("kdheepak/lazygit.nvim")
-  use("yuttie/comfortable-motion.vim")
-  use({
-    "mhartington/formatter.nvim",
-    opt = true,
-  })
-  use({
-    "folke/twilight.nvim",
-    opt = true,
-  })
-  use("gelguy/wilder.nvim")
-  use({ "maxmellon/vim-jsx-pretty", opt = true })
-  use({
-    "folke/zen-mode.nvim",
-    opt = true,
-  })
   use({ "tweekmonster/startuptime.vim", opt = true })
+  use("p00f/nvim-ts-rainbow")
+  use("lukas-reineke/indent-blankline.nvim")
+  use("famiu/feline.nvim")
   use({ "vimwiki/vimwiki", opt = true })
-  use({ "creativenull/diagnosticls-nvim", opt = true })
-  use({ "folke/lua-dev.nvim", opt = true })
+  use({
+    "creativenull/diagnosticls-configs-nvim",
+    opt = true,
+  })
+
   use("ms-jpq/coq_nvim")
   use("ms-jpq/coq.artifacts")
-  -- use("Yggdroot/LeaderF")
+  use("ms-jpq/coq.thirdparty")
   for _, plugin in ipairs(vim.g.kyoto_extra_plugins) do
     use(plugin)
   end

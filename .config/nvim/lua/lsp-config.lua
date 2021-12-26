@@ -1,20 +1,57 @@
 local vim = vim
 local coq = require("coq")
 local lsp = require("lspconfig")
+local lsp_installer = require("nvim-lsp-installer")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require("lspinstall").setup() -- important
+--require("lspinstall").setup() -- important
 
-local servers = require("lspinstall").installed_servers()
-for _, server in pairs(servers) do
-  if vim.g.lsp_config[server] then
-    lsp[server].setup(coq.lsp_ensure_capabilities(vim.g.lsp_config[server]))
-  else
-    lsp[server].setup(coq.lsp_ensure_capabilities())
+local function common_on_attach(client, bufnr)
+  client.resolved_capabilities.document_formatting = false
+
+  local function buf_set_option(...)
+    vim.api.nvim_buf_set_option(bufnr, ...)
   end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
+
+--local servers = require("lspinstall").installed_servers()
+--for _, server in pairs(servers) do
+--  local client = lsp[server]
+--  local config = vim.g.lsp_config[server] or client
+--  vim.lsp.protocol.make_client_capabilities()
+--
+--  lsp[server].setup(coq.lsp_ensure_capabilities({
+--    on_attach = config.on_attach or common_on_attach,
+--    settings = config.settings or {},
+--  }))
+--end
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    -- This setup() function is exactly the same as lspconfig's setup function.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+
+    -- local client = lsp[server]
+    -- local config = vim.g.lsp_config[server] or client
+    -- vim.lsp.protocol.make_client_capabilities()
+
+    -- lsp[server].setup(coq.lsp_ensure_capabilities({
+    --   on_attach = config.on_attach or common_on_attach,
+    --   settings = config.settings or {},
+    -- }))
+
+end)
 
 vim.fn.sign_define(
   "LspDiagnosticsSignError",
@@ -43,32 +80,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
   }
 )
-
--- symbols for autocomplete
-vim.lsp.protocol.CompletionItemKind = {
-  "   (Text) ",
-  "   (Method)",
-  "   (Function)",
-  "   (Constructor)",
-  " ﴲ  (Field)",
-  "[] (Variable)",
-  "   (Class)",
-  " ﰮ  (Interface)",
-  "   (Module)",
-  " 襁 (Property)",
-  "   (Unit)",
-  "   (Value)",
-  " 練 (Enum)",
-  "   (Keyword)",
-  "   (Snippet)",
-  "   (Color)",
-  "   (File)",
-  "   (Reference)",
-  "   (Folder)",
-  "   (EnumMember)",
-  " ﲀ  (Constant)",
-  " ﳤ  (Struct)",
-  "   (Event)",
-  "   (Operator)",
-  "   (TypeParameter)",
-}
