@@ -1,7 +1,7 @@
 -- Start screen
 require("plugins.dashboard")
 -- lualine configuration
-require("plugins.statusline")
+--require("plugins.statusline")
 -- nvim-bufferline.lua configuration
 require("plugins.bufferline")
 -- fuzzy finder configuration

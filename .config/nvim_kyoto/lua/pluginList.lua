@@ -103,7 +103,15 @@ require("packer").startup(function(use)
   use({ "tweekmonster/startuptime.vim", opt = true })
   use("p00f/nvim-ts-rainbow")
   use("lukas-reineke/indent-blankline.nvim")
-  use("famiu/feline.nvim")
+  --use("feline-nvim/feline.nvim")
+  
+  use {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("plugins.lualine").config()
+    end,
+  }
+
   use({ "vimwiki/vimwiki", opt = true })
   use({
     "creativenull/diagnosticls-configs-nvim",
