@@ -20,13 +20,17 @@ for _, source in ipairs(sources) do
   end
 end
 
-local config = utils.user_settings()
+local settings = utils.settings()
 
-if type(config.polish) == "function" then
-  config.polish()
+if type(settings.polish) == "function" then
+  settings.polish()
 else
   error "The polish value in your user configuration must be a function"
 end
 
 -- keep this last:
 utils.compiled()
+
+-- plug init
+vim.cmd("source ~/.config/nvim/custom.vim")
+

@@ -14,7 +14,7 @@ function M.bootstrap()
       "https://github.com/wbthomason/packer.nvim",
       install_path,
     }
-    print "Cloning packer...\nSetup AstroVim"
+    print "Cloning packer...\nSetup NeoVim"
     vim.cmd [[packadd packer.nvim]]
   end
 end
@@ -32,13 +32,8 @@ function M.disabled_builtins()
   g.loaded_remote_plugins = false
 end
 
-function M.user_settings()
-  local default = require "core.defaults"
-  local user_status_ok, user_settings = pcall(require, "user.settings")
-  if user_status_ok then
-    default = vim.tbl_deep_extend("force", default, user_settings)
-  end
-  return default
+function M.settings()
+  return require "core.defaults" 
 end
 
 function M.impatient()

@@ -1,6 +1,6 @@
 local config = {
 
-  colorscheme = "onedark",
+  colorscheme = "sonokai",
 
   plugins = {},
 

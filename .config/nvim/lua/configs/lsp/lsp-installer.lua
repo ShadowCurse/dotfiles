@@ -14,5 +14,5 @@ lsp_installer.on_server_ready(function(server)
     opts = vim.tbl_deep_extend("force", av_overrides, opts)
   end
 
-  require("core.utils").user_settings().overrides.lsp_installer.server_registration_override(server, opts)
+  require("core.utils").settings().overrides.lsp_installer.server_registration_override(server, opts)
 end)

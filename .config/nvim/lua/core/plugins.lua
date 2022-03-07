@@ -1,7 +1,7 @@
 local M = {}
 
 local utils = require "core.utils"
-local config = utils.user_settings()
+local settings = utils.settings()
 
 local packer_status_ok, packer = pcall(require, "packer")
 if not packer_status_ok then
@@ -62,14 +62,14 @@ packer.startup {
       config = function()
         require("configs.bufferline").config()
       end,
-      disable = not config.enabled.bufferline,
+      disable = not settings.enabled.bufferline,
     }
 
     -- Better buffer closing
     use {
       "moll/vim-bbye",
       after = "bufferline.nvim",
-      disable = not config.enabled.bufferline,
+      disable = not settings.enabled.bufferline,
     }
 
     -- File explorer
@@ -80,7 +80,7 @@ packer.startup {
       config = function()
         require("configs.nvim-tree").config()
       end,
-      disable = not config.enabled.nvim_tree,
+      disable = not settings.enabled.nvim_tree,
     }
 
     -- Statusline
@@ -89,7 +89,7 @@ packer.startup {
       config = function()
         require("configs.lualine").config()
       end,
-      disable = not config.enabled.lualine,
+      disable = not settings.enabled.lualine,
     }
 
     -- Syntax highlighting
@@ -115,13 +115,13 @@ packer.startup {
           -- Parenthesis highlighting
           "p00f/nvim-ts-rainbow",
           after = "nvim-treesitter",
-          disable = not config.enabled.ts_rainbow,
+          disable = not settings.enabled.ts_rainbow,
         },
         {
           -- Autoclose tags
           "windwp/nvim-ts-autotag",
           after = "nvim-treesitter",
-          disable = not config.enabled.ts_autotag,
+          disable = not settings.enabled.ts_autotag,
         },
         {
           -- Context based commenting
@@ -135,7 +135,7 @@ packer.startup {
     use {
       "L3MON4D3/LuaSnip",
       config = function()
-        local settings = require("core.utils").user_settings()
+        local settings = require("core.utils").settings()
         local loader = require "luasnip/loaders/from_vscode"
         loader.lazy_load { paths = settings.overrides.luasnip.vscode_snippets_paths }
         loader.lazy_load()
@@ -210,7 +210,7 @@ packer.startup {
       config = function()
         require("configs.lsp.lspsaga").config()
       end,
-      disable = not config.enabled.lspsaga,
+      disable = not settings.enabled.lspsaga,
     }
 
     -- LSP symbols
@@ -220,7 +220,7 @@ packer.startup {
       setup = function()
         require("configs.symbols-outline").setup()
       end,
-      disable = not config.enabled.symbols_outline,
+      disable = not settings.enabled.symbols_outline,
     }
 
     -- Formatting and linting
@@ -228,7 +228,7 @@ packer.startup {
       "jose-elias-alvarez/null-ls.nvim",
       event = "BufRead",
       config = function()
-        require("user.null-ls").config()
+        require("core.null-ls").config()
       end,
     }
 
@@ -254,17 +254,8 @@ packer.startup {
       config = function()
         require("configs.gitsigns").config()
       end,
-      disable = not config.enabled.gitsigns,
+      disable = not settings.enabled.gitsigns,
     }
-
-    -- Start screen
-    -- use {
-    --   "glepnir/dashboard-nvim",
-    --   config = function()
-    --     require("configs.dashboard").config()
-    --   end,
-    --   disable = not config.enabled.dashboard,
-    -- }
 
     -- Color highlighting
     use {
@@ -273,7 +264,7 @@ packer.startup {
       config = function()
         require("configs.colorizer").config()
       end,
-      disable = not config.enabled.colorizer,
+      disable = not settings.enabled.colorizer,
     }
 
     -- Autopairs
@@ -285,16 +276,6 @@ packer.startup {
       end,
     }
 
-    -- Terminal
-    -- use {
-    --   "akinsho/nvim-toggleterm.lua",
-    --   cmd = "ToggleTerm",
-    --   config = function()
-    --     require("configs.toggleterm").config()
-    --   end,
-    --   disable = not config.enabled.toggle_term,
-    -- }
-
     -- Commenting
     use {
       "numToStr/Comment.nvim",
@@ -302,7 +283,7 @@ packer.startup {
       config = function()
         require("configs.comment").config()
       end,
-      disable = not config.enabled.comment,
+      disable = not settings.enabled.comment,
     }
 
     -- Indentation
@@ -311,17 +292,8 @@ packer.startup {
       config = function()
         require("configs.indent-line").config()
       end,
-      disable = not config.enabled.indent_blankline,
+      disable = not settings.enabled.indent_blankline,
     }
-
-    -- Keymaps popup
-    -- use {
-    --   "folke/which-key.nvim",
-    --   config = function()
-    --     require("configs.which-key").config()
-    --   end,
-    --   disable = not config.enabled.which_key,
-    -- }
 
     -- Smooth scrolling
     use {
@@ -330,28 +302,9 @@ packer.startup {
       config = function()
         require("configs.neoscroll").config()
       end,
-      disable = not config.enabled.neoscroll,
+      disable = not settings.enabled.neoscroll,
     }
 
-    -- Smooth escaping
-    -- use {
-    --   "max397574/better-escape.nvim",
-    --   event = { "InsertEnter" },
-    --   config = function()
-    --     require("better_escape").setup {
-    --       mapping = { "ii", "jj", "jk", "kj" },
-    --       timeout = vim.o.timeoutlen,
-    --       keys = "<ESC>",
-    --     }
-    --   end,
-    -- }
-
-    -- User defined plugins
-    if config.plugins and not vim.tbl_isempty(config.plugins) then
-      for _, plugin in pairs(config.plugins) do
-        use(plugin)
-      end
-    end
   end,
   config = {
     compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",

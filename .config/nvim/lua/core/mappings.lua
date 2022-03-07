@@ -1,6 +1,6 @@
 local M = {}
 
-local config = require("core.utils").user_settings()
+local settings = require("core.utils").settings()
 
 local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
@@ -43,14 +43,14 @@ map("n", "<A-j>", "<Esc><cmd>m .+1<CR>==gi", opts)
 map("n", "<A-k>", "<Esc><cmd>m .-2<CR>==gi", opts)
 
 -- NvimTree
-if config.enabled.nvim_tree then
+if settings.enabled.nvim_tree then
   --map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
   --map("n", "<leader>o", "<cmd>NvimTreeFocus<CR>", opts)
   map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", opts)
 end
 
 -- Dashboard
-if config.enabled.dashboard then
+if settings.enabled.dashboard then
   map("n", "<leader>fn", "<cmd>DashboardNewFile<CR>", opts)
   map("n", "<leader>db", "<cmd>Dashboard<CR>", opts)
   map("n", "<leader>bm", "<cmd>DashboardJumpMarks<CR>", opts)
@@ -68,7 +68,7 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", opts)
 
 -- Lspsaga
-if config.enabled.lspsaga then
+if settings.enabled.lspsaga then
   map("n", "gl", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
   map("n", "ca", "<cmd>Lspsaga code_action<CR>", opts)
   map("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
@@ -77,11 +77,11 @@ if config.enabled.lspsaga then
   map("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
   map("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
   map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
-  map("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+  map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 end
 
 -- Comment
-if config.enabled.comment then
+if settings.enabled.comment then
   map("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
   map("v", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
 end
@@ -93,12 +93,12 @@ end
 -- map("n", "<C-q>", "<cmd>q!<CR>", opts)
 
 -- Terminal
-if config.enabled.toggle_term then
+if settings.enabled.toggle_term then
   map("n", "<C-\\>", "<cmd>ToggleTerm<CR>", opts)
 end
 
 -- SymbolsOutline
-if config.enabled.symbols_outline then
+if settings.enabled.symbols_outline then
   -- map("n", "<leader>s", "<cmd>SymbolsOutline<CR>", opts)
   map("n", "<C-c>", "<cmd>SymbolsOutline<CR>", opts)
   -- map("n", "<C-c>", "<cmd>if (&hlsearch == 1) \| set nohlsearch \| else \| set hlsearch \| endif<CR>", opts)
