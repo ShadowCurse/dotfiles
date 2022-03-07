@@ -1,7 +1,7 @@
 local M = {}
 
 local utils = require "core.utils"
-local colorscheme = utils.user_settings().colorscheme
+local colorscheme = utils.settings().colorscheme
 
 vim.cmd [[
   augroup packer_user_config
@@ -38,7 +38,7 @@ vim.cmd(string.format(
 ))
 
 vim.cmd [[
-  command! AstroUpdate lua require('core.utils').update()
+  command! VimConfigUpdate lua require('core.utils').update()
 ]]
 
 return M
