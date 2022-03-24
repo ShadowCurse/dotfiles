@@ -35,7 +35,6 @@ map("n", "<leader>6", "<cmd>BufferLineGoToBuffer 6<CR>", opts)
 map("n", "<leader>7", "<cmd>BufferLineGoToBuffer 7<CR>", opts)
 map("n", "<leader>8", "<cmd>BufferLineGoToBuffer 8<CR>", opts)
 map("n", "<leader>9", "<cmd>BufferLineGoToBuffer 9<CR>", opts)
--- map("n", "<leader>bd", "<cmd>bd<CR>", opts)
 map("n", "<leader>bd", "<cmd>Bdelete<CR>", opts)
 
 -- Move text up and down
@@ -44,8 +43,6 @@ map("n", "<A-k>", "<Esc><cmd>m .-2<CR>==gi", opts)
 
 -- NvimTree
 if settings.enabled.nvim_tree then
-  --map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
-  --map("n", "<leader>o", "<cmd>NvimTreeFocus<CR>", opts)
   map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", opts)
 end
 
@@ -86,26 +83,10 @@ if settings.enabled.comment then
   map("v", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
 end
 
--- ForceWrite
--- map("n", "<C-w>", "<cmd>w!<CR>", opts)
-
--- ForceQuit
--- map("n", "<C-q>", "<cmd>q!<CR>", opts)
-
--- Terminal
-if settings.enabled.toggle_term then
-  map("n", "<C-\\>", "<cmd>ToggleTerm<CR>", opts)
-end
-
 -- SymbolsOutline
 if settings.enabled.symbols_outline then
-  -- map("n", "<leader>s", "<cmd>SymbolsOutline<CR>", opts)
   map("n", "<C-c>", "<cmd>SymbolsOutline<CR>", opts)
-  -- map("n", "<C-c>", "<cmd>if (&hlsearch == 1) \| set nohlsearch \| else \| set hlsearch \| endif<CR>", opts)
 end
-
--- SaveSession
--- map("n", "<leader>ss", "<cmd>SessionSave<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -124,6 +105,4 @@ map("x", "K", "<cmd>move '<-2<CR>gv-gv", opts)
 map("x", "<A-j>", "<cmd>move '>+1<CR>gv-gv", opts)
 map("x", "<A-k>", "<cmd>move '<-2<CR>gv-gv", opts)
 
--- disable Ex mode:
---map("n", "Q", "<Nop>", opts)
 return M
