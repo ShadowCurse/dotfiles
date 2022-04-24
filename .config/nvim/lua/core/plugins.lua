@@ -39,13 +39,13 @@ packer.startup {
     }
 
     -- Cursorhold fix
-    use {
-      "antoinemadec/FixCursorHold.nvim",
-      event = "BufRead",
-      config = function()
-        vim.g.cursorhold_updatetime = 100
-      end,
-    }
+    -- use {
+    --   "antoinemadec/FixCursorHold.nvim",
+    --   event = "BufRead",
+    --   config = function()
+    --     vim.g.cursorhold_updatetime = 100
+    --   end,
+    -- }
 
     -- Icons
     use {
@@ -224,13 +224,13 @@ packer.startup {
     }
 
     -- Formatting and linting
-    use {
-      "jose-elias-alvarez/null-ls.nvim",
-      event = "BufRead",
-      config = function()
-        require("core.null-ls").config()
-      end,
-    }
+    -- use {
+    --   "jose-elias-alvarez/null-ls.nvim",
+    --   event = "BufRead",
+    --   config = function()
+    --     require("core.null-ls").config()
+    --   end,
+    -- }
 
     -- Fuzzy finder
     use {
@@ -258,14 +258,14 @@ packer.startup {
     }
 
     -- Color highlighting
-    use {
-      "norcalli/nvim-colorizer.lua",
-      event = "BufRead",
-      config = function()
-        require("configs.colorizer").config()
-      end,
-      disable = not settings.enabled.colorizer,
-    }
+    -- use {
+    --   "norcalli/nvim-colorizer.lua",
+    --   event = "BufRead",
+    --   config = function()
+    --     require("configs.colorizer").config()
+    --   end,
+    --   disable = not settings.enabled.colorizer,
+    -- }
 
     -- Autopairs
     use {
@@ -287,23 +287,23 @@ packer.startup {
     }
 
     -- Indentation
-    use {
-      "lukas-reineke/indent-blankline.nvim",
-      config = function()
-        require("configs.indent-line").config()
-      end,
-      disable = not settings.enabled.indent_blankline,
-    }
+    -- use {
+    --   "lukas-reineke/indent-blankline.nvim",
+    --   config = function()
+    --     require("configs.indent-line").config()
+    --   end,
+    --   disable = not settings.enabled.indent_blankline,
+    -- }
 
     -- Smooth scrolling
-    use {
-      "karb94/neoscroll.nvim",
-      event = "BufRead",
-      config = function()
-        require("configs.neoscroll").config()
-      end,
-      disable = not settings.enabled.neoscroll,
-    }
+    -- use {
+    --   "karb94/neoscroll.nvim",
+    --   event = "BufRead",
+    --   config = function()
+    --     require("configs.neoscroll").config()
+    --   end,
+    --   disable = not settings.enabled.neoscroll,
+    -- }
 
   end,
   config = {
