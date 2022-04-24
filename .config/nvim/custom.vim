@@ -37,5 +37,4 @@ let g:sonokai_disable_italic_comment = 1
 " ============================
 " # EDITOR SETTINGS
 " ============================
-set clipboard=unnamedplus       " Copy/paste between vim and other programs.
 set guifont=Monaco:h15

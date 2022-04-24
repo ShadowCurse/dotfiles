@@ -1,5 +1,8 @@
 local utils = require "core.utils"
 
+-- plug init
+vim.cmd("source ~/.config/nvim/custom.vim")
+
 utils.disabled_builtins()
 
 utils.bootstrap()
@@ -30,7 +33,3 @@ end
 
 -- keep this last:
 utils.compiled()
-
--- plug init
-vim.cmd("source ~/.config/nvim/custom.vim")
-
