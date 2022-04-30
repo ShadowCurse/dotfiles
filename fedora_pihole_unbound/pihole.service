@@ -3,7 +3,7 @@ Description=Pi-Hole Podman Container
 After=firewalld.service
 
 [Service]
-ExecStart=/usr/bin/podman run --name=pihole --hostname=pi-hole --ip 10.88.0.3 --cap-add=CAP_AUDIT_WRITE -e TZ=Europe/Moscow -e FTLCONF_REPLY_ADDR4=192.168.1.12 -e WEBPASSWORD=password -e PIHOLE_DHS_=10.88.0.2#53 -e DNSSEC=true -e TEMPERATUREUNIT=c -v pihole_pihole:/etc/pihole:Z -v pihole_dnsmasq:/etc/dnsmasq.d:Z -p 80:80/tcp -p 443:443/tcp -p 67:67/udp -p 53:53/tcp -p 53:53/udp  pihole/pihole:latest
+ExecStart=/usr/bin/podman run --name=pihole --hostname=pi-hole --ip 10.88.0.3 --cap-add=CAP_AUDIT_WRITE -e TZ=Europe/Moscow -e FTLCONF_REPLY_ADDR4=192.168.1.12 -e WEBPASSWORD=password -e PIHOLE_DHS_=10.88.0.2#53 -e DNSSEC=true -e TEMPERATUREUNIT=c -v pihole_pihole:/etc/pihole:Z -v pihole_dnsmasq:/etc/dnsmasq.d:Z -p 80:80/tcp -p 443:443/tcp -p 67:67/udp -p 53:53/tcp -p 53:53/udp --label "io.containers.autoupdate=registry" pihole/pihole:latest
 ExecStop=/usr/bin/podman stop -t 2 pihole
 ExecStopPost=/usr/bin/podman rm pihole
 
