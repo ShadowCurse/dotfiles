@@ -32,8 +32,8 @@ function M.disabled_builtins()
   g.loaded_remote_plugins = false
 end
 
-function M.config()
-  return require "core.config"
+function M.settings()
+  return require "core.defaults" 
 end
 
 function M.impatient()
@@ -75,6 +75,34 @@ function M.list_registered_linters(filetype)
   local formatter_method = null_ls_methods.internal["DIAGNOSTICS"]
   local registered_providers = M.list_registered_providers_names(filetype)
   return registered_providers[formatter_method] or {}
+end
+
+function M.update()
+  local Job = require "plenary.job"
+  local errors = {}
+
+  Job
+    :new({
+      command = "git",
+      args = { "pull", "--ff-only" },
+      cwd = vim.fn.stdpath "config",
+      on_start = function()
+        print "Updating..."
+      end,
+      on_exit = function()
+        if vim.tbl_isempty(errors) then
+          print "Updated!"
+        else
+          table.insert(errors, 1, "Something went wrong! Please pull changes manually.")
+          table.insert(errors, 2, "")
+          print("Update failed!", { timeout = 30000 })
+        end
+      end,
+      on_stderr = function(_, err)
+        table.insert(errors, err)
+      end,
+    })
+    :sync()
 end
 
 return M

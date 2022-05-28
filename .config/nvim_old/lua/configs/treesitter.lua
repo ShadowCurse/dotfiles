@@ -1,5 +1,7 @@
 local M = {}
 
+local settings = require("core.utils").settings()
+
 function M.config()
   local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
   if not status_ok then
@@ -38,7 +40,7 @@ function M.config()
     },
   }
 
-  treesitter.setup(vim.tbl_deep_extend("force", {}, default_opts, {}))
+  treesitter.setup(vim.tbl_deep_extend("force", {}, default_opts, settings.overrides.treesitter))
 end
 
 return M
