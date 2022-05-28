@@ -6,10 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " # UI
 Plug 'sainnhe/sonokai'
-" Plug 'romgrk/doom-one.vim'
-" Plug 'sainnhe/everforest'
-" Plug 'ayu-theme/ayu-vim'
-" Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ap/vim-css-color'
 
 " # Langs
 Plug 'rust-lang/rust.vim'
@@ -30,14 +27,11 @@ call plug#end()
 if has('termguicolors')
     set termguicolors
 endif
-
+" The configuration options should be placed before `colorscheme sonokai`.
 let g:sonokai_style = 'andromeda'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 1
-" let ayucolor="mirage"   " for dark version of theme
-
-colorscheme sonokai
-" colorscheme ayu
+" colorscheme sonokai
 " 
 " let g:lightline = { 'colorscheme': 'sonokai', }
 
