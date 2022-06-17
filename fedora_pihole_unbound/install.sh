@@ -38,12 +38,12 @@ sudo firewall-cmd --permanent --zone=FedoraServer --add-port=80/tcp
 sudo podman pull pihole/pihole
 sudo podman volume create pihole_pihole
 sudo podman volume create pihole_dnsmasq
-sudo cp pihole.service /etc/systemd/system/
+sudo cp container-pihole.service /etc/systemd/system/pihole.service
 sudo systemctl enable pihole --now
 
 # unbound
 sudo podman pull mvance/unbound 
-sudo cp unbound.service /etc/systemd/system/
+sudo cp container-unbound.service /etc/systemd/system/unbound.service
 sudo systemctl enable unbound --now
 
 # podman auto-update
