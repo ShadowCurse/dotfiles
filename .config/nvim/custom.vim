@@ -12,11 +12,13 @@ Plug 'sainnhe/sonokai'
 " Plug 'drewtempelmeyer/palenight.vim'
 
 " # Langs
-Plug 'rust-lang/rust.vim'
-Plug 'tomlion/vim-solidity'
-Plug 'ziglang/zig.vim'
-Plug 'neovimhaskell/haskell-vim'
+" Plug 'rust-lang/rust.vim'
+" Plug 'tomlion/vim-solidity'
+" Plug 'ziglang/zig.vim'
+" Plug 'neovimhaskell/haskell-vim'
+" Plug 'ray-x/go.nvim'
 " Plug 'alx741/vim-hindent'
+Plug 'Tetralux/odin.vim'
 
 " # Other
 Plug 'sbdchd/neoformat'
@@ -26,6 +28,11 @@ call plug#end()
 " ============================
 " # COLORSCHEME
 " ============================
+
+" v lang detection
+augroup filetypedetect
+  au! BufRead,BufNewFile *.v		setfiletype v
+augroup END
 
 if has('termguicolors')
     set termguicolors
