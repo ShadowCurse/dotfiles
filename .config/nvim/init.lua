@@ -3,9 +3,8 @@ local utils = require "core.utils"
 -- plug init
 vim.cmd("source ~/.config/nvim/custom.vim")
 
-utils.disabled_builtins()
-utils.bootstrap()
-utils.impatient()
+-- utils.disabled_builtins()
+-- utils.bootstrap()
 
 local sources = {
   "core.options",

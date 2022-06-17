@@ -175,31 +175,57 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Tomorrow Night)
+# Colors Sonokai
+# colors:
+#   primary:
+#     background: "0x2b2d3a"
+#     foreground: "0xe1e3e4"
+#
+#   normal:
+#     black: "0x181a1c"
+#     red: "0xfb617e"
+#     green: "0x9ed06c"
+#     yellow: "0xedc763"
+#     blue: "0x6dcae8"
+#     magenta: "0xbb97ee"
+#     cyan: "0xf89860"
+#     white: "0xe1e3e4"
+#
+#   bright:
+#     black: "0x181a1c"
+#     red: "0xfb617e"
+#     green: "0x9ed06c"
+#     yellow: "0xedc763"
+#     blue: "0x6dcae8"
+#     magenta: "0xbb97ee"
+#     cyan: "0xf89860"
+#     white: "0xe1e3e4"
+
+# Colors Tokyodark
 colors:
   primary:
-    background: "0x2b2d3a"
-    foreground: "0xe1e3e4"
+    background: "#11121D"
+    foreground: "#A0A8CD"
 
   normal:
-    black: "0x181a1c"
-    red: "0xfb617e"
-    green: "0x9ed06c"
-    yellow: "0xedc763"
-    blue: "0x6dcae8"
-    magenta: "0xbb97ee"
-    cyan: "0xf89860"
-    white: "0xe1e3e4"
+    black: "#0c0d18"
+    red: "#ee6d85"
+    green: "#98c379"
+    yellow: "#d7a65f"
+    blue: "#648ce1"
+    magenta: "#fe6D85"
+    cyan: "#f6955b"
+    white: "#A0A8CD"
 
   bright:
-    black: "0x181a1c"
-    red: "0xfb617e"
-    green: "0x9ed06c"
-    yellow: "0xedc763"
-    blue: "0x6dcae8"
-    magenta: "0xbb97ee"
-    cyan: "0xf89860"
-    white: "0xe1e3e4"
+    black: "#0c0d18"
+    red: "#ee6d85"
+    green: "#95c561"
+    yellow: "#d7a65f"
+    blue: "#7199ee"
+    magenta: "#fe6D85"
+    cyan: "#f6955b"
+    white: "#A0A8CD"
 
   # Default colors
   #primary:

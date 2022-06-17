@@ -27,14 +27,6 @@ packer.startup {
       "nvim-lua/popup.nvim",
     }
 
-    -- Boost startup time
-    use {
-      "nathom/filetype.nvim",
-      config = function()
-        vim.g.did_load_filetypes = 1
-      end,
-    }
-
     -- Icons
     use {
       "kyazdani42/nvim-web-devicons",
@@ -243,12 +235,12 @@ packer.startup {
     }
 
     -- Indentation
-    use {
-      "lukas-reineke/indent-blankline.nvim",
-      config = function()
-        require("configs.indent-line").config()
-      end,
-    }
+    -- use {
+    --   "lukas-reineke/indent-blankline.nvim",
+    --   config = function()
+    --     require("configs.indent-line").config()
+    --   end,
+    -- }
 
   end,
   config = {
