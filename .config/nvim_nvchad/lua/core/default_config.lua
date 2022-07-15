@@ -21,6 +21,7 @@ M.ui = {
    changed_themes = {},
    theme_toggle = { "onedark", "one_light" },
    theme = "onedark", -- default theme
+   guifont = "",
    transparency = false,
 }
 

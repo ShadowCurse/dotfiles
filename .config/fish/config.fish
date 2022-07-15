@@ -20,3 +20,7 @@ set -x RUST_BACKTRACE 1
 starship init fish | source
 
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/antaraz/.ghcup/bin $PATH # ghcup-env
+
+if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+  fenv source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+end
