@@ -2,6 +2,8 @@ local opt = vim.opt
 local g = vim.g
 local config = require("core.utils").load_config()
 
+vim.api.nvim_set_option('guifont', config.ui.guifont)
+
 g.nvchad_theme = config.ui.theme
 g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency

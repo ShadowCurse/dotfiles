@@ -90,6 +90,8 @@ M.bufferline = {
          end,
          "   close buffer",
       },
+
+      ["<leader>bca"] = { "<cmd>BufferLineGroupClose ungrouped<CR>", "   close all buffers" },
    },
 }
 
