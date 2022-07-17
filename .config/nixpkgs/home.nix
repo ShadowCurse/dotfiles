@@ -23,17 +23,21 @@
     neovim
     starship
     neofetch
+    
+    # system
+    pkgconfig
+    zlib
 
     # utils
     powerline-fonts
     ripgrep
-    exa
     strace
     gnumake
     unzip
     gdb
     
     # langs
+    gcc
     rustup
     zig
     python3
@@ -41,7 +45,10 @@
 
   home.file.".config/alacritty/".source = ../alacritty;
   home.file.".config/dwm/".source = ../dwm;
-  home.file.".config/fish/".source = ../fish;
+  home.file.".config/fish/" = {
+    source = ../fish;
+    recursive = true;
+  };
   home.file.".config/nvim/".source = ../nvim;
   home.file.".config/tmux/".source = ../tmux;
   home.file.".config/rofi/".source = ../rofi;

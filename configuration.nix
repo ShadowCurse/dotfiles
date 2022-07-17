@@ -55,13 +55,16 @@
   # custom dwm
   nixpkgs.overlays = [
       (final: prev: {
-        dwm = prev.dwm.overrideAttrs (old: { src = /home/antaraz/Downloads/dotfiles/dwm-6.2 ;});
+        dwm = prev.dwm.overrideAttrs (old: { src = /home/antaraz/.dotfiles/dwm-6.2 ;});
       })
   ];
 
   # shell
   programs.fish.enable = true;
   users.users.antaraz.shell = pkgs.fish;
+
+  # nix-ld
+  programs.nix-ld.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
