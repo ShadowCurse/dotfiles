@@ -7,36 +7,52 @@
   home.homeDirectory = "/home/antaraz";
 
   home.packages = with pkgs; [
-    # gui
+    ## gui
     alacritty
     rofi
     nitrogen
     dmenu
     feh
+    pavucontrol
     mupdf
+    xfce.thunar-bare
+    xfce.thunar-volman
     brave
+    firefox
+    discord
+    steam
 
-    # terminal
+    ## maybe 
+    # bless # hex editor
+    # piper # mouce config
+    # emacs
+    # telegram
+    # mypaint
+    # blender
+    # gimp
+    # aseprite
+
+    ## terminal
     fish
     htop
     tmux
     neovim
     starship
     neofetch
+    flameshot
     
-    # system
-    pkgconfig
-    zlib
-
-    # utils
+    ## utils
     powerline-fonts
     ripgrep
     strace
     gnumake
+    cmake
     unzip
     gdb
+
+    droidcam
     
-    # langs
+    ## langs
     gcc
     rustup
     zig
