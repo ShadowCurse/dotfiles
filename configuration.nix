@@ -19,11 +19,8 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "archer"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Set your time zone.
-  time.timeZone = "Europe/Moscow";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -36,6 +33,9 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  # Set your time zone.
+  time.timeZone = "Europe/Moscow";
+
   # Select internationalisation properties.
   # i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -43,25 +43,51 @@
   #   keyMap = "us";
   # };
 
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModulePackages = [
+      config.boot.kernelPackages.v4l2loopback.out
+  ];
+
+  nixpkgs.config.allowUnfree = true;
+
+  # OpenGl
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  };
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.windowManager.dwm.enable = true;
 
   # Configure keymap in X11
-  # services.xserver.layout = "us";
+  services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
   
   # custom dwm
   nixpkgs.overlays = [
-      (final: prev: {
-        dwm = prev.dwm.overrideAttrs (old: { src = /home/antaraz/.dotfiles/dwm-6.2 ;});
+      (self: super: {
+        dwm = super.dwm.overrideAttrs (old: {
+          src = builtins.fetchGit { url = "https://github.com/ShadowCurse/dotfiles"; } + "/dwm-6.2";
+        });
       })
   ];
 
+  # android
+  programs.adb.enable = true;
+  
   # shell
   programs.fish.enable = true;
   users.users.antaraz.shell = pkgs.fish;
+
+  # gvfs for thunar
+  services.gvfs.enable = true;
 
   # nix-ld
   programs.nix-ld.enable = true;
@@ -72,6 +98,16 @@
   # Enable sound.
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -79,7 +115,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.antaraz = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
   };
 
   # List packages installed in system profile. To search, run:
@@ -89,15 +125,6 @@
     wget
     git
   ];
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
