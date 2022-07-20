@@ -1,16 +1,12 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
 
-  # Use the GRUB 2 boot loader.
+  ## GRUB 2
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   # boot.loader.grub.efiSupport = true;
@@ -19,6 +15,7 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
+  ## Network
   networking.hostName = "archer"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -43,13 +40,17 @@
   #   keyMap = "us";
   # };
 
+  ## Kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelModules = [ "v4l2loopback" ];
   boot.extraModulePackages = [
       config.boot.kernelPackages.v4l2loopback.out
   ];
 
+  ## Unfree
   nixpkgs.config.allowUnfree = true;
 
+  ## GPU
   # OpenGl
   hardware.opengl = {
     enable = true;
@@ -61,6 +62,7 @@
     ];
   };
 
+  ## X11
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.displayManager.lightdm.enable = true;
@@ -79,23 +81,23 @@
       })
   ];
 
-  # android
+  ## Android
   programs.adb.enable = true;
   
-  # shell
+  ## Shell
   programs.fish.enable = true;
   users.users.antaraz.shell = pkgs.fish;
 
-  # gvfs for thunar
+  ## gvfs for thunar
   services.gvfs.enable = true;
 
-  # nix-ld
+  ## nix-ld
   programs.nix-ld.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
+  ## Sound
   # sound.enable = true;
   # hardware.pulseaudio.enable = true;
   # rtkit is optional but recommended
@@ -112,16 +114,15 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  ## User
   users.users.antaraz = {
     isNormalUser = true;
     extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  ## System packages 
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     git
   ];
@@ -136,7 +137,7 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
+  ## Services
   services.openssh.enable = true;
 
   # Open ports in the firewall.
