@@ -1,23 +1,17 @@
-local utils = require "core.utils"
+require "core"
+require "core.utils"
+require "core.options"
 
--- plug init
-vim.cmd("source ~/.config/nvim/custom.vim")
+vim.defer_fn(function()
+   require("core.utils").load_mappings()
+end, 0)
 
--- utils.disabled_builtins()
--- utils.bootstrap()
+-- setup packer + plugins
+require("core.packer").bootstrap()
+require "plugins"
 
-local sources = {
-  "core.options",
-  "core.plugins",
-  "core.mappings",
-}
+local user_conf, _ = pcall(require, "custom")
 
-for _, source in ipairs(sources) do
-  local status_ok, fault = pcall(require, source)
-  if not status_ok then
-    error("Failed to load " .. source .. "\n\n" .. fault)
-  end
+if user_conf then
+   require "custom"
 end
-
--- keep this last:
-utils.compiled()

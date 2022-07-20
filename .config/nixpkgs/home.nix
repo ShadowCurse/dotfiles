@@ -33,11 +33,13 @@
     # aseprite
 
     ## terminal
-    fish
     htop
     tmux
     neovim
+    fish
     starship
+    exa
+    bat
     neofetch
     flameshot
     
@@ -50,6 +52,7 @@
     unzip
     gdb
 
+    ## camera
     droidcam
     
     ## langs
