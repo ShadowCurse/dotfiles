@@ -7,7 +7,9 @@
   home.homeDirectory = "/home/antaraz";
 
   home.packages = with pkgs; [
+    #==========================#
     ## gui
+    #==========================#
     alacritty
     rofi
     nitrogen
@@ -22,7 +24,9 @@
     discord
     steam
 
+    #==========================#
     ## maybe 
+    #==========================#
     # bless # hex editor
     # piper # mouce config
     # emacs
@@ -32,19 +36,26 @@
     # gimp
     # aseprite
 
+    #==========================#
     ## terminal
+    #==========================#
+    fish
+    exa
+    bat
     htop
     tmux
     neovim
-    fish
     starship
-    exa
-    bat
     neofetch
     flameshot
-    
+
+    #==========================#
     ## utils
+    #==========================#
     powerline-fonts
+    noto-fonts
+    noto-fonts-extra
+    noto-fonts-emoji
     ripgrep
     strace
     gnumake
@@ -52,10 +63,14 @@
     unzip
     gdb
 
+    #==========================#
     ## camera
+    #==========================#
     droidcam
-    
+
+    #==========================#
     ## langs
+    #==========================#
     gcc
     rustup
     zig
@@ -68,22 +83,24 @@
     source = ../fish;
     recursive = true;
   };
-  home.file.".config/nvim/".source = ../nvim;
+  home.file.".config/nvim/" = {
+    source = ../nvim_nvchad;
+    recursive = true;
+  };
   home.file.".config/tmux/".source = ../tmux;
   home.file.".config/rofi/".source = ../rofi;
 
   home.keyboard.layout = "us";
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Materia-dark";
+      package = pkgs.materia-theme;
+    };
+  };
+
   home.stateVersion = "22.05";
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
