@@ -84,7 +84,7 @@
     recursive = true;
   };
   home.file.".config/nvim/" = {
-    source = ../nvim_nvchad;
+    source = ../nvim;
     recursive = true;
   };
   home.file.".config/tmux/".source = ../tmux;
