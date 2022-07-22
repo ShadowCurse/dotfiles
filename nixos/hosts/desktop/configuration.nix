@@ -146,9 +146,15 @@
   #==========================#
   nixpkgs.overlays = [
     (self: super: {
-      dwm = super.dwm.overrideAttrs (old: {
-        src = builtins.fetchGit { url = "https://github.com/ShadowCurse/dwm"; ref = "master"; };
-      });
+      dwm = super.dwm.overrideAttrs
+        (old: {
+          src = builtins.fetchGit
+            {
+              url = "https://github.com/ShadowCurse/dwm";
+              ref = "master";
+              rev = "62ba16ba760ab9fafad84718d9f262bd6c7e2d4d";
+            };
+        });
     })
   ];
 
