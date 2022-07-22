@@ -78,18 +78,18 @@
     python3
   ];
 
-  home.file.".config/alacritty/".source = ../alacritty;
-  home.file.".config/dwm/".source = ../dwm;
+  home.file.".config/alacritty/".source = ../../../.config/alacritty;
+  home.file.".config/dwm/".source = ../../../.config/dwm;
   home.file.".config/fish/" = {
-    source = ../fish;
+    source = ../../../.config/fish;
     recursive = true;
   };
   home.file.".config/nvim/" = {
-    source = ../nvim;
+    source = ../../../.config/nvim;
     recursive = true;
   };
-  home.file.".config/tmux/".source = ../tmux;
-  home.file.".config/rofi/".source = ../rofi;
+  home.file.".config/tmux/".source = ../../../.config/tmux;
+  home.file.".config/rofi/".source = ../../../.config/rofi;
 
   home.keyboard.layout = "us";
 
