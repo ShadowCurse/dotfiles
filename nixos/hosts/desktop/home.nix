@@ -96,8 +96,8 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Materia-dark";
-      package = pkgs.materia-theme;
+      name = "Matcha-dark-azul";
+      package = pkgs.matcha-gtk-theme;
     };
   };
 
