@@ -147,7 +147,7 @@
   nixpkgs.overlays = [
     (self: super: {
       dwm = super.dwm.overrideAttrs (old: {
-        src = builtins.fetchGit { url = "https://github.com/ShadowCurse/dotfiles"; } + "/dwm-6.2";
+        src = builtins.fetchGit { url = "https://github.com/ShadowCurse/dwm"; ref = "master"; };
       });
     })
   ];
