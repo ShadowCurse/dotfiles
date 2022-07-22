@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 nitrogen --restore 
 #xrandr --output DP-4 --mode 3440x1440 --rate 110 & xrandr --output HDMI-0  --right-of DP-4 & 
