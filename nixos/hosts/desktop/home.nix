@@ -99,6 +99,10 @@
       name = "Matcha-dark-azul";
       package = pkgs.matcha-gtk-theme;
     };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
   };
 
   home.stateVersion = "22.05";
