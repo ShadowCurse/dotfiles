@@ -16,6 +16,7 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.cleanTmpDir = true;
 
   #==========================#
   ## Kernel
@@ -30,14 +31,11 @@
   ## Network
   #==========================#
   networking.hostName = "archer";
+  networking.networkmanager.enable = true;
   # networking.wireless.enable = true;
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.wlp5s0.useDHCP = true;
+  # networking.interfaces.wlp5s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -123,7 +121,7 @@
   #==========================#
   users.users.antaraz = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "adbusers" ];
+    extraGroups = [ "wheel" "networkmanager" "adbusers" ];
   };
 
   #==========================#
