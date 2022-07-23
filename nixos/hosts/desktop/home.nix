@@ -51,18 +51,28 @@
     flameshot
 
     #==========================#
-    ## utils
+    ## fonts
     #==========================#
-    powerline-fonts
+    cascadia-code
+    nerdfonts
+    google-fonts
+    font-awesome
     noto-fonts
+    noto-fonts-cjk
     noto-fonts-extra
     noto-fonts-emoji
+
+    #==========================#
+    ## utils
+    #==========================#
     ripgrep
     strace
     gnumake
     cmake
     unzip
-    gdb
+    gd
+    ntfs3g
+    fuse
 
     #==========================#
     ## camera

@@ -9,33 +9,43 @@
   #==========================#
   ## GRUB 2
   #==========================#
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  # boot.loader.grub.efiSupport = true;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-  boot.cleanTmpDir = true;
+  boot =
+    {
+      cleanTmpDir = true;
+      loader = {
+        grub = {
+          enable = true;
+          version = 2;
+          efiSupport = true;
+          device = "nodev";
+          useOSProber = true;
+        };
+        efi = {
+          canTouchEfiVariables = true;
+          efiSysMountPoint = "/boot/efi";
+        };
+      };
+    };
 
   #==========================#
   ## Kernel
   #==========================#
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "v4l2loopback" ];
-  boot.extraModulePackages = [
-    config.boot.kernelPackages.v4l2loopback.out
-  ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [ "v4l2loopback" ];
+    extraModulePackages = [
+      config.boot.kernelPackages.v4l2loopback.out
+    ];
+  };
 
   #==========================#
   ## Network
   #==========================#
-  networking.hostName = "archer";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "archer";
+    networkmanager.enable = true;
+  };
   # networking.wireless.enable = true;
-  networking.useDHCP = false;
-  networking.interfaces.enp4s0.useDHCP = true;
-  # networking.interfaces.wlp5s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -61,14 +71,10 @@
   ## GPU
   #==========================#
   # OpenGl
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
+    driSupport32Bit = true;
   };
 
   #==========================#
@@ -110,10 +116,29 @@
   ];
 
   #==========================#
+  ## Fonts
+  #==========================#
+  # fonts = {
+  #   fonts = with pkgs; [
+  #     cascadia-code
+  #     hack-font
+  #     google-fonts
+  #     font-awesome
+  #     noto-fonts
+  #     noto-fonts-cjk
+  #     noto-fonts-extra
+  #     noto-fonts-emoji
+  #     jetbrains-mono
+  #     roboto
+  #     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  #   ];
+  #   fontconfig.hinting.autohint = true;
+  # };
+
+  #==========================#
   ## Additional services
   #==========================#
   services.openssh.enable = true;
-  # gvfs for thunar
   services.gvfs.enable = true;
 
   #==========================#
