@@ -109,30 +109,11 @@
   #==========================#
   ## System packages 
   #==========================#
+  environment.defaultPackages = [ ];
+  services.xserver.desktopManager.xterm.enable = false;
   environment.systemPackages = with pkgs; [
-    home-manager
     vim
   ];
-
-  #==========================#
-  ## Fonts
-  #==========================#
-  # fonts = {
-  #   fonts = with pkgs; [
-  #     cascadia-code
-  #     hack-font
-  #     google-fonts
-  #     font-awesome
-  #     noto-fonts
-  #     noto-fonts-cjk
-  #     noto-fonts-extra
-  #     noto-fonts-emoji
-  #     jetbrains-mono
-  #     roboto
-  #     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  #   ];
-  #   fontconfig.hinting.autohint = true;
-  # };
 
   #==========================#
   ## Additional services
