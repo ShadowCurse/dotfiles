@@ -6,6 +6,11 @@
   home.username = "antaraz";
   home.homeDirectory = "/home/antaraz";
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    # allowBroken = true;
+  };
+
   home.packages = with pkgs; [
     #==========================#
     ## gui
@@ -23,6 +28,7 @@
     firefox
     discord
     steam
+    lxappearance
 
     #==========================#
     ## maybe 
@@ -45,6 +51,7 @@
     htop
     tmux
     neovim
+    neovide
     starship
     neofetch
     ranger
@@ -65,6 +72,8 @@
     #==========================#
     ## utils
     #==========================#
+    wget
+    git
     ripgrep
     strace
     gnumake
@@ -114,6 +123,14 @@
       package = pkgs.papirus-icon-theme;
     };
   };
+
+  # home.pointerCursor = {
+  #   name = "Vimix-cursors";
+  #   package = pkgs.nordzy-cursor-theme;
+  #   size = 40;
+  #   gtk.enable = true;
+  #   x11.enable = true;
+  # };
 
   home.stateVersion = "22.05";
 
