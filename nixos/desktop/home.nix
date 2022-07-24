@@ -39,6 +39,7 @@
     # gimp
     # aseprite
     # lxappearance
+    # neovide
 
     #==========================#
     ## terminal
@@ -49,7 +50,7 @@
     htop
     tmux
     neovim
-    neovide
+    helix
     starship
     neofetch
     ranger
@@ -96,18 +97,18 @@
     python3
   ];
 
-  home.file.".config/alacritty/".source = ../../../.config/alacritty;
-  home.file.".config/dwm/".source = ../../../.config/dwm;
+  home.file.".config/alacritty/".source = ../../.config/alacritty;
+  home.file.".config/dwm/".source = ../../.config/dwm;
   home.file.".config/fish/" = {
-    source = ../../../.config/fish;
+    source = ../../.config/fish;
     recursive = true;
   };
   home.file.".config/nvim/" = {
-    source = ../../../.config/nvim;
+    source = ../../.config/nvim;
     recursive = true;
   };
-  home.file.".config/tmux/".source = ../../../.config/tmux;
-  home.file.".config/rofi/".source = ../../../.config/rofi;
+  home.file.".config/tmux/".source = ../../.config/tmux;
+  home.file.".config/rofi/".source = ../../.config/rofi;
 
   home.keyboard.layout = "us";
 
