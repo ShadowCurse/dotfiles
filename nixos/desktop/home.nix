@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
   home.username = "antaraz";
   home.homeDirectory = "/home/antaraz";
 
@@ -28,7 +26,6 @@
     firefox
     discord
     steam
-    lxappearance
 
     #==========================#
     ## maybe 
@@ -41,6 +38,7 @@
     # blender
     # gimp
     # aseprite
+    # lxappearance
 
     #==========================#
     ## terminal
@@ -82,6 +80,7 @@
     gd
     ntfs3g
     fuse
+    killall
 
     #==========================#
     ## camera
