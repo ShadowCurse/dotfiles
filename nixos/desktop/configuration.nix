@@ -110,9 +110,8 @@
   ## System packages 
   #==========================#
   environment.systemPackages = with pkgs; [
+    home-manager
     vim
-    wget
-    git
   ];
 
   #==========================#
