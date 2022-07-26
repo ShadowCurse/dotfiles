@@ -79,8 +79,6 @@
     cmake
     unzip
     gd
-    ntfs3g
-    fuse
     killall
 
     #==========================#
@@ -103,10 +101,10 @@
     source = ../../.config/fish;
     recursive = true;
   };
-  home.file.".config/nvim/" = {
-    source = ../../.config/nvim;
-    recursive = true;
-  };
+  ## home.file.".config/nvim/" = {
+  ##   source = ../../.config/nvim;
+  ##   recursive = true;
+  ## };
   home.file.".config/tmux/".source = ../../.config/tmux;
   home.file.".config/rofi/".source = ../../.config/rofi;
 
