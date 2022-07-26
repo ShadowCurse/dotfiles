@@ -113,6 +113,8 @@
   services.xserver.desktopManager.xterm.enable = false;
   environment.systemPackages = with pkgs; [
     vim
+    ntfs3g
+    fuse
   ];
 
   #==========================#
