@@ -2,8 +2,11 @@ vim.cmd [[packadd packer.nvim]]
 
 local plugins = {
 
-   ["nvim-lua/plenary.nvim"] = {},
    ["wbthomason/packer.nvim"] = {},
+
+   ["folke/tokyonight.nvim"] = {},
+
+   ["nvim-lua/plenary.nvim"] = {},
 
    ["kyazdani42/nvim-web-devicons"] = {
       module = "nvim-web-devicons",
@@ -84,8 +87,9 @@ local plugins = {
 
    -- file managing , picker etc
    ["kyazdani42/nvim-tree.lua"] = {
-      ft = "alpha",
-      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+      config = function() 
+        require("nvim-tree").setup()
+      end,
    },
 
    ["nvim-telescope/telescope.nvim"] = {
