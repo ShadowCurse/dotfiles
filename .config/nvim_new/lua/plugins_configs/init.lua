@@ -1,0 +1,8 @@
+require("plugins_configs.bufferline")
+require("plugins_configs.gitsigns")
+require("plugins_configs.lsp_installer")
+require("plugins_configs.lspconfig")
+require("plugins_configs.nvim-cmp")
+require("plugins_configs.nvim-tree")
+require("plugins_configs.telescope")
+require("plugins_configs.treesitter")

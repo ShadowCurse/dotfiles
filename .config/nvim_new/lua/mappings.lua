@@ -1,5 +1,3 @@
--- n, v, i are mode names
-
 local function termcodes(str)
    return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -30,31 +28,6 @@ M.general = {
       ["<C-l>"] = { "<C-w>l", "window right" },
       ["<C-j>"] = { "<C-w>j", "window down" },
       ["<C-k>"] = { "<C-w>k", "window up" },
-
-      -- save
-      ["<C-s>"] = { "<cmd> w <CR>", "save file" },
-
-      -- Copy all
-      ["<C-c>"] = { "<cmd> %y+ <CR>", "copy whole file" },
-
-      -- line numbers
-      ["<leader>n"] = { "<cmd> set nu! <CR>", "toggle line number" },
-      ["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number" },
-
-      -- update nvchad
-      ["<leader>uu"] = { "<cmd> :NvChadUpdate <CR>", "  update nvchad" },
-
-      ["<leader>tt"] = {
-         function()
-            require("base46").toggle_theme()
-         end,
-
-         "   toggle theme",
-      },
-   },
-
-   t = {
-      ["<C-x>"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" },
    },
 
    v = {
@@ -86,7 +59,7 @@ M.bufferline = {
       -- close buffer + hide terminal buffer
       ["<leader>bd"] = {
          function()
-            require("core.utils").close_buffer()
+           vim.cmd(":bp | bd" .. vim.fn.bufnr())
          end,
          "   close buffer",
       },
@@ -275,90 +248,6 @@ M.telescope = {
    },
 }
 
-M.nvterm = {
-   t = {
-      -- toggle in terminal mode
-      ["<A-i>"] = {
-         function()
-            require("nvterm.terminal").toggle "float"
-         end,
-         "   toggle floating term",
-      },
-
-      ["<A-h>"] = {
-         function()
-            require("nvterm.terminal").toggle "horizontal"
-         end,
-         "   toggle horizontal term",
-      },
-
-      ["<A-v>"] = {
-         function()
-            require("nvterm.terminal").toggle "vertical"
-         end,
-         "   toggle vertical term",
-      },
-   },
-
-   n = {
-      -- toggle in normal mode
-      ["<A-i>"] = {
-         function()
-            require("nvterm.terminal").toggle "float"
-         end,
-         "   toggle floating term",
-      },
-
-      ["<A-h>"] = {
-         function()
-            require("nvterm.terminal").toggle "horizontal"
-         end,
-         "   toggle horizontal term",
-      },
-
-      ["<A-v>"] = {
-         function()
-            require("nvterm.terminal").toggle "vertical"
-         end,
-         "   toggle vertical term",
-      },
-
-      -- new
-
-      ["<leader>h"] = {
-         function()
-            require("nvterm.terminal").new "horizontal"
-         end,
-         "   new horizontal term",
-      },
-
-      ["<leader>v"] = {
-         function()
-            require("nvterm.terminal").new "vertical"
-         end,
-         "   new vertical term",
-      },
-   },
-}
-
-M.whichkey = {
-   n = {
-      ["<leader>wK"] = {
-         function()
-            vim.cmd "WhichKey"
-         end,
-         "   which-key all keymaps",
-      },
-      ["<leader>wk"] = {
-         function()
-            local input = vim.fn.input "WhichKey: "
-            vim.cmd("WhichKey " .. input)
-         end,
-         "   which-key query lookup",
-      },
-   },
-}
-
 local function map_func(mode, keybind, mapping_info)
   vim.keymap.set(mode, keybind, mapping_info[1])
 end  
@@ -370,7 +259,8 @@ for _, section_mappings in pairs(M) do
          if mapping_info.opts then
             mapping_info.opts = nil
          end
-         map_func(mode, keybind, mapping_info)
+         -- map_func(mode, keybind, mapping_info)
+          vim.keymap.set(mode, keybind, mapping_info[1])
       end
    end
 end
