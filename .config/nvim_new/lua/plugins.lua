@@ -86,19 +86,10 @@ local plugins = {
    },
 
    -- file managing , picker etc
-   ["kyazdani42/nvim-tree.lua"] = {
-      config = function() 
-        require("nvim-tree").setup()
-      end,
-   },
+   ["kyazdani42/nvim-tree.lua"] = {},
 
    ["nvim-telescope/telescope.nvim"] = {
       cmd = "Telescope",
-   },
-
-   -- Only load whichkey after all the gui
-   ["folke/which-key.nvim"] = {
-      module = "which-key",
    },
 }
 

@@ -1,6 +1,8 @@
 require("packer_wrapper").bootstrap()
 require("plugins")
-require("mappings")
-require("options")
+require("plugins_configs")
 
-require("nvim-tree").setup()
+require("options")
+require("mappings")
+
+

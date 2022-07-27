@@ -5,6 +5,9 @@ local g = vim.g
 g.tokyonight_style = "night"
 vim.cmd[[colorscheme tokyonight]]
 
+-- set leader
+g.mapleader = " "
+
 -- use filetype.lua instead of filetype.vim
 g.did_load_filetypes = 0
 g.do_filetype_lua = 1
