@@ -150,14 +150,6 @@ local plugins = {
       end,
    },
 
-   ["goolord/alpha-nvim"] = {
-      after = "base46",
-      disable = true,
-      config = function()
-         require "plugins.configs.alpha"
-      end,
-   },
-
    ["numToStr/Comment.nvim"] = {
       module = "Comment",
       keys = { "gc", "gb" },
