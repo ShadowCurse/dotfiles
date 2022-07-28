@@ -3,6 +3,6 @@ require("plugins")
 require("plugins_configs")
 
 require("options")
-require("mappings")
+require("mappings").set_default_bindings()
 
 

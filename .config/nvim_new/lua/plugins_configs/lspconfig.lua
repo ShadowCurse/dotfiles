@@ -5,8 +5,11 @@ if not present then
 end
 
 local on_attach = function(client, bufnr)
+   print "attaching"
    client.server_capabilities.documentFormattingProvider = false
    client.server_capabilities.documentRangeFormattingProvider = false
+
+   require("mappings").set_lsp_bindings(bufnr)
 
    if client.supports_method "textDocument/signatureHelp" then
       vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
