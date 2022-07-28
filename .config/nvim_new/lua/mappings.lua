@@ -2,9 +2,9 @@ local function termcodes(str)
    return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local M = {}
+local default_bindings = {}
 
-M.general = {
+default_bindings.general = {
 
    i = {
 
@@ -36,7 +36,7 @@ M.general = {
    },
 }
 
-M.bufferline = {
+default_bindings.bufferline = {
 
    n = {
       -- new buffer
@@ -68,7 +68,7 @@ M.bufferline = {
    },
 }
 
-M.comment = {
+default_bindings.comment = {
 
    -- toggle comment in both modes
    n = {
@@ -89,7 +89,41 @@ M.comment = {
    },
 }
 
-M.lspconfig = {
+default_bindings.nvimtree = {
+
+   n = {
+      -- toggle
+      ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
+
+      -- focus
+      ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "   focus nvimtree" },
+   },
+}
+
+default_bindings.telescope = {
+   n = {
+      -- find
+      ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
+      ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
+      ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "   live grep" },
+      ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
+      ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
+      ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
+      ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
+
+      -- git
+      ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
+      ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "  git status" },
+
+      -- pick a hidden term
+      ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "   pick hidden term" },
+
+      -- theme switcher
+      ["<leader>th"] = { "<cmd> Telescope themes <CR>", "   nvchad themes" },
+   },
+}
+
+local lsp_bindings = {
    -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
    n = {
@@ -214,54 +248,34 @@ M.lspconfig = {
    },
 }
 
-M.nvimtree = {
-
-   n = {
-      -- toggle
-      ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
-
-      -- focus
-      ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "   focus nvimtree" },
-   },
-}
-
-M.telescope = {
-   n = {
-      -- find
-      ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
-      ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
-      ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "   live grep" },
-      ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
-      ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
-      ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
-      ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
-
-      -- git
-      ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
-      ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "  git status" },
-
-      -- pick a hidden term
-      ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "   pick hidden term" },
-
-      -- theme switcher
-      ["<leader>th"] = { "<cmd> Telescope themes <CR>", "   nvchad themes" },
-   },
-}
-
-local function map_func(mode, keybind, mapping_info)
-  vim.keymap.set(mode, keybind, mapping_info[1])
-end  
-
-for _, section_mappings in pairs(M) do
+local set_bindings = function(mapping_table, buffer)
    -- skip mapping this as its mapppings are loaded in lspconfig
-   for mode, mode_mappings in pairs(section_mappings) do
+   for mode, mode_mappings in pairs(mapping_table) do
       for keybind, mapping_info in pairs(mode_mappings) do
          if mapping_info.opts then
             mapping_info.opts = nil
          end
          -- map_func(mode, keybind, mapping_info)
-          vim.keymap.set(mode, keybind, mapping_info[1])
+          vim.keymap.set(mode, keybind, mapping_info[1], buffer)
       end
    end
 end
 
+local Mappings = {}
+
+Mappings.default_bindings = default_bindings;
+
+Mappings.lsp_bindings = lsp_bindings;
+
+Mappings.set_default_bindings = function() 
+  for _, section_mappings in pairs(Mappings.default_bindings) do
+    set_bindings(section_mappings)
+  end
+end
+
+Mappings.set_lsp_bindings = function(buffer) 
+    print "lololololl"
+    set_bindings(Mappings.lsp_bindings, { buffer = buffer })
+end
+
+return Mappings

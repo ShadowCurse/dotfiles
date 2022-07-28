@@ -4,7 +4,7 @@ local plugins = {
 
    ["wbthomason/packer.nvim"] = {},
 
-   ["folke/tokyonight.nvim"] = {},
+   ["tiagovla/tokyodark.nvim"] = {},
 
    ["nvim-lua/plenary.nvim"] = {},
 
