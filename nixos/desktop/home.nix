@@ -93,6 +93,13 @@
     rustup
     zig
     python3
+
+    #==========================#
+    ## lsp servers
+    #==========================#
+    rust-analyzer
+    sumneko-lua-language-server
+    zls
   ];
 
   home.file.".config/alacritty/".source = ../../.config/alacritty;
