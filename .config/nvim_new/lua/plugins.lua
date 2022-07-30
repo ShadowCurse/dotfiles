@@ -2,95 +2,94 @@ vim.cmd [[packadd packer.nvim]]
 
 local plugins = {
 
-   ["wbthomason/packer.nvim"] = {},
+  ["wbthomason/packer.nvim"] = {},
 
-   ["tiagovla/tokyodark.nvim"] = {},
+  ["tiagovla/tokyodark.nvim"] = {},
 
-   ["nvim-lua/plenary.nvim"] = {},
+  ["nvim-lua/plenary.nvim"] = {},
 
-   ["kyazdani42/nvim-web-devicons"] = {
-      module = "nvim-web-devicons",
-   },
+  ["kyazdani42/nvim-web-devicons"] = {
+    module = "nvim-web-devicons",
+  },
 
-   ["akinsho/bufferline.nvim"] = {
-      tag = "v2.*",
-   },
+  ["akinsho/bufferline.nvim"] = {
+    tag = "v2.*",
+  },
 
-   ["lukas-reineke/indent-blankline.nvim"] = {
-   },
+  ["nvim-lualine/lualine.nvim"] = {},
 
-   ["nvim-treesitter/nvim-treesitter"] = {
-      module = "nvim-treesitter",
-      cmd = { "TSInstall", "TSUninstall" },
-      run = ":TSUpdate",
-   },
+  ["lukas-reineke/indent-blankline.nvim"] = {},
 
-   -- git stuff
-   ["lewis6991/gitsigns.nvim"] = {
-   },
+  ["nvim-treesitter/nvim-treesitter"] = {
+    module = "nvim-treesitter",
+    cmd = { "TSInstall", "TSUninstall" },
+    run = ":TSUpdate",
+  },
 
-   -- lsp stuff
+  -- git stuff
+  ["lewis6991/gitsigns.nvim"] = {},
 
-   ["williamboman/nvim-lsp-installer"] = {
-   },
+  -- lsp stuff
 
-   ["neovim/nvim-lspconfig"] = {
-      after = "nvim-lsp-installer",
-      module = "lspconfig",
-   },
+  ["williamboman/nvim-lsp-installer"] = {},
 
-   -- load luasnips + cmp related in insert mode only
+  ["neovim/nvim-lspconfig"] = {
+    after = "nvim-lsp-installer",
+    module = "lspconfig",
+  },
 
-   ["rafamadriz/friendly-snippets"] = {
-      module = "cmp_nvim_lsp",
-      event = "InsertEnter",
-   },
+  -- load luasnips + cmp related in insert mode only
 
-   ["hrsh7th/nvim-cmp"] = {
-      after = "friendly-snippets",
-   },
+  ["rafamadriz/friendly-snippets"] = {
+    module = "cmp_nvim_lsp",
+    event = "InsertEnter",
+  },
 
-   ["L3MON4D3/LuaSnip"] = {
-      wants = "friendly-snippets",
-      after = "nvim-cmp",
-   },
+  ["hrsh7th/nvim-cmp"] = {
+    after = "friendly-snippets",
+  },
 
-   ["saadparwaiz1/cmp_luasnip"] = {
-      after = "LuaSnip",
-   },
+  ["L3MON4D3/LuaSnip"] = {
+    wants = "friendly-snippets",
+    after = "nvim-cmp",
+  },
 
-   ["hrsh7th/cmp-nvim-lua"] = {
-      after = "cmp_luasnip",
-   },
+  ["saadparwaiz1/cmp_luasnip"] = {
+    after = "LuaSnip",
+  },
 
-   ["hrsh7th/cmp-nvim-lsp"] = {
-      after = "cmp-nvim-lua",
-   },
+  ["hrsh7th/cmp-nvim-lua"] = {
+    after = "cmp_luasnip",
+  },
 
-   ["hrsh7th/cmp-buffer"] = {
-      after = "cmp-nvim-lsp",
-   },
+  ["hrsh7th/cmp-nvim-lsp"] = {
+    after = "cmp-nvim-lua",
+  },
 
-   ["hrsh7th/cmp-path"] = {
-      after = "cmp-buffer",
-   },
+  ["hrsh7th/cmp-buffer"] = {
+    after = "cmp-nvim-lsp",
+  },
 
-   -- misc plugins
-   ["windwp/nvim-autopairs"] = {
-      after = "nvim-cmp",
-   },
+  ["hrsh7th/cmp-path"] = {
+    after = "cmp-buffer",
+  },
 
-   ["numToStr/Comment.nvim"] = {
-      module = "Comment",
-      keys = { "gc", "gb" },
-   },
+  -- misc plugins
+  ["windwp/nvim-autopairs"] = {
+    after = "nvim-cmp",
+  },
 
-   -- file managing , picker etc
-   ["kyazdani42/nvim-tree.lua"] = {},
+  ["numToStr/Comment.nvim"] = {
+    module = "Comment",
+    keys = { "gc", "gb" },
+  },
 
-   ["nvim-telescope/telescope.nvim"] = {
-      cmd = "Telescope",
-   },
+  -- file managing , picker etc
+  ["kyazdani42/nvim-tree.lua"] = {},
+
+  ["nvim-telescope/telescope.nvim"] = {
+    cmd = "Telescope",
+  },
 }
 
 require("packer_wrapper").init(plugins)
