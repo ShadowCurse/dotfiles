@@ -100,6 +100,7 @@
     rust-analyzer
     sumneko-lua-language-server
     zls
+    rnix-lsp
   ];
 
   home.file.".config/alacritty/".source = ../../.config/alacritty;
@@ -114,6 +115,11 @@
   ## };
   home.file.".config/tmux/".source = ../../.config/tmux;
   home.file.".config/rofi/".source = ../../.config/rofi;
+
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  programs.fish.enable = true;
 
   home.keyboard.layout = "us";
 
