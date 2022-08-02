@@ -1,7 +1,3 @@
-fish_vi_key_bindings
-
-set fish_greeting
-
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -21,6 +17,9 @@ end
 set -x CARGO_INCREMENTAL 1
 set -x RUST_BACKTRACE 1
 
+fish_vi_key_bindings
+set fish_greeting
+direnv hook fish | source
 starship init fish | source
 
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/antaraz/.ghcup/bin $PATH # ghcup-env
