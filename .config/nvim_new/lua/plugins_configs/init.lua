@@ -1,3 +1,4 @@
+require("plugins_configs.autopairs")
 require("plugins_configs.blankline")
 require("plugins_configs.bufferline")
 require("plugins_configs.gitsigns")
