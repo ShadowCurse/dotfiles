@@ -70,7 +70,8 @@ default_bindings.comment = {
   n = {
     ["<leader>/"] = {
       function()
-        require("Comment.api").toggle_current_linewise()
+        -- require("Comment.api").toggle_current_linewise()
+        require("Comment.api").toggle.linewise.current()
       end,
 
       "toggle comment",
@@ -79,7 +80,7 @@ default_bindings.comment = {
 
   v = {
     ["<leader>/"] = {
-      "<ESC><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>",
+      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
       "toggle comment",
     },
   },
