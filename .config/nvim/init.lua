@@ -1,17 +1,8 @@
-require "core"
-require "core.utils"
-require "core.options"
+require("packer_wrapper").bootstrap()
+require("plugins")
+require("plugins_configs")
 
-vim.defer_fn(function()
-   require("core.utils").load_mappings()
-end, 0)
+require("options")
+require("mappings").set_default_bindings()
 
--- setup packer + plugins
-require("core.packer").bootstrap()
-require "plugins"
 
-local user_conf, _ = pcall(require, "custom")
-
-if user_conf then
-   require "custom"
-end
