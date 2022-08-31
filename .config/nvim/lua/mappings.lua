@@ -194,6 +194,13 @@ local lsp_bindings = {
       "   floating diagnostic",
     },
 
+    ["<leader>rn"] = {
+      function()
+        vim.lsp.buf.rename()
+      end,
+      "   rename",
+    },
+
     ["[d"] = {
       function()
         vim.diagnostic.goto_prev()
