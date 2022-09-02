@@ -90,6 +90,9 @@ local plugins = {
   ["nvim-telescope/telescope.nvim"] = {
     cmd = "Telescope",
   },
+
+  -- debugging
+  ["puremourning/vimspector"] = {},
 }
 
 require("packer_wrapper").init(plugins)
