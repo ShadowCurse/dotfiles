@@ -65,7 +65,7 @@ local default_plugins = {
    "vimballPlugin",
    "zip",
    "zipPlugin",
-   "python3_provider",
+   -- "python3_provider",
    "python_provider",
    "node_provider",
    "ruby_provider",

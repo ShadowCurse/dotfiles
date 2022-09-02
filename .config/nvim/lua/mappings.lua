@@ -114,9 +114,6 @@ default_bindings.telescope = {
 
     -- pick a hidden term
     ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "   pick hidden term" },
-
-    -- theme switcher
-    ["<leader>th"] = { "<cmd> Telescope themes <CR>", "   nvchad themes" },
   },
 }
 
@@ -166,13 +163,6 @@ local lsp_bindings = {
       "   lsp definition type",
     },
 
-    ["<leader>ra"] = {
-      function()
-        require("ui.renamer").open()
-      end,
-      "   lsp rename",
-    },
-
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
@@ -201,14 +191,14 @@ local lsp_bindings = {
       "   rename",
     },
 
-    ["[d"] = {
+    ["<leader>dp"] = {
       function()
         vim.diagnostic.goto_prev()
       end,
       "   goto prev",
     },
 
-    ["d]"] = {
+    ["<leader>dn"] = {
       function()
         vim.diagnostic.goto_next()
       end,
