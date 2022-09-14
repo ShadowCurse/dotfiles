@@ -26,6 +26,7 @@
     firefox
     discord
     steam
+    xivlauncher
 
     #==========================#
     ## maybe 
@@ -48,6 +49,7 @@
     exa
     bat
     htop
+    bottom
     tmux
     neovim
     helix
@@ -109,10 +111,10 @@
     source = ../../.config/fish;
     recursive = true;
   };
-  ## home.file.".config/nvim/" = {
-  ##   source = ../../.config/nvim;
-  ##   recursive = true;
-  ## };
+  home.file.".config/nvim/" = {
+    source = ../../.config/nvim;
+    recursive = true;
+  };
   home.file.".config/tmux/".source = ../../.config/tmux;
   home.file.".config/rofi/".source = ../../.config/rofi;
 

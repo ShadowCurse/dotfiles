@@ -26,6 +26,8 @@ local plugins = {
     run = ":TSUpdate",
   },
 
+  ["rrethy/vim-illuminate"] = {},
+
   -- git stuff
   ["lewis6991/gitsigns.nvim"] = {},
 

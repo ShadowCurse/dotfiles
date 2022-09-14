@@ -30,6 +30,10 @@ default_bindings.general = {
     ["<"] = { "<gv", "move selected to the left" },
     [">"] = { ">gv", "move selected to the right" },
   },
+
+  x = {
+    ["<leader>p"] = { "\"_dP", "no highlight" },
+  },
 }
 
 default_bindings.bufferline = {
