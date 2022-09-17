@@ -1,9 +1,15 @@
 { config, pkgs, ... }:
-
+let
+  flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+  hyprland = (import flake-compat {
+    src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+  }).defaultNix;
+in
 {
   imports =
     [
       ./hardware-configuration.nix
+      hyprland.nixosModules.default
     ];
 
   #==========================#
@@ -36,6 +42,8 @@
     extraModulePackages = [
       config.boot.kernelPackages.v4l2loopback.out
     ];
+    # AMD
+    initrd.kernelModules = [ "amdgpu" ];
   };
 
   #==========================#
@@ -70,12 +78,22 @@
   #==========================#
   ## GPU
   #==========================#
+  # Nvidia
+  # services.xserver.videoDrivers = [ "nvidia" ];
+  # AMD
+  services.xserver.videoDrivers = [ "amdgpu" ];
   # OpenGl
-  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl = {
     enable = true;
+    driSupport = true;
     driSupport32Bit = true;
   };
+  # OpenCL
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+    amdvlk
+  ];
 
   #==========================#
   ## Sound
@@ -140,8 +158,17 @@
   ## X11
   #==========================#
   services.xserver.enable = true;
+  # Display manager
   services.xserver.displayManager.lightdm.enable = true;
+  # Window manager
+  # DWM
   services.xserver.windowManager.dwm.enable = true;
+  # Hyprland
+  programs.hyprland = {
+      enable = true;
+      package = hyprland.packages.${pkgs.system}.default;
+  };
+  xdg.portal.wlr.enable = true;
 
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
