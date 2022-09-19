@@ -70,14 +70,11 @@ in
   #==========================#
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
 
   #==========================#
   ## GPU
   #==========================#
+  hardware.enableRedistributableFirmware = true;
   # Nvidia
   # services.xserver.videoDrivers = [ "nvidia" ];
   # AMD
@@ -88,11 +85,14 @@ in
     driSupport = true;
     driSupport32Bit = true;
   };
-  # OpenCL
   hardware.opengl.extraPackages = with pkgs; [
+    amdvlk
+    # OpenCL
     rocm-opencl-icd
     rocm-opencl-runtime
-    amdvlk
+  ];
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
   ];
 
   #==========================#
@@ -152,26 +152,35 @@ in
   #==========================#
   ## Unfree
   #==========================#
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
+
+  #==========================#
+  ## Desktop Manager
+  #==========================#
+  # Wayland
+  services.xserver.displayManager.gdm.wayland = true;
+  services.xserver.displayManager.gdm.enable = true;
 
   #==========================#
   ## X11
   #==========================#
   services.xserver.enable = true;
-  # Display manager
-  services.xserver.displayManager.lightdm.enable = true;
   # Window manager
   # DWM
-  services.xserver.windowManager.dwm.enable = true;
-  # Hyprland
-  programs.hyprland = {
-      enable = true;
-      package = hyprland.packages.${pkgs.system}.default;
-  };
-  xdg.portal.wlr.enable = true;
-
+  # services.xserver.windowManager.dwm.enable = true;
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
+
+  #==========================#
+  ## Wayland
+  #==========================#
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    package = hyprland.packages.${pkgs.system}.default;
+  };
+  programs.xwayland.enable = true;
+  xdg.portal.wlr.enable = true;
 
   #==========================#
   ## Custom dwm
