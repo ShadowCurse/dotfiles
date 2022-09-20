@@ -14,6 +14,7 @@
     ## gui
     #==========================#
     alacritty
+    waybar
     rofi
     nitrogen
     dmenu
