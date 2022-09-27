@@ -28,6 +28,7 @@
     discord
     steam
     xivlauncher
+    tdesktop
 
     #==========================#
     ## maybe 
@@ -48,6 +49,7 @@
     #==========================#
     fish
     exa
+    fd
     bat
     htop
     bottom
