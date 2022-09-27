@@ -109,7 +109,7 @@
   ];
 
   home.file.".config/alacritty/".source = ../../.config/alacritty;
-  home.file.".config/dwm/".source = ../../.config/dwm;
+  home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
   home.file.".config/fish/" = {
     source = ../../.config/fish;
     recursive = true;
