@@ -1,85 +1,242 @@
+@define-color critical #6c7086; /* critical color */
+@define-color warning #a6adc8;  /* warning color */
+@define-color fgcolor #cdd6f4;  /* foreground color */
+@define-color bgcolor #11111b;  /* background color */
+@define-color bgcolor #1e1e2e;  /* background color */
+@define-color alert   #f38ba8;
+
+/* ROSE PINE */
+/* @define-color accent1 #eb6f92; */
+/* @define-color accent2 #9ccfd8; */
+/* @define-color accent3 #f6c177; */
+/* @define-color accent4 #31748f; */
+/* @define-color accent5 #c4a7e7; */
+/* @define-color accent6 #ebbcba; */
+
+/* DRACULA */
+/* @define-color accent1 #ff5555; */
+/* @define-color accent2 #50fa7b; */
+/* @define-color accent3 #f1fa8c; */
+/* @define-color accent4 #bd93f9; */
+/* @define-color accent5 #ff79c6; */
+/* @define-color accent6 #8be9fd; */
+
+/* MONOKAI PRO */
+/* @define-color accent1 #ff6188; */
+/* @define-color accent2 #a9dc76; */
+/* @define-color accent3 #ffd866; */
+/* @define-color accent4 #fc9867; */
+/* @define-color accent5 #ab9df2; */
+/* @define-color accent6 #78dce8; */
+
+/* TOKYO NIGHT */
+@define-color accent1 #ff7a93;
+@define-color accent2 #b9f27c;
+@define-color accent3 #ff9e64;
+@define-color accent4 #bb9af7;
+@define-color accent5 #7da6ff;
+@define-color accent6 #0db9d7;
+
 * {
-    border:        none;
-    border-radius: 0;
-    font-family:   Hack;
-    font-size:     15px;
-    box-shadow:    none;
-    text-shadow:   none;
-    transition-duration: 0s;
-    color:      rgba(255, 255, 255, 1);
-
+    border: none;
+    border-radius: 6px;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: CascadiaCode-Regular, Monaco;
+    /* Recommended font sizes: 720p: ~14px, 1080p: ~18px */
+    font-size: 14px;
+    min-height: 0;
 }
 
-window {
-    background: rgba(0, 0, 0, 0.2);
-}
 window#waybar {
-    background: rgba(0, 0, 0, 0.2);
-
+    background-color: @bgcolor;
+    /* border-bottom: 0px solid rgba(100, 114, 125, 0.5); */
+    /* color: #ffffff; */
+    transition-property: background;
+    transition-duration: .5s;
+    border-radius: 0;
 }
-#sway-window{
-  border: 1px red solid;
-}
 
-#workspaces {
-    margin: 0 5px;
+window#waybar.hidden {
+    opacity: 0.2;
 }
 
 #workspaces button {
-    padding:    0 5px;
+    padding: 0 0 0 0;
+    margin: 4px 0 6px 0;
+    background-color: transparent;
+    color: #ffffff;
+    min-width: 36px;
+    /* Use box-shadow instead of border so the text isn't offset */
+/*    box-shadow: inset 0 -3px transparent;*/
+    /* border-radius: 0px; */
 }
 
-#workspaces button.visible {
-    color:      rgba(255, 36, 25, 1);
-    background: rgba(255, 36, 25, 0.5);
+#workspaces button.active {
+    padding: 0 0 0 0;
+    margin: 4px 0 6px 0;
+    background-color: @accent1;
+    color: #000000;
+    min-width: 36px;
+    /* Use box-shadow instead of border so the text isn't offset */
+/*    box-shadow: inset 0 -3px transparent;*/
+    /* border-radius: 0px; */
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background-color: @accent2;
+    /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.focused {
-    background-color: teal;
-    background: rgba(255, 36, 25, 1);
+    background-color: @accent3;
+    color: #ffffff;
+    /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.urgent {
-    color:      rgba(238, 46, 36, 1);
+    background-color: @warning;
 }
+
 #mode {
-  border: 20px red solid;
+    background-color: @bgcolor;
+    border-bottom: 3px solid #ffffff;
 }
-#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight,#clock {
-    margin:     0px 6px 0px 10px;
-    padding: 5px;
 
-    /* border-left: 2px red solid; */
+#clock,
+/* #battery, */
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#language {
+    padding: 1px 6px 0px 6px;
+    margin: 4px 3px 5px 3px;
+    color: @fgcolor;
+    /* background-color: #bbccdd; */
+    background-color: transparent;
+}
 
-    min-width:  25px;
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
 }
 
 #clock {
-
-    margin:     0px 16px 0px 10px;
-    min-width:  10px;
-
-}
-#battery {
-
-}
-#battery.warning {
-   color:       rgba(255, 210, 4, 1);
 }
 
-#battery.critical {
-    color:      rgba(238, 46, 36, 1);
-}
-#battery.good{
-  color: rgba(32,230,124,.8);
+/* #battery { */
+/*     color: @accent5; */
+/* } */
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #333333;
+    }
 }
 
-#battery.charging {
-    color:      rgba(9, 49, 153, 1);
+/* #battery.critical:not(.charging) { 
+    color: @critical;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    background-color: @critical;
+    color: @white;
+} */
+
+label:focus {
+    background-color: #000000;
 }
-#network.wifi {
-  color:rgba(32,230,124,.8);
+
+#cpu {
+    color: @accent1;
 }
-#network.disconnected{
-  color:orange;
+
+#memory {
+    background-color: #f38ba8;
+}
+
+#backlight {
+    color: @accent2;
+}
+
+#network {
+    color: @accent3;
+}
+
+#network.disconnected {
+    color: @alert;
+}
+
+#pulseaudio {
+    color: @accent4;
+}
+
+#pulseaudio.muted {
+    color: #a0a0a0;
+}
+
+#custom-power {
+    color: @accent6;
+}
+
+#temperature {
+    color: @accent6;
+    /* background-color: #fab387; */
+}
+
+#temperature.critical {
+    background-color: @critical;
+}
+
+#tray {
+    /* background-color: #505050; */
+}
+
+#mpd {
+    background-color: #a6e3a1;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f38ba8;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#custom-language {
+    /* background: #bbccdd;
+    color: #333333;
+    padding: 0 5px;
+    margin: 4px 3px 6px 3px; */
+    color: @accent5;
+    min-width: 16px;
+}
+
+#custom-separator {
+    color: #606060;
+    margin: 0 1px;
+    padding-bottom: 5px;
 }
