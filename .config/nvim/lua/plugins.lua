@@ -28,6 +28,8 @@ local plugins = {
 
   ["rrethy/vim-illuminate"] = {},
 
+  ["ap/vim-css-color"] = {},
+
   -- git stuff
   ["lewis6991/gitsigns.nvim"] = {},
 
@@ -94,7 +96,7 @@ local plugins = {
   },
 
   -- debugging
-  ["puremourning/vimspector"] = {},
+  -- ["puremourning/vimspector"] = {},
 }
 
 require("packer_wrapper").init(plugins)
