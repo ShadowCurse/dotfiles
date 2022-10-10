@@ -27,7 +27,7 @@
     firefox
     discord
     steam
-    xivlauncher
+    # xivlauncher
     tdesktop
 
     #==========================#
