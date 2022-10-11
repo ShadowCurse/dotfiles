@@ -9,6 +9,14 @@
     # allowBroken = true;
   };
 
+  nixpkgs.overlays = [
+    (self: super: {
+      waybar = super.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      });
+    })
+  ];
+
   home.packages = with pkgs; [
     #==========================#
     ## gui
@@ -108,8 +116,11 @@
     rnix-lsp
   ];
 
-  home.file.".config/alacritty/".source = ../../.config/alacritty;
   home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
+  # home.file.".config/hypr/".source = ../../.config/hypr;
+  # home.file.".config/waybar/".source = ../../.config/waybar;
+
+  home.file.".config/alacritty/".source = ../../.config/alacritty;
   home.file.".config/fish/" = {
     source = ../../.config/fish;
     recursive = true;
