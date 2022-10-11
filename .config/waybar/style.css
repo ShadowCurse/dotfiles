@@ -1,8 +1,7 @@
 @define-color critical #6c7086; /* critical color */
 @define-color warning #a6adc8;  /* warning color */
 @define-color fgcolor #cdd6f4;  /* foreground color */
-@define-color bgcolor #11111b;  /* background color */
-@define-color bgcolor #1e1e2e;  /* background color */
+@define-color bgcolor #11121d;  /* background color */
 @define-color alert   #f38ba8;
 
 /* ROSE PINE */
@@ -40,17 +39,13 @@
 * {
     border: none;
     border-radius: 6px;
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: CascadiaCode-Regular, Monaco;
-    /* Recommended font sizes: 720p: ~14px, 1080p: ~18px */
     font-size: 14px;
     min-height: 0;
 }
 
 window#waybar {
     background-color: @bgcolor;
-    /* border-bottom: 0px solid rgba(100, 114, 125, 0.5); */
-    /* color: #ffffff; */
     transition-property: background;
     transition-duration: .5s;
     border-radius: 0;
@@ -66,25 +61,18 @@ window#waybar.hidden {
     background-color: transparent;
     color: #ffffff;
     min-width: 36px;
-    /* Use box-shadow instead of border so the text isn't offset */
-/*    box-shadow: inset 0 -3px transparent;*/
-    /* border-radius: 0px; */
 }
 
 #workspaces button.active {
     padding: 0 0 0 0;
     margin: 4px 0 6px 0;
-    background-color: @accent1;
+    background-color: @accent2;
     color: #000000;
     min-width: 36px;
-    /* Use box-shadow instead of border so the text isn't offset */
-/*    box-shadow: inset 0 -3px transparent;*/
-    /* border-radius: 0px; */
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background-color: @accent2;
+    background-color: @accent1;
     /* box-shadow: inset 0 -3px #ffffff; */
 }
 
@@ -116,7 +104,6 @@ window#waybar.hidden {
     padding: 1px 6px 0px 6px;
     margin: 4px 3px 5px 3px;
     color: @fgcolor;
-    /* background-color: #bbccdd; */
     background-color: transparent;
 }
 
@@ -169,7 +156,11 @@ label:focus {
 }
 
 #memory {
-    background-color: #f38ba8;
+    color: @accent1;
+}
+
+#temperature {
+    color: @accent1;
 }
 
 #backlight {
@@ -190,15 +181,6 @@ label:focus {
 
 #pulseaudio.muted {
     color: #a0a0a0;
-}
-
-#custom-power {
-    color: @accent6;
-}
-
-#temperature {
-    color: @accent6;
-    /* background-color: #fab387; */
 }
 
 #temperature.critical {

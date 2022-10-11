@@ -3,30 +3,29 @@
   // General config //
   ////////////////////
 
-    "layer": "top", // Waybar at top layer (top|bottom)
+    // "layer": "top", // Waybar at top layer (top|bottom)
     // "output": ["eDP-1", "VGA"] // Screen to be displayed on
     "position": "top", // Waybar position (top|bottom|left|right)
     //"height": 5, // Waybar height (to be removed for auto height)
     //"width": 5, // Waybar width (to be removed for auto height)
     "gtk-layer-shell": false,
-    "modules-left": ["custom/wmname", "custom/separator", "wlr/workspaces", "custom/separator"],
+    "modules-left": ["custom/separator", "wlr/workspaces", "custom/separator"],
     "modules-right": [
+        "custom/separator",
         "cpu", 
         "custom/separator",
-        "custom/power",
+        "temperature",
         "custom/separator",
-        "backlight", 
+        "memory", 
+        // "custom/separator",
+        // "backlight", 
         // "custom/separator",
         // "battery",
-        "custom/separator",
-        "temperature",
         "custom/separator",
         "pulseaudio",
         "custom/separator",
         "network",
         "custom/separator",
-        "custom/language",
-        "custom/separator"
         "clock",
         "custom/separator"],
 
@@ -34,17 +33,8 @@
   // Modules config //
   ////////////////////
 
-    "custom/wmname": {
-        "format": "",
-        "tooltip": false,
-        "on-scroll-down": "hyprctl dispatch workspace m+1",
-        "on-scroll-up": "hyprctl dispatch workspace m-1"
-    },
-
     "wlr/workspaces": {
-        // "sort-by-name": true
-        // "on-click": "/usr/local/bin/hyprctl dispatch workspace 3"
-        // "sort-by-coordinates": true
+        "sort-by-coordinates": true
     },
 
     "custom/separator": {
@@ -58,14 +48,8 @@
         "spacing": 6
     },
 
-    "clock": {
-        "format": "{:%H:%M %a %Y-%m-%d}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "interval": 60
-    },
-
     "cpu": {
-        "format": "{usage}% ({avg_frequency})",
+        "format": "{usage}% [{avg_frequency}]",
         "tooltip": false,
     },
 
@@ -103,8 +87,15 @@
 
     "pulseaudio": {
         "scroll-step": 1, // %, can be a float
-        "format": "audio 🔈: {volume}%",
+        "format": "audio: {volume}%",
         "format-bluetooth": "audio : {volume}%",
         "on-click": "pavucontrol"
     },
+
+    "clock": {
+        "format": "{:%H:%M %a %Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 60
+    },
+
 }
