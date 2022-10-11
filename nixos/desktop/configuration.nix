@@ -128,7 +128,7 @@ in
   ## System packages 
   #==========================#
   environment.defaultPackages = [ ];
-  services.xserver.desktopManager.xterm.enable = false;
+  # services.xserver.desktopManager.xterm.enable = false;
   environment.systemPackages = with pkgs; [
     vim
     ntfs3g
@@ -158,10 +158,10 @@ in
   ## Desktop Manager
   #==========================#
   # Wayland
-  # services.xserver.displayManager.gdm.wayland = true;
-  # services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+  services.xserver.displayManager.gdm.enable = true;
   # X11
-  services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true;
 
   #==========================#
   ## X11
@@ -169,7 +169,7 @@ in
   services.xserver.enable = true;
   # Window manager
   # DWM
-  services.xserver.windowManager.dwm.enable = true;
+  # services.xserver.windowManager.dwm.enable = true;
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
@@ -177,12 +177,12 @@ in
   ## Wayland
   #==========================#
   # Hyprland
-  # programs.hyprland = {
-  #   enable = true;
-  #   package = hyprland.packages.${pkgs.system}.default;
-  # };
-  # programs.xwayland.enable = true;
-  # xdg.portal.wlr.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = hyprland.packages.${pkgs.system}.default;
+  };
+  programs.xwayland.enable = true;
+  xdg.portal.wlr.enable = true;
 
   #==========================#
   ## Custom dwm
