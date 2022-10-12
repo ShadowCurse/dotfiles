@@ -22,10 +22,7 @@
     ## gui
     #==========================#
     alacritty
-    waybar
-    rofi
     nitrogen
-    dmenu
     feh
     pavucontrol
     mupdf
@@ -37,6 +34,20 @@
     steam
     # xivlauncher
     tdesktop
+    flameshot
+
+    #==========================#
+    ## X11
+    #==========================#
+    # rofi
+    # dmenu
+
+    #==========================#
+    ## Wayland
+    #==========================#
+    tofi
+    waybar
+
 
     #==========================#
     ## maybe 
@@ -44,7 +55,6 @@
     # bless # hex editor
     # piper # mouce config
     # emacs
-    # telegram
     # mypaint
     # blender
     # gimp
@@ -67,7 +77,6 @@
     starship
     neofetch
     ranger
-    flameshot
 
     #==========================#
     ## fonts
@@ -119,6 +128,7 @@
   home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
   # home.file.".config/hypr/".source = ../../.config/hypr;
   # home.file.".config/waybar/".source = ../../.config/waybar;
+  # home.file.".config/tofi/".source = ../../.config/tofi;
 
   home.file.".config/alacritty/".source = ../../.config/alacritty;
   home.file.".config/fish/" = {
