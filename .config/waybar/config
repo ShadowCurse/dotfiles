@@ -34,7 +34,18 @@
   ////////////////////
 
     "wlr/workspaces": {
-        "sort-by-coordinates": true
+        "sort-by-coordinates": false
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        // "icon-size": 20,
+        // "icon-theme": "Star",
+        "tooltip": false,
+        "active-first": true,
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "on-click-right": "activate"
     },
 
     "custom/separator": {
