@@ -30,6 +30,8 @@ local plugins = {
 
   ["ap/vim-css-color"] = {},
 
+  ["nathom/filetype.nvim"] = {},
+
   -- git stuff
   ["lewis6991/gitsigns.nvim"] = {},
 
