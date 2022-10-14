@@ -22,7 +22,6 @@
     ## gui
     #==========================#
     alacritty
-    nitrogen
     feh
     pavucontrol
     mupdf
@@ -41,13 +40,14 @@
     #==========================#
     # rofi
     # dmenu
+    # nitrogen
 
     #==========================#
     ## Wayland
     #==========================#
     tofi
     waybar
-
+    hyprpaper
 
     #==========================#
     ## maybe 
