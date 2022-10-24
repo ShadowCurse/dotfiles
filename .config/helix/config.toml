@@ -1,0 +1,24 @@
+theme = "tokyonight"
+
+[editor]
+cursorline = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+parents = false
+ignore = false
+git-ignore = false
+git-global = false
+git-exclude = false
+
+[editor.whitespace]
+render = "all"
+
+[editor.indent-guides] 
+render = true
+
