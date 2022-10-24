@@ -126,9 +126,10 @@
   ];
 
   home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
-  # home.file.".config/hypr/".source = ../../.config/hypr;
-  # home.file.".config/waybar/".source = ../../.config/waybar;
-  # home.file.".config/tofi/".source = ../../.config/tofi;
+  home.file.".config/hypr/".source = ../../.config/hypr;
+  home.file.".config/waybar/".source = ../../.config/waybar;
+  home.file.".config/tofi/".source = ../../.config/tofi;
+  home.file.".config/helix/".source = ../../.config/helix;
 
   home.file.".config/alacritty/".source = ../../.config/alacritty;
   home.file.".config/fish/" = {
