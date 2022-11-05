@@ -68,7 +68,7 @@ in
   #==========================#
   # Set your time zone and locale
   #==========================#
-  time.timeZone = "Europe/Moscow";
+  time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_US.UTF-8";
 
   #==========================#
