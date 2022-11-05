@@ -31,6 +31,7 @@
     firefox
     discord
     steam
+    obsidian
     # xivlauncher
     tdesktop
     flameshot
