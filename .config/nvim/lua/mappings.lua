@@ -139,11 +139,12 @@ local lsp_bindings = {
       "   lsp definition",
     },
 
-    ["K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      "   lsp hover",
+    ["gr"] = {
+      -- function()
+      --   vim.lsp.buf.references()
+      -- end,
+      "<cmd> TroubleToggle lsp_references <CR>",
+      "   lsp references",
     },
 
     ["gi"] = {
@@ -153,14 +154,21 @@ local lsp_bindings = {
       "   lsp implementation",
     },
 
-    ["<leader>ls"] = {
+    ["K"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      "   lsp hover",
+    },
+
+    ["<leader>h"] = {
       function()
         vim.lsp.buf.signature_help()
       end,
       "   lsp signature_help",
     },
 
-    ["<leader>D"] = {
+    ["<leader>td"] = {
       function()
         vim.lsp.buf.type_definition()
       end,
@@ -172,13 +180,6 @@ local lsp_bindings = {
         vim.lsp.buf.code_action()
       end,
       "   lsp code_action",
-    },
-
-    ["gr"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
-      "   lsp references",
     },
 
     ["<leader>f"] = {
@@ -243,6 +244,8 @@ local lsp_bindings = {
       end,
       "   list workspace folders",
     },
+
+    ["<C-j>"] = { "<cmd> TroubleToggle <CR>", "toggle Trouble workspace_diagnostics" },
   },
 }
 
