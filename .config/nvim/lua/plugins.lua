@@ -4,39 +4,56 @@ local plugins = {
 
   ["wbthomason/packer.nvim"] = {},
 
+  -- visual
   ["tiagovla/tokyodark.nvim"] = {},
-
-  ["nvim-lua/plenary.nvim"] = {},
-
   ["kyazdani42/nvim-web-devicons"] = {
     module = "nvim-web-devicons",
   },
-
-  ["akinsho/bufferline.nvim"] = {
-    tag = "v2.*",
-  },
-
   ["nvim-lualine/lualine.nvim"] = {},
-
   ["lukas-reineke/indent-blankline.nvim"] = {},
-
   ["nvim-treesitter/nvim-treesitter"] = {
     module = "nvim-treesitter",
     cmd = { "TSInstall", "TSUninstall" },
     run = ":TSUpdate",
   },
-
   ["rrethy/vim-illuminate"] = {},
-
   ["ap/vim-css-color"] = {},
 
+  -- lua additions for other plugins
+  ["nvim-lua/plenary.nvim"] = {},
+
+  -- fixes filetypes
   ["nathom/filetype.nvim"] = {},
 
+  -- list of diagnostics, references, telescope results...
+  ["folke/trouble.nvim"] = {
+    requires = "kyazdani42/nvim-web-devicons",
+  },
+
+  -- debugging
+  -- ["puremourning/vimspector"] = {},
+
+  -- file managing , picker etc
+  ["kyazdani42/nvim-tree.lua"] = {},
+  ["nvim-telescope/telescope.nvim"] = {
+    cmd = "Telescope",
+  },
+
+  -- misc plugins
+  ["windwp/nvim-autopairs"] = {
+    after = "nvim-cmp",
+  },
+
+  ["numToStr/Comment.nvim"] = {
+    module = "Comment",
+    keys = { "gc", "gb" },
+  },
+
   -- git stuff
+  ["tpope/vim-fugitive"] = {},
   ["lewis6991/gitsigns.nvim"] = {},
 
   -- lsp stuff
-
   ["williamboman/nvim-lsp-installer"] = {},
 
   ["neovim/nvim-lspconfig"] = {
@@ -44,30 +61,11 @@ local plugins = {
     module = "lspconfig",
   },
 
-  ["folke/trouble.nvim"] = {
-    -- requires = "kyazdani42/nvim-web-devicons",
-    -- config = function()
-    --   require("trouble").setup {
-    --     -- your configuration comes here
-    --     -- or leave it empty to use the default settings
-    --     -- refer to the configuration section below
-    --   }
-    -- end
-  },
-
   -- load luasnips + cmp related in insert mode only
-
-  ["rafamadriz/friendly-snippets"] = {
-    module = "cmp_nvim_lsp",
-    event = "InsertEnter",
-  },
-
-  ["hrsh7th/nvim-cmp"] = {
-    after = "friendly-snippets",
-  },
+  -- lsp compleation
+  ["hrsh7th/nvim-cmp"] = {},
 
   ["L3MON4D3/LuaSnip"] = {
-    wants = "friendly-snippets",
     after = "nvim-cmp",
   },
 
@@ -90,26 +88,6 @@ local plugins = {
   ["hrsh7th/cmp-path"] = {
     after = "cmp-buffer",
   },
-
-  -- misc plugins
-  ["windwp/nvim-autopairs"] = {
-    after = "nvim-cmp",
-  },
-
-  ["numToStr/Comment.nvim"] = {
-    module = "Comment",
-    keys = { "gc", "gb" },
-  },
-
-  -- file managing , picker etc
-  ["kyazdani42/nvim-tree.lua"] = {},
-
-  ["nvim-telescope/telescope.nvim"] = {
-    cmd = "Telescope",
-  },
-
-  -- debugging
-  -- ["puremourning/vimspector"] = {},
 }
 
 require("packer_wrapper").init(plugins)
