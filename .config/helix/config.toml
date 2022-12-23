@@ -9,16 +9,16 @@ normal = "block"
 select = "underline"
 
 [editor.file-picker]
-hidden = false
-parents = false
-ignore = false
-git-ignore = false
-git-global = false
-git-exclude = false
+# hidden = false
+# parents = false
+# ignore = false
+# git-ignore = false
+# git-global = false
+# git-exclude = false
 
-[editor.whitespace]
-render = "all"
+# [editor.whitespace]
+# render = "all"
 
-[editor.indent-guides] 
-render = true
+# [editor.indent-guides] 
+# render = true
 
