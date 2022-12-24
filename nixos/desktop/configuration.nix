@@ -130,6 +130,7 @@ in
   environment.defaultPackages = [ ];
   # services.xserver.desktopManager.xterm.enable = false;
   environment.systemPackages = with pkgs; [
+    river
     vim
     ntfs3g
     fuse
