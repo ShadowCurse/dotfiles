@@ -9,7 +9,7 @@
     //"height": 5, // Waybar height (to be removed for auto height)
     //"width": 5, // Waybar width (to be removed for auto height)
     "gtk-layer-shell": false,
-    "modules-left": ["custom/separator", "wlr/workspaces", "custom/separator"],
+    "modules-left": ["custom/separator", "wlr/workspaces", "river/tags", "custom/separator"],
     "modules-right": [
         "tray", 
         "custom/separator",
@@ -36,6 +36,10 @@
 
     "wlr/workspaces": {
         "on-click": "activate",
+    },
+
+    "river/tags": {
+        "disable-click": false,
     },
 
     "wlr/taskbar": {
