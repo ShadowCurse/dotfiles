@@ -49,6 +49,7 @@
     tofi
     waybar
     hyprpaper
+    wlr-randr
 
     #==========================#
     ## maybe 
