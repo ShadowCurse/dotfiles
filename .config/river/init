@@ -1,23 +1,25 @@
 #!/bin/sh
 
-# This is the example configuration file for river.
-#
-# If you wish to edit this, you will probably want to copy it to
-# $XDG_CONFIG_HOME/river/init or $HOME/.config/river/init first.
-#
-# See the river(1), riverctl(1), and rivertile(1) man pages for complete
-# documentation.
+killall waybar
+waybar &
+
+killall hyprpaper
+hyprpaper &
+
+wlr-randr --output DP-3 --mode 2560x1440@164.835007 &
+
+riverctl focus-follows-cursor normal
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
-
-# Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map normal Super+Shift Return spawn foot
+riverctl map normal Super T spawn alacritty
+riverctl map normal Super D spawn tofi-drun
+riverctl map normal Super+Shift D spawn "tofi-run | xargs fish -c"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
 
 # Super+Shift+E to exit river
-riverctl map normal Super+Shift E exit
+riverctl map normal Super+Shift C exit
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
@@ -29,12 +31,12 @@ riverctl map normal Super+Shift J swap next
 riverctl map normal Super+Shift K swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super Period focus-output next
-riverctl map normal Super Comma focus-output previous
+# riverctl map normal Super Period focus-output next
+# riverctl map normal Super Comma focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-riverctl map normal Super+Shift Period send-to-output next
-riverctl map normal Super+Shift Comma send-to-output previous
+# riverctl map normal Super+Shift Period send-to-output next
+# riverctl map normal Super+Shift Comma send-to-output previous
 
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super Return zoom
@@ -72,7 +74,7 @@ riverctl map-pointer normal Super BTN_LEFT move-view
 riverctl map-pointer normal Super BTN_RIGHT resize-view
 
 # Super + Middle Mouse Button to toggle float
-riverctl map-pointer normal Super BTN_MIDDLE toggle-float
+# riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
 for i in $(seq 1 9)
 do
@@ -111,41 +113,18 @@ riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
-riverctl declare-mode passthrough
+# riverctl declare-mode passthrough
 
 # Super+F11 to enter passthrough mode
-riverctl map normal Super F11 enter-mode passthrough
+# riverctl map normal Super F11 enter-mode passthrough
 
 # Super+F11 to return to normal mode
-riverctl map passthrough Super F11 enter-mode normal
-
-# Various media key mapping examples for both normal and locked mode which do
-# not have a modifier
-for mode in normal locked
-do
-    # Eject the optical drive (well if you still have one that is)
-    riverctl map $mode None XF86Eject spawn 'eject -T'
-
-    # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
-    riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-    riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
-    riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
-
-    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
-    riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
-    riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
-    riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
-    riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
-
-    # Control screen backlight brightness with light (https://github.com/haikarainen/light)
-    riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 5'
-    riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
-done
+# riverctl map passthrough Super F11 enter-mode normal
 
 # Set background and border color
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+# riverctl background-color 0x0a0a0a
+riverctl border-color-focused 0xb9f27c
+riverctl border-color-unfocused 0x333333
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300

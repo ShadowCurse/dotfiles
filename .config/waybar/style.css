@@ -86,6 +86,26 @@ window#waybar.hidden {
     background-color: @warning;
 }
 
+#tags button {
+    padding: 0 0 0 0;
+    margin: 4px 0 6px 0;
+    background-color: transparent;
+    color: #ffffff;
+    min-width: 36px;
+}
+
+#tags button.focused {
+    padding: 0 0 0 0;
+    margin: 4px 0 6px 0;
+    background-color: @accent2;
+    color: #000000;
+    min-width: 36px;
+}
+
+#tags button.urgent {
+    background-color: @warning;
+}
+
 #mode {
     background-color: @bgcolor;
     border-bottom: 3px solid #ffffff;
