@@ -10,6 +10,7 @@ in
     [
       ./hardware-configuration.nix
       hyprland.nixosModules.default
+      ./river.nix
     ];
 
   #==========================#
@@ -130,7 +131,6 @@ in
   environment.defaultPackages = [ ];
   # services.xserver.desktopManager.xterm.enable = false;
   environment.systemPackages = with pkgs; [
-    river
     vim
     ntfs3g
     fuse
@@ -182,6 +182,9 @@ in
     enable = true;
     package = hyprland.packages.${pkgs.system}.default;
   };
+  # River 
+  programs.river.enable = true;
+  # Misc
   programs.xwayland.enable = true;
   xdg.portal.wlr.enable = true;
 
