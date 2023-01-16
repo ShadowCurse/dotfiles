@@ -74,7 +74,6 @@ default_bindings.comment = {
   n = {
     ["<leader>/"] = {
       function()
-        -- require("Comment.api").toggle_current_linewise()
         require("Comment.api").toggle.linewise.current()
       end,
 
@@ -106,18 +105,15 @@ default_bindings.telescope = {
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "   live grep" },
-    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
+    ["<leader>w"] = { "<cmd> Telescope live_grep <CR>", "   live grep" },
+    ["<leader>s"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
     ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
 
     -- git
-    ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "  git status" },
-
-    -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "   pick hidden term" },
+    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "  git status" },
   },
 }
 
@@ -224,26 +220,26 @@ local lsp_bindings = {
       "   lsp formatting",
     },
 
-    ["<leader>wa"] = {
-      function()
-        vim.lsp.buf.add_workspace_folder()
-      end,
-      "   add workspace folder",
-    },
-
-    ["<leader>wr"] = {
-      function()
-        vim.lsp.buf.remove_workspace_folder()
-      end,
-      "   remove workspace folder",
-    },
-
-    ["<leader>wl"] = {
-      function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end,
-      "   list workspace folders",
-    },
+    -- ["<leader>wa"] = {
+    --   function()
+    --     vim.lsp.buf.add_workspace_folder()
+    --   end,
+    --   "   add workspace folder",
+    -- },
+    --
+    -- ["<leader>wr"] = {
+    --   function()
+    --     vim.lsp.buf.remove_workspace_folder()
+    --   end,
+    --   "   remove workspace folder",
+    -- },
+    --
+    -- ["<leader>wl"] = {
+    --   function()
+    --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    --   end,
+    --   "   list workspace folders",
+    -- },
 
     ["<C-j>"] = { "<cmd> TroubleToggle <CR>", "toggle Trouble workspace_diagnostics" },
   },
