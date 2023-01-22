@@ -25,16 +25,21 @@
     feh
     pavucontrol
     mupdf
+    xfce.xfconf
     xfce.thunar-bare
     xfce.thunar-volman
     brave
+    ## additional
     firefox
     discord
-    steam
     obsidian
-    # xivlauncher
     tdesktop
     flameshot
+    qbittorrent
+    ## gaming
+    steam
+    # xivlauncher
+    rpcs3
 
     #==========================#
     ## X11
@@ -57,7 +62,8 @@
     # bless # hex editor
     # piper # mouce config
     # emacs
-    # mypaint
+    mypaint
+    # obs-studio
     # blender
     # gimp
     # aseprite
@@ -149,6 +155,13 @@
   programs.direnv.nix-direnv.enable = true;
 
   programs.fish.enable = true;
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+    ];
+  };
 
   home.keyboard.layout = "us";
 
