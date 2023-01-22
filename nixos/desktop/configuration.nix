@@ -186,7 +186,10 @@ in
   programs.river.enable = true;
   # Misc
   programs.xwayland.enable = true;
-  xdg.portal.wlr.enable = true;
+  xdg.portal = { 
+    enable = true;
+    wlr.enable = true;
+  };
 
   #==========================#
   ## Custom dwm
