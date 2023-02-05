@@ -1,9 +1,7 @@
 local default_bindings = {}
 
 default_bindings.general = {
-
   i = {
-
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "beginning of line" },
     ["<C-e>"] = { "<End>", "end of line" },
@@ -16,7 +14,6 @@ default_bindings.general = {
   },
 
   n = {
-
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
 
     -- switch between windows
@@ -37,7 +34,6 @@ default_bindings.general = {
 }
 
 default_bindings.bufferline = {
-
   n = {
     -- new buffer
     ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
@@ -69,7 +65,6 @@ default_bindings.bufferline = {
 }
 
 default_bindings.comment = {
-
   -- toggle comment in both modes
   n = {
     ["<leader>/"] = {
@@ -90,7 +85,6 @@ default_bindings.comment = {
 }
 
 default_bindings.nvimtree = {
-
   n = {
     -- toggle
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
@@ -119,7 +113,6 @@ default_bindings.telescope = {
 
 local lsp_bindings = {
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
-
   n = {
     ["gD"] = {
       function()
