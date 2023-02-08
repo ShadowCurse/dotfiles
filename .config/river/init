@@ -1,12 +1,13 @@
 #!/bin/sh
 
-killall waybar
+killall .waybar-wrapped
 waybar &
 
 killall hyprpaper
 hyprpaper &
 
 wlr-randr --output DP-3 --mode 2560x1440@164.835007 &
+wlr-randr --output DP-2 --mode 5120x1440@119.999001 --pos 7680, 1440 &
 
 riverctl focus-follows-cursor normal
 
@@ -35,8 +36,8 @@ riverctl map normal Super+Shift K swap previous
 # riverctl map normal Super Comma focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-# riverctl map normal Super+Shift Period send-to-output next
-# riverctl map normal Super+Shift Comma send-to-output previous
+riverctl map normal Super+Shift Period send-to-output next
+riverctl map normal Super+Shift Comma send-to-output previous
 
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super Return zoom
