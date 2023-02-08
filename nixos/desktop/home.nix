@@ -34,8 +34,9 @@
     discord
     obsidian
     tdesktop
-    flameshot
+    flameshot # currently does not work on wayland
     qbittorrent
+    audacity
     ## gaming
     steam
     # xivlauncher
@@ -55,6 +56,9 @@
     waybar
     hyprpaper
     wlr-randr
+    
+    grim ## screenshot with grim -g "$(slurp)"
+    slurp
 
     #==========================#
     ## maybe 
@@ -135,6 +139,7 @@
 
   home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
   home.file.".config/hypr/".source = ../../.config/hypr;
+  home.file.".config/river/".source = ../../.config/river;
   home.file.".config/waybar/".source = ../../.config/waybar;
   home.file.".config/tofi/".source = ../../.config/tofi;
   home.file.".config/helix/".source = ../../.config/helix;
