@@ -134,6 +134,8 @@ in
     vim
     ntfs3g
     fuse
+    git
+    gnupg
   ];
 
   #==========================#
@@ -141,6 +143,15 @@ in
   #==========================#
   services.openssh.enable = true;
   services.gvfs.enable = true;
+  services.pcscd.enable = true;
+
+  #==========================#
+  ## GPG
+  #==========================#
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   #==========================#
   ## User

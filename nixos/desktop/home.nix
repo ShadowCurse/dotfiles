@@ -41,6 +41,7 @@
     steam
     # xivlauncher
     rpcs3
+    vlc
 
     #==========================#
     ## X11
