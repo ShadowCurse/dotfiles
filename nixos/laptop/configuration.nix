@@ -51,11 +51,15 @@
   #==========================#
   virtualisation = {
     podman = {
-        enable = true;
-        dockerCompat = true;
+      enable = true;
+      dockerCompat = true;
     };
   };
   virtualisation.oci-containers.backend = "podman";
+
+  #==========================#
+  ## Pihole
+  #==========================#
   virtualisation.oci-containers.containers.pihole = {
     image = "pihole/pihole:latest";
     autoStart = true;
@@ -71,17 +75,56 @@
       DNSSEC = "true";
       WEBPASSWORD = "password";
       PIHOLE_DNS_ = "127.0.0.1#5335";
-      #DNSMASQ_LISTENING = "local";
     };
     extraOptions = [
       "--network=host"
     ];
   };
 
+  systemd.services."podman-pihole".postStart = ''
+    sleep 300s
+
+    #Suspicious Lists
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts"
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/static/w3kbl.txt"
+    #Advertising Lists
+    podman exec pihole pihole -a adlist add "https://adaway.org/hosts.txt"
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/AdguardDNS.txt"
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Admiral.txt"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt"
+    podman exec pihole pihole -a adlist add "https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt"
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Easylist.txt"
+    podman exec pihole pihole -a adlist add "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts"
+    #Tracking & Telemetry Lists
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Easyprivacy.txt"
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Prigent-Ads.txt"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
+    podman exec pihole pihole -a adlist add "https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt"
+    #Malicious Lists
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt"
+    podman exec pihole pihole -a adlist add "https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt"
+    podman exec pihole pihole -a adlist add "https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt"
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Prigent-Crypto.txt"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts"
+    podman exec pihole pihole -a adlist add "https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt"
+    podman exec pihole pihole -a adlist add "https://phishing.army/download/phishing_army_blocklist_extended.txt"
+    podman exec pihole pihole -a adlist add "https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt"
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/RPiList-Malware.txt"
+    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/RPiList-Phishing.txt"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt"
+    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts"
+    podman exec pihole pihole -a adlist add "https://urlhaus.abuse.ch/downloads/hostfile/"
+    #Other Lists
+    podman exec pihole pihole -a adlist add "https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser"
+  '';
+
   #==========================#
-  ## Additional services
+  ## Unbound
   #==========================#
-  services.openssh.enable = true;
   services.unbound = {
     enable = true;
     settings = {
@@ -121,17 +164,22 @@
         so-rcvbuf = "1m";
 
         # Ensure privacy of local IP ranges
-        private-address = [ 
-	  "192.168.0.0/16"
+        private-address = [
+          "192.168.0.0/16"
           "169.254.0.0/16"
           "172.16.0.0/12"
           "10.0.0.0/8"
           "fd00::/8"
           "fe80::/10"
-	];
+        ];
       };
     };
   };
+
+  #==========================#
+  ## Additional services
+  #==========================#
+  services.openssh.enable = true;
 
   #==========================#
   # Set your time zone and locale
@@ -172,6 +220,7 @@
   #==========================#
   environment.defaultPackages = [ ];
   environment.systemPackages = with pkgs; [
+    dns-root-data
     neovim
     tmux
     git
