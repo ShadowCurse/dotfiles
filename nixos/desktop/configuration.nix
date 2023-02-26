@@ -1,15 +1,15 @@
 { config, pkgs, ... }:
 let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-  hyprland = (import flake-compat {
-    src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-  }).defaultNix;
+  # hyprland = (import flake-compat {
+  #   src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+  # }).defaultNix;
 in
 {
   imports =
     [
       ./hardware-configuration.nix
-      hyprland.nixosModules.default
+      # hyprland.nixosModules.default
       ./river.nix
     ];
 
@@ -158,7 +158,7 @@ in
   #==========================#
   users.users.antaraz = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "adbusers" ];
+    extraGroups = [ "wheel" "networkmanager" "adbusers" "docker" ];
   };
 
   #==========================#
@@ -189,10 +189,10 @@ in
   ## Wayland
   #==========================#
   # Hyprland
-  programs.hyprland = {
-    enable = true;
-    package = hyprland.packages.${pkgs.system}.default;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   package = hyprland.packages.${pkgs.system}.default;
+  # };
   # River 
   programs.river.enable = true;
   # Misc
@@ -205,19 +205,24 @@ in
   #==========================#
   ## Custom dwm
   #==========================#
-  nixpkgs.overlays = [
-    (self: super: {
-      dwm = super.dwm.overrideAttrs
-        (old: {
-          src = builtins.fetchGit
-            {
-              url = "https://github.com/ShadowCurse/dwm";
-              ref = "master";
-              rev = "62ba16ba760ab9fafad84718d9f262bd6c7e2d4d";
-            };
-        });
-    })
-  ];
+  # nixpkgs.overlays = [
+  #   (self: super: {
+  #     dwm = super.dwm.overrideAttrs
+  #       (old: {
+  #         src = builtins.fetchGit
+  #           {
+  #             url = "https://github.com/ShadowCurse/dwm";
+  #             ref = "master";
+  #             rev = "62ba16ba760ab9fafad84718d9f262bd6c7e2d4d";
+  #           };
+  #       });
+  #   })
+  # ];
+
+  #==========================#
+  ## Virtualization
+  #==========================#
+  virtualisation.docker.enable = true;
 
   #==========================#
   ## For gtk themes
