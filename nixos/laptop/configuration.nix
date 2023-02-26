@@ -120,6 +120,9 @@
     podman exec pihole pihole -a adlist add "https://urlhaus.abuse.ch/downloads/hostfile/"
     #Other Lists
     podman exec pihole pihole -a adlist add "https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser"
+
+    #Update gravity
+    podman exec pihole pihole -g
   '';
 
   #==========================#
