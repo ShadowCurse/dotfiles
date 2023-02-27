@@ -38,20 +38,6 @@ default_bindings.bufferline = {
     -- new buffer
     ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
 
-    -- cycle through buffers
-    ["<TAB>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
-    ["<S-Tab>"] = { "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer" },
-
-    ["<leader>1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "go to buffer 1" },
-    ["<leader>2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "go to buffer 2" },
-    ["<leader>3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "go to buffer 3" },
-    ["<leader>4"] = { "<cmd>BufferLineGoToBuffer 4<CR>", "go to buffer 4" },
-    ["<leader>5"] = { "<cmd>BufferLineGoToBuffer 5<CR>", "go to buffer 5" },
-    ["<leader>6"] = { "<cmd>BufferLineGoToBuffer 6<CR>", "go to buffer 6" },
-    ["<leader>7"] = { "<cmd>BufferLineGoToBuffer 7<CR>", "go to buffer 7" },
-    ["<leader>8"] = { "<cmd>BufferLineGoToBuffer 8<CR>", "go to buffer 8" },
-    ["<leader>9"] = { "<cmd>BufferLineGoToBuffer 9<CR>", "go to buffer 9" },
-
     -- close buffer + hide terminal buffer
     ["<leader>bd"] = {
       function()
@@ -60,7 +46,7 @@ default_bindings.bufferline = {
       "   close buffer",
     },
 
-    ["<leader>bca"] = { "<cmd>BufferLineGroupClose ungrouped<CR>", "   close all buffers" },
+    ["<leader>bca"] = { "<cmd>bufdo bd<CR>", "   close all buffers" },
   },
 }
 
