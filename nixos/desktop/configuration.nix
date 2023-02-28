@@ -197,7 +197,7 @@ in
   programs.river.enable = true;
   # Misc
   programs.xwayland.enable = true;
-  xdg.portal = { 
+  xdg.portal = {
     enable = true;
     wlr.enable = true;
   };
@@ -222,7 +222,13 @@ in
   #==========================#
   ## Virtualization
   #==========================#
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "overlay2";
+    daemon.settings = {
+      data-root = "/home/antaraz/.docker";
+    };
+  };
 
   #==========================#
   ## For gtk themes
