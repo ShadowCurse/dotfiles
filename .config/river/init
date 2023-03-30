@@ -6,8 +6,13 @@ waybar &
 killall hyprpaper
 hyprpaper &
 
-wlr-randr --output DP-3 --mode 2560x1440@164.835007 &
-wlr-randr --output DP-2 --mode 5120x1440@119.999001 --pos 7680, 1440 &
+wlr-randr --output DP-1 --mode 2560x1440@119.998001 --pos 0, 0 &
+wlr-randr --output DP-2 --mode 2560x1440@119.998001 --pos 2560, 1440 &
+wlr-randr --output DP-3 --mode 2560x1440@164.835007 --pos -2560, 1440 &
+# wlr-randr --output DP-2 --mode 5120x1440@119.999001 --pos 7680, 1440 &
+
+riverctl input pointer-4152-5924-SteelSeries_SteelSeries_Rival_600 accel-profile flat
+riverctl input pointer-4152-5924-SteelSeries_SteelSeries_Rival_600 pointer-accel 0.0
 
 riverctl focus-follows-cursor normal
 
@@ -140,4 +145,8 @@ riverctl csd-filter-add app-id "gedit"
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6 &
+rivertile -view-padding 6 -outer-padding 6
+
+# Need to make xdg-desktop-portal-wlr work
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+# systemctl restart --user xdg-desktop-portal-wlr.service
