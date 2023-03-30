@@ -112,7 +112,7 @@ return {
       },
     }
 
-    lspconfig.sumneko_lua.setup {
+    lspconfig.lua_ls.setup {
       on_attach = on_attach,
       capabilities = capabilities,
 
@@ -152,7 +152,7 @@ return {
       },
     }
 
-    local servers = { "zls", "rnix" }
+    local servers = { "zls", "rnix", "clangd", "ccls" }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
         on_attach = on_attach,
