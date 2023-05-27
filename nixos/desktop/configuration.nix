@@ -18,11 +18,10 @@ in
   #==========================#
   boot =
     {
-      cleanTmpDir = true;
+      tmp.cleanOnBoot = true;
       loader = {
         grub = {
           enable = true;
-          version = 2;
           efiSupport = true;
           device = "nodev";
           useOSProber = true;
@@ -170,8 +169,10 @@ in
   ## Desktop Manager
   #==========================#
   # Wayland
-  services.xserver.displayManager.gdm.wayland = true;
-  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+  };
   # X11
   # services.xserver.displayManager.lightdm.enable = true;
 

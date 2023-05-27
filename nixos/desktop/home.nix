@@ -18,6 +18,9 @@
   ];
 
   home.packages = with pkgs; [
+  # perl
+  # libtool
+  # libvterm
     #==========================#
     ## gui
     #==========================#
@@ -37,11 +40,14 @@
     flameshot # currently does not work on wayland
     qbittorrent
     audacity
+    vlc
     ## gaming
     steam
     # xivlauncher
-    rpcs3
-    vlc
+    # rpcs3
+    # yuzu-early-access 
+    ## game engine
+    # godot_4
 
     #==========================#
     ## X11
@@ -57,6 +63,7 @@
     waybar
     hyprpaper
     wlr-randr
+    wl-clipboard
     
     grim ## screenshot with grim -g "$(slurp)"
     slurp
@@ -107,7 +114,6 @@
     ## utils
     #==========================#
     wget
-    git
     ripgrep
     strace
     gnumake
@@ -132,10 +138,11 @@
     #==========================#
     ## lsp servers
     #==========================#
-    rust-analyzer
+    # rust-analyzer
     sumneko-lua-language-server
     zls
     rnix-lsp
+    python311Packages.python-lsp-server
   ];
 
   home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
@@ -167,6 +174,11 @@
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs
     ];
+  };
+
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacsNativeComp;
   };
 
   home.keyboard.layout = "us";
