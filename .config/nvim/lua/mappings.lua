@@ -157,7 +157,7 @@ local lsp_bindings = {
       "   lsp code_action",
     },
 
-    ["<leader>f"] = {
+    ["<leader>df"] = {
       function()
         vim.diagnostic.open_float()
       end,

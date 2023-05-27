@@ -152,7 +152,7 @@ return {
       },
     }
 
-    local servers = { "zls", "rnix", "clangd", "ccls" }
+    local servers = { "zls", "rnix", "clangd", "ccls", "pylsp" }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
         on_attach = on_attach,
