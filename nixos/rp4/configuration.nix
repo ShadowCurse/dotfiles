@@ -110,4 +110,9 @@
   ## nix-ld
   #==========================#
   programs.nix-ld.enable = true;
+
+  #==========================#
+  ## Initial system version
+  #==========================#
+  system.stateVersion = "23.05";
 }
