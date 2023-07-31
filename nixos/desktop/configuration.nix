@@ -10,7 +10,7 @@ in
     [
       ./hardware-configuration.nix
       # hyprland.nixosModules.default
-      ./river.nix
+      # ./river.nix
     ];
 
   #==========================#
@@ -19,6 +19,7 @@ in
   boot =
     {
       tmp.cleanOnBoot = true;
+      kernelParams = ["amd_pstate=guided"];
       loader = {
         grub = {
           enable = true;
@@ -31,6 +32,7 @@ in
           efiSysMountPoint = "/boot/efi";
         };
       };
+      binfmt.emulatedSystems = [ "aarch64-linux" ];
     };
 
   #==========================#
