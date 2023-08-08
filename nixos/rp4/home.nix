@@ -50,7 +50,7 @@
     #==========================#
     ## lsp servers
     #==========================#
-    rust-analyzer
+    # rust-analyzer
     # sumneko-lua-language-server
     zls
     # rnix-lsp
