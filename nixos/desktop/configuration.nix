@@ -247,7 +247,7 @@ in
   ## Shell
   #==========================#
   programs.fish.enable = true;
-  users.users.antaraz.shell = pkgs.nushell;
+  users.users.antaraz.shell = pkgs.fish;
 
   #==========================#
   ## nix-ld
