@@ -17,6 +17,11 @@
     })
   ];
 
+  # needed for obsidian
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+
   home.packages = with pkgs; [
   # perl
   # libtool
@@ -32,22 +37,47 @@
     xfce.thunar-bare
     xfce.thunar-volman
     brave
-    ## additional
+
+    #==========================#
+    ## Other
+    #==========================#
     firefox
     discord
     obsidian
-    tdesktop
-    flameshot # currently does not work on wayland
+    # tdesktop
     qbittorrent
     audacity
     vlc
-    ## gaming
+    # bless # hex editor
+    # piper # mouce config
+    mypaint
+    blender
+    gimp
+
+    # USES PYTHON 2.7
+    # aseprite-unfree
+
+    # lxappearance
+    # neovide
+    # easyeffects
+
+    #==========================#
+    ## Guitar
+    #==========================#
+    lingot # tuner
+
+    #==========================#
+    ## Games
+    #==========================#
     steam
     # xivlauncher
-    # rpcs3
-    # yuzu-early-access 
+    rpcs3
+    yuzu-early-access 
     ## game engine
-    # godot_4
+    godot_4
+
+    # lutris
+    # wine
 
     #==========================#
     ## X11
@@ -65,28 +95,19 @@
     wlr-randr
     wl-clipboard
     
+    #==========================#
+    ## Screenshot 
+    #==========================#
     grim ## screenshot with grim -g "$(slurp)"
     slurp
-
-    #==========================#
-    ## maybe 
-    #==========================#
-    # bless # hex editor
-    # piper # mouce config
-    # emacs
-    mypaint
-    # obs-studio
-    # blender
-    # gimp
-    # aseprite
-    # lxappearance
-    # neovide
+    #flameshot # currently does not work on wayland
 
     #==========================#
     ## terminal
     #==========================#
-    fish
-    exa
+    # fish
+    # nushell
+    eza
     fd
     bat
     htop
@@ -97,6 +118,12 @@
     starship
     neofetch
     ranger
+    timer
+
+    #==========================#
+    ## nix
+    #==========================#
+    nix-tree
 
     #==========================#
     ## fonts
@@ -125,15 +152,17 @@
     #==========================#
     ## camera
     #==========================#
-    droidcam
+    # droidcam
 
     #==========================#
-    ## langs
+    ## dev
     #==========================#
+    gdb
     gcc
     rustup
     zig
     python3
+    mold
 
     #==========================#
     ## lsp servers
@@ -141,12 +170,12 @@
     # rust-analyzer
     sumneko-lua-language-server
     zls
-    rnix-lsp
-    python311Packages.python-lsp-server
+    # rnix-lsp
+    # python311Packages.python-lsp-server
   ];
 
-  home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
-  home.file.".config/hypr/".source = ../../.config/hypr;
+  # home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
+  # home.file.".config/hypr/".source = ../../.config/hypr;
   home.file.".config/river/".source = ../../.config/river;
   home.file.".config/waybar/".source = ../../.config/waybar;
   home.file.".config/tofi/".source = ../../.config/tofi;
@@ -157,17 +186,28 @@
     source = ../../.config/fish;
     recursive = true;
   };
-  home.file.".config/nvim/" = {
-    source = ../../.config/nvim;
-    recursive = true;
-  };
-  home.file.".config/tmux/".source = ../../.config/tmux;
+  # home.file.".config/nushell/" = {
+  #   source = ../../.config/nushell;
+  #   recursive = true;
+  # };
+  # home.file.".config/nvim/" = {
+  #   source = ../../.config/nvim;
+  #   recursive = true;
+  # };
+  # home.file.".config/tmux/".source = ../../.config/tmux;
   home.file.".config/rofi/".source = ../../.config/rofi;
+
+  # home.file.".cargo/config.toml".text = ''
+  #   [target.x86_64-unknown-linux-gnu]
+  #   linker = "clang"
+  #   rustflags = ["-C", "link-arg=-fuse-ld=${pkgs.mold}/bin/mold"]
+  # '';
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
+  # programs.nushell.enable = true;
 
   programs.obs-studio = {
     enable = true;
@@ -194,14 +234,6 @@
       package = pkgs.papirus-icon-theme;
     };
   };
-
-  # home.pointerCursor = {
-  #   name = "Vimix-cursors";
-  #   package = pkgs.nordzy-cursor-theme;
-  #   size = 40;
-  #   gtk.enable = true;
-  #   x11.enable = true;
-  # };
 
   home.stateVersion = "22.05";
 
