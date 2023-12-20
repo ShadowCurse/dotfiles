@@ -24,7 +24,7 @@
   ## Network
   #==========================#
   networking = {
-    hostName = "archer";
+    hostName = "dns-box";
     nameservers = [ "127.0.0.1" "::1" ];
     networkmanager.enable = true;
     #networkmanager.dns = "unbound";
@@ -183,6 +183,7 @@
   ## Additional services
   #==========================#
   services.openssh.enable = true;
+  services.logind.lidSwitch = "ignore";
 
   #==========================#
   # Set your time zone and locale
@@ -213,6 +214,7 @@
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
+    dates = "daily";
 
     # Prevent silencing of build output
     flags = lib.mkForce [ ];
