@@ -1,0 +1,36 @@
+[colors.bright]
+black = "#0c0d18"
+blue = "#7199ee"
+cyan = "#f6955b"
+green = "#95c561"
+magenta = "#fe6D85"
+red = "#ee6d85"
+white = "#A0A8CD"
+yellow = "#d7a65f"
+
+[colors.normal]
+black = "#0c0d18"
+blue = "#648ce1"
+cyan = "#f6955b"
+green = "#98c379"
+magenta = "#fe6D85"
+red = "#ee6d85"
+white = "#A0A8CD"
+yellow = "#d7a65f"
+
+[colors.primary]
+background = "#11121D"
+foreground = "#A0A8CD"
+
+[cursor.style]
+shape = "Beam"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "Monaco"
+style = "Regular"
