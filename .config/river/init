@@ -9,10 +9,14 @@ hyprpaper &
 wlr-randr --output DP-1 --mode 2560x1440@119.998001 --pos 0, 0 &
 wlr-randr --output DP-2 --mode 2560x1440@119.998001 --pos 2560, 1440 &
 wlr-randr --output DP-3 --mode 2560x1440@164.835007 --pos -2560, 1440 &
-# wlr-randr --output DP-2 --mode 5120x1440@119.999001 --pos 7680, 1440 &
 
-riverctl input pointer-4152-5924-SteelSeries_SteelSeries_Rival_600 accel-profile flat
-riverctl input pointer-4152-5924-SteelSeries_SteelSeries_Rival_600 pointer-accel 0.0
+# riverctl input pointer-4152-5924-SteelSeries_SteelSeries_Rival_600 accel-profile flat
+# riverctl input pointer-4152-5924-SteelSeries_SteelSeries_Rival_600 pointer-accel 0.0
+riverctl input pointer-9639-64153-Xtrfy_Xtrfy_Wireless_Receiver accel-profile flat
+riverctl input pointer-9639-64153-Xtrfy_Xtrfy_Wireless_Receiver pointer-accel 0.0
+
+riverctl input pointer-9639-64146-Xtrfy_Xtrfy_Wireless_Mouse accel-profile flat
+riverctl input pointer-9639-64146-Xtrfy_Xtrfy_Wireless_Mouse pointer-accel 0.0
 
 riverctl focus-follows-cursor normal
 
@@ -24,8 +28,11 @@ riverctl map normal Super+Shift D spawn "tofi-run | xargs fish -c"
 # Super+Q to close the focused view
 riverctl map normal Super Q close
 
-# Super+Shift+E to exit river
+# Super+Shift+C to exit river
 riverctl map normal Super+Shift C exit
+
+# Super+Shift+R to exit river
+riverctl map normal Super+Shift R spawn "~/.config/river/init"
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super J focus-view next
