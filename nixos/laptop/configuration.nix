@@ -78,7 +78,7 @@
     };
     extraOptions = [
       "--network=host"
-      "--pull=always"
+      "--pull=newer"
     ];
   };
 
