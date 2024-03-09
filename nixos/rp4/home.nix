@@ -14,7 +14,7 @@
     ## terminal
     #==========================#
     fish
-    exa
+    eza
     fd
     bat
     htop
