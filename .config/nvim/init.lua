@@ -22,6 +22,13 @@ require("lazy").setup("plugins")
 vim.g.did_load_filetypes = 0
 vim.g.do_filetype_lua = 1
 
+vim.filetype.add({
+  extension = {
+    wgsl = "wgsl",
+    odin = "odin",
+  }
+})
+
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cul = true -- cursor line
 
