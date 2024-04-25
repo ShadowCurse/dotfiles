@@ -39,17 +39,18 @@ return {
       border = "single",
     })
 
+
     -- suppress error messages from lang servers
-    vim.notify = function(msg, log_level)
-      if msg:match "exit code" then
-        return
-      end
-      if log_level == vim.log.levels.ERROR then
-        vim.api.nvim_err_writeln(msg)
-      else
-        vim.api.nvim_echo({ { msg } }, true, {})
-      end
-    end
+    -- vim.notify = function(msg, log_level)
+    --   if msg:match "exit code" then
+    --     return
+    --   end
+    --   if log_level == vim.log.levels.ERROR then
+    --     vim.api.nvim_err_writeln(msg)
+    --   else
+    --     vim.api.nvim_echo({ { msg } }, true, {})
+    --   end
+    -- end
 
     -- Borders for LspInfo winodw
     local win = require "lspconfig.ui.windows"
@@ -152,7 +153,12 @@ return {
       },
     }
 
-    local servers = { "zls", "rnix", "clangd", "ccls", "pylsp" }
+    lspconfig.gdscript.setup {
+      on_attach = on_attach,
+      capabilities = capabilities,
+    }
+
+    local servers = { "zls", "ols", "rnix", "clangd", "ccls", "pylsp", "gopls" }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
         on_attach = on_attach,
