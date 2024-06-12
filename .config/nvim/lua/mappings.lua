@@ -74,9 +74,6 @@ default_bindings.nvimtree = {
   n = {
     -- toggle
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
-
-    -- focus
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "   focus nvimtree" },
   },
 }
 
@@ -95,6 +92,54 @@ default_bindings.telescope = {
     ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
     ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "  git status" },
   },
+}
+
+default_bindings.harpoon = {
+  n = {
+    ["<leader>ha"] = {
+      function()
+        require("harpoon"):list():add()
+      end
+    },
+    ["<leader>hr"] = {
+      function()
+        require("harpoon"):list():remove()
+      end
+    },
+    ["<leader>e"] = {
+      function()
+        local harpoon = require("harpoon")
+        local config = require("telescope.config").values
+        local pickers = require("telescope.pickers")
+        local finder = require("telescope.finders")
+
+        local harpoon_files = harpoon:list()
+        local file_paths = {}
+        for _, item in ipairs(harpoon_files.items) do
+          table.insert(file_paths, item.value)
+        end
+
+        pickers.new({}, {
+          prompt_title = "Harpoon",
+          finder = finder.new_table({
+            results = file_paths,
+          }),
+          previewer = config.file_previewer({}),
+          sorter = config.generic_sorter({}),
+        }):find()
+      end
+    },
+    ["<F1>"] = {
+      function()
+        require("harpoon"):list():prev()
+      end
+    },
+    ["<F5>"] = {
+      function()
+        require("harpoon"):list():next()
+      end
+    },
+  }
 }
 
 local lsp_bindings = {
@@ -194,7 +239,7 @@ local lsp_bindings = {
 
     ["<leader>fm"] = {
       function()
-        vim.lsp.buf.format( { async = true } )
+        vim.lsp.buf.format({ async = true })
       end,
       "   lsp formatting",
     },
