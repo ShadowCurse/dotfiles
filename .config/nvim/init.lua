@@ -26,6 +26,7 @@ vim.filetype.add({
   extension = {
     wgsl = "wgsl",
     odin = "odin",
+    roc = "roc",
   }
 })
 
