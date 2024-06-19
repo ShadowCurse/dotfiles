@@ -18,8 +18,8 @@ return {
       vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
     end
 
-    lspSymbol("Error", "")
-    lspSymbol("Info", "")
+    lspSymbol("Error", "E")
+    lspSymbol("Info", "I")
     lspSymbol("Hint", "")
     lspSymbol("Warn", "")
 

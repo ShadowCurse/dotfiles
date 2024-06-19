@@ -159,13 +159,12 @@ local lsp_bindings = {
       "   lsp definition",
     },
 
-    ["gr"] = {
-      -- function()
-      --   vim.lsp.buf.references()
-      -- end,
-      "<cmd> TroubleToggle lsp_references <CR>",
-      "   lsp references",
-    },
+    -- ["gr"] = {
+    --   function()
+    --     vim.lsp.buf.references()
+    --   end,
+    --   "   lsp references",
+    -- },
 
     ["gi"] = {
       function()
@@ -265,7 +264,12 @@ local lsp_bindings = {
     --   "   list workspace folders",
     -- },
 
-    ["<C-j>"] = { "<cmd> TroubleToggle <CR>", "toggle Trouble workspace_diagnostics" },
+    ["gr"] = {
+      "<cmd> Trouble lsp_references toggle focus=true<CR>",
+      "   lsp references",
+    },
+
+    ["<C-j>"] = { "<cmd> Trouble <CR>", "toggle Trouble workspace_diagnostics" },
   },
 }
 
