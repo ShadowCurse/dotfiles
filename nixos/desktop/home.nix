@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
-
+let
+  # yuzuPackages = pkgs.callPackage ./yuzu {};
+in
 {
   home.username = "antaraz";
   home.homeDirectory = "/home/antaraz";
@@ -23,9 +25,6 @@
   ];
 
   home.packages = with pkgs; [
-  # perl
-  # libtool
-  # libvterm
     #==========================#
     ## gui
     #==========================#
@@ -44,7 +43,7 @@
     firefox
     discord
     obsidian
-    # tdesktop
+    tdesktop
     qbittorrent
     audacity
     vlc
@@ -52,13 +51,12 @@
     # piper # mouce config
     mypaint
     blender
-    gimp
+    # gimp
 
-    # USES PYTHON 2.7
-    # aseprite-unfree
+    aseprite
 
     # lxappearance
-    # neovide
+    neovide
     # easyeffects
 
     #==========================#
@@ -71,8 +69,9 @@
     #==========================#
     steam
     # xivlauncher
-    rpcs3
-    yuzu-early-access 
+    # rpcs3
+    pcsx2
+    # yuzuPackages.mainline
     ## game engine
     godot_4
 
@@ -148,6 +147,12 @@
     unzip
     gd
     killall
+    moreutils
+
+    hyperfine
+    inferno
+
+    # scanmem # gui -> gameconqueror
 
     #==========================#
     ## camera
@@ -158,11 +163,14 @@
     ## dev
     #==========================#
     gdb
-    gcc
+    # lldb
+    clang
+    # clang-tools
     rustup
     zig
     python3
     mold
+    # sccache
 
     #==========================#
     ## lsp servers
@@ -180,7 +188,6 @@
   home.file.".config/waybar/".source = ../../.config/waybar;
   home.file.".config/tofi/".source = ../../.config/tofi;
   home.file.".config/helix/".source = ../../.config/helix;
-
   home.file.".config/alacritty/".source = ../../.config/alacritty;
   home.file.".config/fish/" = {
     source = ../../.config/fish;
@@ -200,7 +207,10 @@
   # home.file.".cargo/config.toml".text = ''
   #   [target.x86_64-unknown-linux-gnu]
   #   linker = "clang"
-  #   rustflags = ["-C", "link-arg=-fuse-ld=${pkgs.mold}/bin/mold"]
+  #   rustflags = ["-C", "link-arg=-fuse-ld=${pkgs.mold}/bin/mold", "-C", "target-cpu=native"]
+  #
+  #   [build]
+  #   rustc-wrapper = "${pkgs.sccache}/bin/sccache"
   # '';
 
   programs.direnv.enable = true;
@@ -235,7 +245,7 @@
     };
   };
 
-  home.stateVersion = "22.05";
+  home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;
 }

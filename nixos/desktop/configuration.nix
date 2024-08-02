@@ -82,20 +82,19 @@ in
   # AMD
   services.xserver.videoDrivers = [ "amdgpu" ];
   # OpenGl
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      amdvlk
+      # OpenCL
+      rocm-opencl-icd
+      rocm-opencl-runtime
+    ];
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
   };
-  hardware.opengl.extraPackages = with pkgs; [
-    amdvlk
-    # OpenCL
-    rocm-opencl-icd
-    rocm-opencl-runtime
-  ];
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
-  ];
 
   #==========================#
   ## Sound
@@ -159,7 +158,7 @@ in
   #==========================#
   users.users.antaraz = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "adbusers" "docker" ];
+    extraGroups = [ "wheel" "tty" "networkmanager" "adbusers" "docker" ];
   };
 
   #==========================#
@@ -185,7 +184,7 @@ in
   # Window manager
   # DWM
   # services.xserver.windowManager.dwm.enable = true;
-  services.xserver.layout = "us";
+  services.xserver.xkb.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
   #==========================#
@@ -262,6 +261,6 @@ in
   #==========================#
   ## Initial system version
   #==========================#
-  system.stateVersion = "22.05";
+  system.stateVersion = "24.05";
 }
 
