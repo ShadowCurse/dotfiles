@@ -9,34 +9,34 @@ return {
 
     -- Color table for highlights
     -- TOKYO NIGHT
-    -- local colors = {
-    --   bg       = '#1A1B2A',
-    --   fg       = '#bbc2cf',
-    --   yellow   = '#ECBE7B',
-    --   cyan     = '#008080',
-    --   darkblue = '#081633',
-    --   green    = '#98be65',
-    --   orange   = '#FF8800',
-    --   violet   = '#a9a1e1',
-    --   magenta  = '#c678dd',
-    --   blue     = '#51afef',
-    --   red      = '#ec5f67',
-    -- }
-
-    local lackluster = require("lackluster")
     local colors = {
-      bg       = lackluster.color.lack,
-      fg       = lackluster.color.luster,
+      bg       = '#1A1B2A',
+      fg       = '#bbc2cf',
       yellow   = '#ECBE7B',
       cyan     = '#008080',
       darkblue = '#081633',
-      green    = lackluster.color.green,
-      orange   = lackluster.color.orange,
-      violet   = lackluster.color.blue,
-      magenta  = lackluster.color.green,
-      blue     = lackluster.color.blue,
+      green    = '#98be65',
+      orange   = '#FF8800',
+      violet   = '#a9a1e1',
+      magenta  = '#c678dd',
+      blue     = '#51afef',
       red      = '#ec5f67',
     }
+
+    local lackluster = require("lackluster")
+    -- local colors = {
+    --   bg       = lackluster.color.lack,
+    --   fg       = lackluster.color.luster,
+    --   yellow   = '#ECBE7B',
+    --   cyan     = '#008080',
+    --   darkblue = '#081633',
+    --   green    = lackluster.color.green,
+    --   orange   = lackluster.color.orange,
+    --   violet   = lackluster.color.blue,
+    --   magenta  = lackluster.color.green,
+    --   blue     = lackluster.color.blue,
+    --   red      = '#ec5f67',
+    -- }
 
     local conditions = {
       buffer_not_empty = function()
@@ -58,7 +58,7 @@ return {
         -- Disable sections and component separators
         component_separators = '',
         section_separators = '',
-        theme = "lackluster",
+        -- theme = "lackluster",
       },
       sections = {
         -- these are to remove the defaults

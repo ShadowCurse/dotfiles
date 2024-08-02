@@ -1,3 +1,4 @@
+# TOKYODARK COLORS
 [colors.bright]
 black = "#0c0d18"
 blue = "#7199ee"
@@ -21,6 +22,20 @@ yellow = "#d7a65f"
 [colors.primary]
 background = "#11121D"
 foreground = "#A0A8CD"
+
+# LACKLUSTER COLORS
+# [colors.primary]
+# background = '#0A0A0A'
+#
+# [colors.normal]
+# black = '#080808'
+# red = '#ff7a93'
+# green = '#789978'
+# yellow = '#ffAA88'
+# blue = '#7788AA'
+# magenta = "#fe6D85"
+# cyan = '#708090' 
+# white = '#DEEEED'
 
 [cursor.style]
 shape = "Beam"

@@ -1,7 +1,13 @@
 @define-color critical #6c7086; /* critical color */
 @define-color warning #a6adc8;  /* warning color */
 @define-color fgcolor #cdd6f4;  /* foreground color */
-@define-color bgcolor #11121d;  /* background color */
+
+ /* TOKYO NIGHT */
+@define-color bgcolor #11121d;
+
+ /* LACKLUSTER */
+/* @define-color bgcolor #080808; */
+
 @define-color alert   #f38ba8;
 
 /* ROSE PINE */
@@ -35,6 +41,16 @@
 @define-color accent4 #bb9af7;
 @define-color accent5 #7da6ff;
 @define-color accent6 #0db9d7;
+
+/* LACKLUSTER */
+/* original */
+/* @define-color accent1 #D70000; */
+/* @define-color accent1 #ff7a93; */
+/* @define-color accent2 #789978; */
+/* @define-color accent3 #ffaa88; */
+/* @define-color accent4 #7788AA; */
+/* @define-color accent5 #7da6ff; */
+/* @define-color accent6 #0db9d7; */
 
 * {
     border: none;
