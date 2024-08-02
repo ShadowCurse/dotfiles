@@ -20,7 +20,7 @@ return {
 
     lspSymbol("Error", "E")
     lspSymbol("Info", "I")
-    lspSymbol("Hint", "")
+    lspSymbol("Hint", "H")
     lspSymbol("Warn", "")
 
     vim.diagnostic.config {

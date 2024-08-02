@@ -18,5 +18,6 @@ return {
       terminal_colors = true,                                                -- enable terminal colors
     }
     require("tokyodark").setup(config)
+    vim.cmd.colorscheme("tokyodark")
   end,
 }
