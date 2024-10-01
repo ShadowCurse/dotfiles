@@ -44,20 +44,23 @@ in
     discord
     obsidian
     tdesktop
-    qbittorrent
+    # qbittorrent
     audacity
     vlc
     # bless # hex editor
+    # imhex # hex editor
     # piper # mouce config
-    mypaint
+    lorien
     blender
     # gimp
 
     aseprite
 
     # lxappearance
-    neovide
+    # neovide
     # easyeffects
+
+    lact # AMDGPU control usage: sudo lact deamon -> lact
 
     #==========================#
     ## Guitar
@@ -110,6 +113,7 @@ in
     fd
     bat
     htop
+    du-dust
     bottom
     tmux
     neovim
@@ -184,15 +188,15 @@ in
 
   # home.file.".config/dwm/" = { source = ../../.config/dwm; executable = true; };
   # home.file.".config/hypr/".source = ../../.config/hypr;
-  home.file.".config/river/".source = ../../.config/river;
-  home.file.".config/waybar/".source = ../../.config/waybar;
-  home.file.".config/tofi/".source = ../../.config/tofi;
-  home.file.".config/helix/".source = ../../.config/helix;
-  home.file.".config/alacritty/".source = ../../.config/alacritty;
-  home.file.".config/fish/" = {
-    source = ../../.config/fish;
-    recursive = true;
-  };
+  # home.file.".config/river/".source = ../../.config/river;
+  # home.file.".config/waybar/".source = ../../.config/waybar;
+  # home.file.".config/tofi/".source = ../../.config/tofi;
+  # home.file.".config/helix/".source = ../../.config/helix;
+  # home.file.".config/alacritty/".source = ../../.config/alacritty;
+  # home.file.".config/fish/" = {
+  #   source = ../../.config/fish;
+  #   recursive = true;
+  # };
   # home.file.".config/nushell/" = {
   #   source = ../../.config/nushell;
   #   recursive = true;
@@ -202,7 +206,7 @@ in
   #   recursive = true;
   # };
   # home.file.".config/tmux/".source = ../../.config/tmux;
-  home.file.".config/rofi/".source = ../../.config/rofi;
+  # home.file.".config/rofi/".source = ../../.config/rofi;
 
   # home.file.".cargo/config.toml".text = ''
   #   [target.x86_64-unknown-linux-gnu]
