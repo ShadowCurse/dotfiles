@@ -9,12 +9,26 @@ return {
 
     -- Color table for highlights
     -- TOKYO NIGHT
+    -- local colors = {
+    --   bg       = '#1A1B2A',
+    --   fg       = '#bbc2cf',
+    --   yellow   = '#ECBE7B',
+    --   cyan     = '#008080',
+    --   darkblue = '#081633',
+    --   green    = '#98be65',
+    --   orange   = '#FF8800',
+    --   violet   = '#a9a1e1',
+    --   magenta  = '#c678dd',
+    --   blue     = '#51afef',
+    --   red      = '#ec5f67',
+    -- }
+
+    -- Cutom colors
     local colors = {
-      bg       = '#1A1B2A',
-      fg       = '#bbc2cf',
+      bg       = "#111111",
+      fg       = '#A2AACE',
       yellow   = '#ECBE7B',
       cyan     = '#008080',
-      darkblue = '#081633',
       green    = '#98be65',
       orange   = '#FF8800',
       violet   = '#a9a1e1',
@@ -22,21 +36,6 @@ return {
       blue     = '#51afef',
       red      = '#ec5f67',
     }
-
-    local lackluster = require("lackluster")
-    -- local colors = {
-    --   bg       = lackluster.color.lack,
-    --   fg       = lackluster.color.luster,
-    --   yellow   = '#ECBE7B',
-    --   cyan     = '#008080',
-    --   darkblue = '#081633',
-    --   green    = lackluster.color.green,
-    --   orange   = lackluster.color.orange,
-    --   violet   = lackluster.color.blue,
-    --   magenta  = lackluster.color.green,
-    --   blue     = lackluster.color.blue,
-    --   red      = '#ec5f67',
-    -- }
 
     local conditions = {
       buffer_not_empty = function()
@@ -59,6 +58,10 @@ return {
         component_separators = '',
         section_separators = '',
         -- theme = "lackluster",
+        theme = {
+          normal = { c = { fg = colors.fg, bg = colors.bg } },
+          inactive = { c = { fg = colors.fg, bg = colors.bg } },
+        },
       },
       sections = {
         -- these are to remove the defaults
@@ -92,17 +95,9 @@ return {
     end
 
     ins_left {
-      function()
-        return '▊'
-      end,
-      color = { fg = colors.blue },      -- Sets highlighting of component
-      padding = { left = 0, right = 1 }, -- We don't need space before this
-    }
-
-    ins_left {
       -- mode component
       function()
-        return ''
+        return '▊'
       end,
       color = function()
         -- auto change color according to neovims mode
@@ -142,7 +137,7 @@ return {
     ins_left {
       'filename',
       cond = conditions.buffer_not_empty,
-      color = { fg = colors.magenta, gui = 'bold' },
+      color = { fg = colors.green, gui = 'bold' },
     }
 
     ins_left { 'location' }
@@ -186,7 +181,7 @@ return {
         return msg
       end,
       icon = ' LSP:',
-      color = { fg = '#ffffff', gui = 'bold' },
+      color = { fg = colors.fg, gui = 'bold' },
     }
 
     -- Add components to right sections
@@ -194,20 +189,20 @@ return {
       'o:encoding',       -- option component same as &encoding in viml
       fmt = string.upper, -- I'm not sure why it's upper case either ;)
       cond = conditions.hide_in_width,
-      color = { fg = colors.green, gui = 'bold' },
+      color = { fg = colors.fg, gui = 'bold' },
     }
 
     ins_right {
       'fileformat',
       fmt = string.upper,
       icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-      color = { fg = colors.green, gui = 'bold' },
+      color = { fg = colors.fg, gui = 'bold' },
     }
 
     ins_right {
       'branch',
       icon = '',
-      color = { fg = colors.violet, gui = 'bold' },
+      color = { fg = colors.fg, gui = 'bold' },
     }
 
     ins_right {
@@ -220,14 +215,6 @@ return {
         removed = { fg = colors.red },
       },
       cond = conditions.hide_in_width,
-    }
-
-    ins_right {
-      function()
-        return '▊'
-      end,
-      color = { fg = colors.blue },
-      padding = { left = 1 },
     }
 
     -- Now don't forget to initialize lualine
