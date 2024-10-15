@@ -137,12 +137,12 @@ return {
     ins_left {
       'filename',
       cond = conditions.buffer_not_empty,
-      color = { fg = colors.green, gui = 'bold' },
+      color = { fg = colors.green },
     }
 
     ins_left { 'location' }
 
-    ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+    ins_left { 'progress', color = { fg = colors.fg } }
 
     ins_left {
       'diagnostics',
@@ -181,7 +181,7 @@ return {
         return msg
       end,
       icon = ' LSP:',
-      color = { fg = colors.fg, gui = 'bold' },
+      color = { fg = colors.fg },
     }
 
     -- Add components to right sections
@@ -189,20 +189,20 @@ return {
       'o:encoding',       -- option component same as &encoding in viml
       fmt = string.upper, -- I'm not sure why it's upper case either ;)
       cond = conditions.hide_in_width,
-      color = { fg = colors.fg, gui = 'bold' },
+      color = { fg = colors.fg },
     }
 
     ins_right {
       'fileformat',
       fmt = string.upper,
       icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-      color = { fg = colors.fg, gui = 'bold' },
+      color = { fg = colors.fg },
     }
 
     ins_right {
       'branch',
       icon = '',
-      color = { fg = colors.fg, gui = 'bold' },
+      color = { fg = colors.fg },
     }
 
     ins_right {
