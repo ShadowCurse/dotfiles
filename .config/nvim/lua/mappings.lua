@@ -33,12 +33,18 @@ default_bindings.general = {
   },
 }
 
+default_bindings.terminal = {
+  t = {
+    ["<Esc>"] = { "<C-\\><C-n>", "exit terminal" },
+  },
+}
+
 default_bindings.bufferline = {
   n = {
     -- new buffer
     ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
 
-    -- close buffer + hide terminal buffer
+    -- close buffer
     ["<leader>bd"] = {
       function()
         vim.cmd(":bp | bd" .. vim.fn.bufnr())

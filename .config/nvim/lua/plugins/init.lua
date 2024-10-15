@@ -1,6 +1,5 @@
 return {
   "rrethy/vim-illuminate",
-  "ap/vim-css-color",
   "nvim-lua/plenary.nvim",
   "tpope/vim-fugitive",
   "numToStr/Comment.nvim",
