@@ -2,13 +2,24 @@
 @define-color warning #a6adc8;  /* warning color */
 @define-color fgcolor #cdd6f4;  /* foreground color */
 
+ /* CUSTOM */
+@define-color bgcolor #000000;
+
  /* TOKYO NIGHT */
-@define-color bgcolor #11121d;
+/* @define-color bgcolor #11121d; */
 
  /* LACKLUSTER */
 /* @define-color bgcolor #080808; */
 
-@define-color alert   #f38ba8;
+@define-color alert   #EE6D85;
+
+/* CUSTOM */
+@define-color accent1 #f38ba8;
+@define-color accent2 #A7D65F;
+@define-color accent3 #A7C65F;
+@define-color accent4 #A485DD;
+@define-color accent5 #648CE1;
+@define-color accent6 #AAAAAA;
 
 /* ROSE PINE */
 /* @define-color accent1 #eb6f92; */
@@ -35,12 +46,12 @@
 /* @define-color accent6 #78dce8; */
 
 /* TOKYO NIGHT */
-@define-color accent1 #ff7a93;
-@define-color accent2 #b9f27c;
-@define-color accent3 #ff9e64;
-@define-color accent4 #bb9af7;
-@define-color accent5 #7da6ff;
-@define-color accent6 #0db9d7;
+/* @define-color accent1 #ff7a93; */
+/* @define-color accent2 #b9f27c; */
+/* @define-color accent3 #ff9e64; */
+/* @define-color accent4 #bb9af7; */
+/* @define-color accent5 #7da6ff; */
+/* @define-color accent6 #0db9d7; */
 
 /* LACKLUSTER */
 /* original */
@@ -204,7 +215,7 @@ label:focus {
 }
 
 #network {
-    color: @accent3;
+    color: @accent5;
 }
 
 #network.disconnected {

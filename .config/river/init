@@ -3,8 +3,8 @@
 killall .waybar-wrapped
 waybar &
 
-killall hyprpaper
-hyprpaper &
+# killall hyprpaper
+# hyprpaper &
 
 # wlr-randr --output DP-1 --mode 2560x1440@119.998001 --pos 0, 0 &
 wlr-randr --output DP-3 --mode 2560x1440@164.835007 --pos 0, 0 &
@@ -137,10 +137,10 @@ riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
 # riverctl map passthrough Super F11 enter-mode normal
 
 # Set background and border color
-# riverctl background-color 0x0a0a0a
+riverctl background-color 0x000000
 
 # TOKYO DARK
-riverctl border-color-focused 0xb9f27c
+riverctl border-color-focused 0xA7D65F
 
 # LACKLUSTER
 # riverctl border-color-focused 0x789978
@@ -164,4 +164,5 @@ rivertile -view-padding 6 -outer-padding 6
 
 # Need to make xdg-desktop-portal-wlr work
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
+# systemctl restart --user xdg-desktop-portal.service
 # systemctl restart --user xdg-desktop-portal-wlr.service

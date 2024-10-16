@@ -151,11 +151,6 @@ local highlights = {
   -- blankline
   Blankline = { fg = colors.bg1 },
 
-  -- gitgutter
-  -- GitGutterAdd = { fg = colors.diff_green },
-  -- GitGutterChange = { fg = colors.diff_blue },
-  -- GitGutterDelete = { fg = colors.diff_red },
-
   -- diffview
   DiffviewFilePanelTitle = { fg = colors.blue },
   DiffviewFilePanelCounter = { fg = colors.purple },
@@ -371,6 +366,20 @@ local highlights = {
   GitSignsDelete = { fg = colors.red },
   GitSignsDeleteLn = { fg = colors.red },
   GitSignsDeleteNr = { fg = colors.red },
+
+  -- gitgutter
+  GitGutterAdd = { fg = colors.diff_green },
+  GitGutterChange = { fg = colors.diff_blue },
+  GitGutterDelete = { fg = colors.diff_red },
+
+  --nvim-tree
+  NvimTreeGitNewIcon = { fg = colors.blue },
+  NvimTreeGitIdnoreIcon = { fg = colors.light_ligth_grey },
+  NvimTreeGitStagedIcon = { fg = colors.purple },
+  NvimTreeGitMergeIcon = { fg = colors.orange },
+  NvimTreeGitChangedIcon = { fg = colors.yellow },
+  NvimTreeGitDirtyIcon = { fg = colors.red },
+  NvimTreeGitDeletedIcon = { fg = colors.red },
 
   -- telescope
   TelescopeBorder = { link = "FloatBorder" },
