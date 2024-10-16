@@ -1,29 +1,54 @@
-# TOKYODARK COLORS
+# # TOKYODARK COLORS
+# [colors.bright]
+# # black = "#0c0d18"
+# black = "#5f5f5f"
+# blue = "#7199ee"
+# cyan = "#f6955b"
+# green = "#95c561"
+# magenta = "#fe6D85"
+# red = "#ee6d85"
+# white = "#A0A8CD"
+# yellow = "#d7a65f"
+#
+# [colors.normal]
+# # black = "#0c0d18"
+# black = "#2f2f2f"
+# blue = "#648ce1"
+# cyan = "#f6955b"
+# green = "#98c379"
+# magenta = "#fe6D85"
+# red = "#ee6d85"
+# white = "#A0A8CD"
+# yellow = "#d7a65f"
+#
+# [colors.primary]
+# background = "#11121D"
+# foreground = "#A0A8CD"
+
+# CUSTOM COLORS
 [colors.bright]
-# black = "#0c0d18"
-black = "#5f5f5f"
-blue = "#7199ee"
-cyan = "#f6955b"
-green = "#95c561"
-magenta = "#fe6D85"
-red = "#ee6d85"
-white = "#A0A8CD"
-yellow = "#d7a65f"
+black = "#333333"
+red = "#FE6D85"
+green = "#608030"
+yellow = "#A7C65F"
+blue = "#648CE1"
+magenta = "#A485DD"
+cyan = "#A7D65F"
+white = "#AAAAAA"
 
 [colors.normal]
-# black = "#0c0d18"
-black = "#2f2f2f"
-blue = "#648ce1"
-cyan = "#f6955b"
-green = "#98c379"
-magenta = "#fe6D85"
-red = "#ee6d85"
-white = "#A0A8CD"
-yellow = "#d7a65f"
+black = "#333333"
+red = "#EE6D85"
+green = "#608030"
+yellow = "#A7C65F"
+blue = "#648CE1"
+magenta = "#A485DD"
+cyan = "#A7D65F"
+white = "#AAAAAA"
 
 [colors.primary]
-background = "#11121D"
-foreground = "#A0A8CD"
+background = "#000000"
+foreground = "#A2AACE"
 
 # LACKLUSTER COLORS
 # [colors.primary]
@@ -50,4 +75,4 @@ size = 10.0
 
 [font.normal]
 family = "Monaco"
-style = "Regular"
+style = "Medium"
