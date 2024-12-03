@@ -36,6 +36,8 @@ vim.filetype.add({
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cul = true -- cursor line
 
+vim.opt.colorcolumn = "100"
+
 -- Indentline
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
