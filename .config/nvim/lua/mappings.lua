@@ -1,17 +1,17 @@
 local default_bindings = {}
 
 default_bindings.general = {
-  i = {
-    -- go to  beginning and end
-    ["<C-b>"] = { "<ESC>^i", "beginning of line" },
-    ["<C-e>"] = { "<End>", "end of line" },
-
-    -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "move left" },
-    ["<C-l>"] = { "<Right>", "move right" },
-    ["<C-j>"] = { "<Down>", "move down" },
-    ["<C-k>"] = { "<Up>", "move up" },
-  },
+  -- i = {
+  --   -- go to  beginning and end
+  --   ["<C-b>"] = { "<ESC>^i", "beginning of line" },
+  --   ["<C-e>"] = { "<End>", "end of line" },
+  --
+  --   -- navigate within insert mode
+  --   ["<C-h>"] = { "<Left>", "move left" },
+  --   ["<C-l>"] = { "<Right>", "move right" },
+  --   ["<C-j>"] = { "<Down>", "move down" },
+  --   ["<C-k>"] = { "<Up>", "move up" },
+  -- },
 
   n = {
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
@@ -27,10 +27,6 @@ default_bindings.general = {
     ["<"] = { "<gv", "move selected to the left" },
     [">"] = { ">gv", "move selected to the right" },
   },
-
-  x = {
-    ["<leader>p"] = { "\"_dP", "no highlight" },
-  },
 }
 
 default_bindings.terminal = {
@@ -42,17 +38,17 @@ default_bindings.terminal = {
 default_bindings.bufferline = {
   n = {
     -- new buffer
-    ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
+    ["<S-b>"] = { "<cmd> enew <CR>", "new buffer" },
 
     -- close buffer
     ["<leader>bd"] = {
       function()
         vim.cmd(":bp | bd" .. vim.fn.bufnr())
       end,
-      "   close buffer",
+      "close buffer",
     },
 
-    ["<leader>bca"] = { "<cmd>bufdo bd<CR>", "   close all buffers" },
+    ["<leader>bca"] = { "<cmd>bufdo bd<CR>", "close all buffers" },
   },
 }
 
@@ -100,54 +96,6 @@ default_bindings.telescope = {
   },
 }
 
-default_bindings.harpoon = {
-  n = {
-    ["<leader>ha"] = {
-      function()
-        require("harpoon"):list():add()
-      end
-    },
-    ["<leader>hr"] = {
-      function()
-        require("harpoon"):list():remove()
-      end
-    },
-    ["<leader>e"] = {
-      function()
-        local harpoon = require("harpoon")
-        local config = require("telescope.config").values
-        local pickers = require("telescope.pickers")
-        local finder = require("telescope.finders")
-
-        local harpoon_files = harpoon:list()
-        local file_paths = {}
-        for _, item in ipairs(harpoon_files.items) do
-          table.insert(file_paths, item.value)
-        end
-
-        pickers.new({}, {
-          prompt_title = "Harpoon",
-          finder = finder.new_table({
-            results = file_paths,
-          }),
-          previewer = config.file_previewer({}),
-          sorter = config.generic_sorter({}),
-        }):find()
-      end
-    },
-    ["<F1>"] = {
-      function()
-        require("harpoon"):list():prev()
-      end
-    },
-    ["<F5>"] = {
-      function()
-        require("harpoon"):list():next()
-      end
-    },
-  }
-}
-
 local lsp_bindings = {
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
   n = {
@@ -165,13 +113,6 @@ local lsp_bindings = {
       "   lsp definition",
     },
 
-    -- ["gr"] = {
-    --   function()
-    --     vim.lsp.buf.references()
-    --   end,
-    --   "   lsp references",
-    -- },
-
     ["gi"] = {
       function()
         vim.lsp.buf.implementation()
@@ -184,20 +125,6 @@ local lsp_bindings = {
         vim.lsp.buf.hover()
       end,
       "   lsp hover",
-    },
-
-    ["<leader>h"] = {
-      function()
-        vim.lsp.buf.signature_help()
-      end,
-      "   lsp signature_help",
-    },
-
-    ["<leader>td"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      "   lsp definition type",
     },
 
     ["<leader>ca"] = {
@@ -249,25 +176,11 @@ local lsp_bindings = {
       "   lsp formatting",
     },
 
-    -- ["<leader>wa"] = {
+    -- ["gr"] = {
     --   function()
-    --     vim.lsp.buf.add_workspace_folder()
+    --     vim.lsp.buf.references()
     --   end,
-    --   "   add workspace folder",
-    -- },
-    --
-    -- ["<leader>wr"] = {
-    --   function()
-    --     vim.lsp.buf.remove_workspace_folder()
-    --   end,
-    --   "   remove workspace folder",
-    -- },
-    --
-    -- ["<leader>wl"] = {
-    --   function()
-    --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    --   end,
-    --   "   list workspace folders",
+    --   "   lsp references",
     -- },
 
     ["gr"] = {
