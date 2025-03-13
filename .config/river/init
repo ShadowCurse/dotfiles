@@ -7,9 +7,9 @@ waybar &
 # hyprpaper &
 
 # wlr-randr --output DP-1 --mode 2560x1440@119.998001 --pos 0, 0 &
-wlr-randr --output DP-3 --mode 2560x1440@164.835007 --pos 0, 0 &
-wlr-randr --output DP-1 --mode 2560x1440@119.998001 --pos 2560, 1440 &
-wlr-randr --output DP-2 --mode 2560x1440@119.998001 --pos 5120, 1440 &
+wlr-randr --output DP-3 --mode 2560x1440@164.835007 --pos 0,1440 &
+wlr-randr --output DP-1 --mode 2560x1440@119.998001 --pos 2560,1440 &
+wlr-randr --output DP-2 --mode 2560x1440@119.998001 --pos 5120,1440 &
 # wlr-randr --output DP-2 --mode 2560x1440@119.998001 --pos 2560, 1440 &
 
 # riverctl input pointer-4152-5924-SteelSeries_SteelSeries_Rival_600 accel-profile flat
