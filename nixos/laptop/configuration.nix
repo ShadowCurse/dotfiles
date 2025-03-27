@@ -11,7 +11,6 @@
   #==========================#
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   #==========================#
   ## Kernel
@@ -72,9 +71,9 @@
     ];
     environment = {
       TZ = config.time.timeZone;
-      DNSSEC = "true";
-      WEBPASSWORD = "password";
-      PIHOLE_DNS_ = "127.0.0.1#5335";
+      FTLCONF_webserver_api_password = "password";
+      FTLCONF_dns_upstreams = "127.0.0.1#5335";
+      FTLCONF_dns_dnssec = "true";
     };
     extraOptions = [
       "--network=host"
@@ -260,6 +259,6 @@
   #==========================#
   ## Initial system version
   #==========================#
-  system.stateVersion = "22.05";
+  system.stateVersion = "24.05";
 }
 
