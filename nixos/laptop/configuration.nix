@@ -26,7 +26,6 @@
     hostName = "dns-box";
     nameservers = [ "127.0.0.1" "::1" ];
     networkmanager.enable = true;
-    #networkmanager.dns = "unbound";
   };
   # networking.wireless.enable = true;
 
@@ -78,50 +77,47 @@
     extraOptions = [
       "--network=host"
       "--pull=newer"
+      "--dns=1.1.1.1"
     ];
   };
 
   systemd.services."podman-pihole".postStart = ''
     sleep 300s
 
-    #Suspicious Lists
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts"
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/static/w3kbl.txt"
-    #Advertising Lists
-    podman exec pihole pihole -a adlist add "https://adaway.org/hosts.txt"
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/AdguardDNS.txt"
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Admiral.txt"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt"
-    podman exec pihole pihole -a adlist add "https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt"
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Easylist.txt"
-    podman exec pihole pihole -a adlist add "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts"
-    #Tracking & Telemetry Lists
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Easyprivacy.txt"
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Prigent-Ads.txt"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
-    podman exec pihole pihole -a adlist add "https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt"
-    #Malicious Lists
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt"
-    podman exec pihole pihole -a adlist add "https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt"
-    podman exec pihole pihole -a adlist add "https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt"
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/Prigent-Crypto.txt"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts"
-    podman exec pihole pihole -a adlist add "https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt"
-    podman exec pihole pihole -a adlist add "https://phishing.army/download/phishing_army_blocklist_extended.txt"
-    podman exec pihole pihole -a adlist add "https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt"
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/RPiList-Malware.txt"
-    podman exec pihole pihole -a adlist add "https://v.firebog.net/hosts/RPiList-Phishing.txt"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt"
-    podman exec pihole pihole -a adlist add "https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts"
-    podman exec pihole pihole -a adlist add "https://urlhaus.abuse.ch/downloads/hostfile/"
-    #Other Lists
-    podman exec pihole pihole -a adlist add "https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser"
+    podman exec pihole pihole-FTL sqlite3 /etc/pihole/gravity.db "INSERT INTO adlist (address, enabled) VALUES \
+        ('https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt', 1), \
+        ('https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts', 1), \
+        ('https://v.firebog.net/hosts/static/w3kbl.txt', 1), \
+        ('https://adaway.org/hosts.txt', 1), \
+        ('https://v.firebog.net/hosts/AdguardDNS.txt', 1), \
+        ('https://v.firebog.net/hosts/Admiral.txt', 1), \
+        ('https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt', 1), \
+        ('https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt', 1), \
+        ('https://v.firebog.net/hosts/Easylist.txt', 1), \
+        ('https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext', 1), \
+        ('https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts', 1), \
+        ('https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts', 1), \
+        ('https://v.firebog.net/hosts/Easyprivacy.txt', 1), \
+        ('https://v.firebog.net/hosts/Prigent-Ads.txt', 1), \
+        ('https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts', 1), \
+        ('https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt', 1), \
+        ('https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt', 1), \
+        ('https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt', 1), \
+        ('https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt', 1), \
+        ('https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt', 1), \
+        ('https://v.firebog.net/hosts/Prigent-Crypto.txt', 1), \
+        ('https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts', 1), \
+        ('https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt', 1), \
+        ('https://phishing.army/download/phishing_army_blocklist_extended.txt', 1), \
+        ('https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt', 1), \
+        ('https://v.firebog.net/hosts/RPiList-Malware.txt', 1), \
+        ('https://v.firebog.net/hosts/RPiList-Phishing.txt', 1), \
+        ('https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt', 1), \
+        ('https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts', 1), \
+        ('https://urlhaus.abuse.ch/downloads/hostfile/', 1), \
+        ('https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser', 1); \
+    "
 
-    #Update gravity
     podman exec pihole pihole -g
   '';
 
@@ -143,7 +139,7 @@
 
         # Use this only when you downloaded the list of primary root servers!
         # If you use the default dns-root-data package, unbound will find it automatically
-        #root-hints: "/var/lib/unbound/root.hints"
+        # root-hints = "/var/lib/unbound/root.hints";
 
         # Trust glue only if it is within the server's authority
         harden-glue = true;
