@@ -20,9 +20,9 @@ in
   ];
 
   # needed for obsidian
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "electron-25.9.0"
+  # ];
 
   home.packages = with pkgs; [
     #==========================#
@@ -45,7 +45,7 @@ in
     obsidian
     tdesktop
     # qbittorrent
-    audacity
+    # audacity
     vlc
     # bless # hex editor
     # imhex # hex editor
@@ -53,6 +53,7 @@ in
     lorien
     blender
     # gimp
+    keymapp
 
     aseprite
 
@@ -60,7 +61,7 @@ in
     # neovide
     # easyeffects
 
-    lact # AMDGPU control usage: sudo lact deamon -> lact
+    # lact # AMDGPU control usage: sudo lact deamon -> lact
 
     #==========================#
     ## Guitar
@@ -73,7 +74,7 @@ in
     steam
     # xivlauncher
     # rpcs3
-    pcsx2
+    # pcsx2
     # yuzuPackages.mainline
     ## game engine
     godot_4
@@ -92,6 +93,7 @@ in
     ## Wayland
     #==========================#
     tofi
+    # rofi
     waybar
     hyprpaper
     wlr-randr
@@ -117,10 +119,10 @@ in
     bottom
     tmux
     neovim
-    helix
+    # helix
     starship
     neofetch
-    ranger
+    # ranger
     timer
 
     #==========================#
@@ -132,11 +134,11 @@ in
     ## fonts
     #==========================#
     cascadia-code
-    nerdfonts
+    # nerdfonts
     google-fonts
     font-awesome
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-extra
     noto-fonts-emoji
 
@@ -153,8 +155,8 @@ in
     killall
     moreutils
 
-    hyperfine
-    inferno
+    # hyperfine
+    # inferno
 
     # scanmem # gui -> gameconqueror
 
@@ -230,10 +232,10 @@ in
     ];
   };
 
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacsNativeComp;
-  };
+  # programs.emacs = {
+  #   enable = true;
+  #   package = pkgs.emacsNativeComp;
+  # };
 
   home.keyboard.layout = "us";
 
@@ -249,7 +251,7 @@ in
     };
   };
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.05";
 
   programs.home-manager.enable = true;
 }

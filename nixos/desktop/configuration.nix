@@ -87,14 +87,16 @@ in
     enable32Bit = true;
     extraPackages = with pkgs; [
       amdvlk
-      # OpenCL
-      rocm-opencl-icd
-      rocm-opencl-runtime
     ];
     extraPackages32 = with pkgs; [
       driversi686Linux.amdvlk
     ];
   };
+
+  #==========================#
+  ## Keyboarad
+  #==========================#
+  hardware.keyboard.zsa.enable = true;
 
   #==========================#
   ## Sound
@@ -170,12 +172,10 @@ in
   ## Desktop Manager
   #==========================#
   # Wayland
-  services.xserver.displayManager.gdm = {
+  services.displayManager.gdm = {
     enable = true;
     wayland = true;
   };
-  # X11
-  # services.xserver.displayManager.lightdm.enable = true;
 
   #==========================#
   ## X11
@@ -196,7 +196,7 @@ in
   #   package = hyprland.packages.${pkgs.system}.default;
   # };
   # River 
-  programs.river.enable = true;
+  programs.river-classic.enable = true;
   # Misc
   programs.xwayland.enable = true;
   xdg.portal = {
@@ -261,6 +261,6 @@ in
   #==========================#
   ## Initial system version
   #==========================#
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
 }
 
