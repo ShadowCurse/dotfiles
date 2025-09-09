@@ -1,5 +1,8 @@
 return {
   "nvim-telescope/telescope.nvim",
+  dependencies = {
+    "kyazdani42/nvim-web-devicons",
+  },
 
   cmd = "Telescope",
 
@@ -67,6 +70,5 @@ return {
         telescope.load_extension(ext)
       end
     end)
-
   end
 }
