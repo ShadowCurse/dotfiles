@@ -17,7 +17,6 @@ return {
       "ols",
       "rnix",
       "clangd",
-      "ccls",
       "pylsp",
       "gopls",
     }

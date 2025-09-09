@@ -141,6 +141,7 @@ local highlights = {
   Number = { fg = colors.dark_green },
   Float = { fg = colors.dark_green },
   Function = { fg = colors.green },
+  Method = { fg = colors.green },
   Operator = { fg = colors.white },
   Title = { fg = colors.none },
   Tag = { fg = colors.none },
