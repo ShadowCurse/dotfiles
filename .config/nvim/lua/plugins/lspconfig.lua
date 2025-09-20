@@ -1,8 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
   config = function()
-    local lspconfig = require("lspconfig")
-
     local on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = true
       client.server_capabilities.documentRangeFormattingProvider = true
@@ -21,10 +19,11 @@ return {
       "gopls",
     }
     for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup {
+      vim.lsp.config(lsp, {
         on_attach = on_attach,
-        capabilities = capabilities,
-      }
+      --   capabilities = capabilities,
+      })
+      vim.lsp.enable(lsp)
     end
   end
 }
