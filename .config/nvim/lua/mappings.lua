@@ -67,77 +67,17 @@ default_bindings.telescope = {
 
 local lsp_bindings = {
   n = {
-    ["gD"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
-    },
-
-    ["gd"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
-    },
-
-    ["gi"] = {
-      function()
-        vim.lsp.buf.implementation()
-      end,
-    },
-
-    ["K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-    },
-
-    -- ["<leader>df"] = {
-    --   function()
-    --     vim.diagnostic.open_float()
-    --   end,
-    -- },
-
+    -- K => vim.lsp.buf.hover()
     -- grt => vim.lsp.buf.type_definition()
     -- gra => vim.lsp.buf.code_action()
     -- gri => vim.lsp.buf.implementation()
     -- grn => vim.lsp.buf.rename()
     -- grr => vim.lsp.buf.reference()
-
-    ["<leader>dp"] = {
-      function()
-        vim.diagnostic.goto_prev()
-      end,
-    },
-
-    ["<leader>dn"] = {
-      function()
-        vim.diagnostic.goto_next()
-      end,
-    },
-
-    ["<leader>q"] = {
-      function()
-        vim.diagnostic.setloclist()
-      end,
-    },
-
     ["<leader>fm"] = {
       function()
         vim.lsp.buf.format({ async = true })
       end,
     },
-
-    -- ["gr"] = {
-    --   function()
-    --     vim.lsp.buf.references()
-    --   end,
-    -- },
-
-    ["gr"] = {
-      "<cmd> Trouble lsp_references toggle focus=true<CR>"
-    },
-
-    ["<C-j>"] = { "<cmd> Trouble <CR>" },
   },
 }
 
