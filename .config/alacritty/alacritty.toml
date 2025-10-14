@@ -29,12 +29,12 @@
 [colors.bright]
 black = "#333333"
 red = "#FE6D85"
-green = "#608030"
+green = "#95C561"
 yellow = "#A7C65F"
 blue = "#648CE1"
 magenta = "#A485DD"
 cyan = "#A7D65F"
-white = "#AAAAAA"
+white = "#F0F0F0"
 
 [colors.normal]
 black = "#333333"
@@ -48,7 +48,7 @@ white = "#AAAAAA"
 
 [colors.primary]
 background = "#000000"
-foreground = "#A2AACE"
+foreground = "#AAAAAA"
 
 # LACKLUSTER COLORS
 # [colors.primary]
