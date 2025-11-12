@@ -16,6 +16,7 @@ return {
       "rnix",
       "clangd",
       "pylsp",
+      "pyrefly",
       "gopls",
     }
     for _, lsp in ipairs(servers) do
