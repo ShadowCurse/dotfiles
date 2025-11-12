@@ -3,9 +3,14 @@ return {
   main = "ibl",
   opts = {},
   config = function()
-    local highlight = {
-      "Blankline",
+    vim.opt.list = true
+    vim.opt.listchars:append('trail:~')
+    require("ibl").setup {
+      indent = { highlight = { "Blankline" } },
+      whitespace = {
+        highlight = { "Whitespace" },
+        remove_blankline_trail = false,
+      },
     }
-    require("ibl").setup { indent = { highlight = highlight } }
   end
 }

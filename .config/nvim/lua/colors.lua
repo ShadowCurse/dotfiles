@@ -39,6 +39,7 @@ local colors = {
   orange = "#F6955B",
   grey = "#4A5057",
   light_grey = "#6C727A",
+  more_ligth_grey = "#888888",
   light_ligth_grey = "#AAAAAA",
   none = "NONE",
 }
@@ -86,7 +87,7 @@ local highlights = {
   CurSearch = { fg = colors.bg0, bg = colors.bright_red },
   MatchParen = { fg = colors.none, bg = colors.bg4 },
   NonText = { fg = colors.bg4 },
-  Whitespace = { fg = colors.bg4 },
+  Whitespace = { fg = colors.bright_red },
   SpecialKey = { fg = colors.bg4 },
   Pmenu = { fg = colors.fg, bg = colors.bg0 },
   PmenuSbar = { fg = colors.none, bg = colors.bg0 },
@@ -150,7 +151,7 @@ local highlights = {
   Title = { fg = colors.none },
   Tag = { fg = colors.none },
   Delimiter = { fg = colors.none },
-  Comment = { fg = colors.light_ligth_grey },
+  Comment = { fg = colors.more_ligth_grey },
   SpecialComment = { fg = colors.none },
   Todo = { fg = colors.none },
 
