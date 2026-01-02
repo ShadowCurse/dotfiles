@@ -85,12 +85,8 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      amdvlk
-    ];
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
+    extraPackages = with pkgs; [];
+    extraPackages32 = with pkgs; [];
   };
 
   #==========================#
@@ -128,7 +124,7 @@ in
   };
 
   #==========================#
-  ## System packages 
+  ## System packages
   #==========================#
   environment.defaultPackages = [ ];
   # services.xserver.desktopManager.xterm.enable = false;
@@ -195,7 +191,7 @@ in
   #   enable = true;
   #   package = hyprland.packages.${pkgs.system}.default;
   # };
-  # River 
+  # River
   programs.river-classic.enable = true;
   # Misc
   programs.xwayland.enable = true;
