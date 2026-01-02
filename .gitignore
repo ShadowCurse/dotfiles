@@ -3,7 +3,8 @@ dwm-6.2/dwm
 dwm-6.2/dwm.o
 dwm-6.2/util.o
 
-.config/nvim/plugged
-.config/nvim_basic/plugged
+.config/fish/competions
+.config/fish/conf.d
+.config/fish/fish_variables
 
 
