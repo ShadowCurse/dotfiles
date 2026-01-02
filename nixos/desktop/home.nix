@@ -43,7 +43,7 @@ in
     firefox
     discord
     obsidian
-    tdesktop
+    telegram-desktop
     # qbittorrent
     # audacity
     vlc
@@ -85,22 +85,22 @@ in
     #==========================#
     ## X11
     #==========================#
-    # rofi
     # dmenu
     # nitrogen
 
     #==========================#
     ## Wayland
     #==========================#
-    tofi
+    # tofi
     # rofi
+    wofi
     waybar
     hyprpaper
     wlr-randr
     wl-clipboard
-    
+
     #==========================#
-    ## Screenshot 
+    ## Screenshot
     #==========================#
     grim ## screenshot with grim -g "$(slurp)"
     slurp
@@ -115,7 +115,7 @@ in
     fd
     bat
     htop
-    du-dust
+    dust
     bottom
     tmux
     neovim
@@ -134,13 +134,11 @@ in
     ## fonts
     #==========================#
     cascadia-code
-    # nerdfonts
+    # nerd-fonts
     google-fonts
     font-awesome
     noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-extra
-    noto-fonts-emoji
+    noto-fonts-color-emoji
 
     #==========================#
     ## utils
@@ -168,8 +166,9 @@ in
     #==========================#
     ## dev
     #==========================#
+    perf
     gdb
-    # lldb
+    lldb
     clang
     # clang-tools
     rustup
@@ -182,7 +181,7 @@ in
     ## lsp servers
     #==========================#
     # rust-analyzer
-    sumneko-lua-language-server
+    lua-language-server
     zls
     # rnix-lsp
     # python311Packages.python-lsp-server
@@ -232,9 +231,11 @@ in
     ];
   };
 
+  fonts.fontconfig.enable = true;
+
   # programs.emacs = {
   #   enable = true;
-  #   package = pkgs.emacsNativeComp;
+  #   package = pkgs.emacs;
   # };
 
   home.keyboard.layout = "us";
