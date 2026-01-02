@@ -22,7 +22,7 @@ return {
     for _, lsp in ipairs(servers) do
       vim.lsp.config(lsp, {
         on_attach = on_attach,
-      --   capabilities = capabilities,
+        -- capabilities = capabilities,
       })
       vim.lsp.enable(lsp)
     end

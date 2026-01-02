@@ -41,10 +41,19 @@ default_bindings.bufferline = {
   },
 }
 
-default_bindings.nvimtree = {
+-- default_bindings.nvimtree = {
+--   n = {
+--     -- toggle
+--     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>" },
+--   },
+-- }
+default_bindings.oil = {
   n = {
-    -- toggle
-    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>" },
+    ["<C-n>"] = {
+      function()
+        require("oil").open_float()
+      end,
+    },
   },
 }
 

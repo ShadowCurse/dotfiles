@@ -61,3 +61,7 @@ vim.opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
 vim.opt.updatetime = 250
+
+-- show trailing spaces
+vim.opt.list = true
+vim.opt.listchars:append('trail:~')
