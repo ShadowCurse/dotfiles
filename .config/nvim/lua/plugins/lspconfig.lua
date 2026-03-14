@@ -7,7 +7,7 @@ return {
 
       require("mappings").set_lsp_bindings(bufnr)
     end
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
     local servers = {
       "lua_ls",
       "rust_analyzer",
@@ -24,7 +24,7 @@ return {
         on_attach = on_attach,
         -- capabilities = capabilities,
       })
-      vim.lsp.enable(lsp)
+      -- vim.lsp.enable(lsp)
     end
   end
 }

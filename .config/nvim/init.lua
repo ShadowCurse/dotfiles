@@ -65,3 +65,8 @@ vim.opt.updatetime = 250
 -- show trailing spaces
 vim.opt.list = true
 vim.opt.listchars:append('trail:~')
+
+-- vim.opt.cmdheight = 0
+
+-- disable LSP logging
+vim.lsp.log.set_level("off")
