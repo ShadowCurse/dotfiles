@@ -19,7 +19,6 @@ in
   boot =
     {
       tmp.cleanOnBoot = true;
-      kernelParams = ["amd_pstate=guided"];
       loader = {
         grub = {
           enable = true;
@@ -41,6 +40,7 @@ in
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "v4l2loopback" ];
+    kernelParams = [ "amd_pstate=active" ];
     extraModulePackages = [
       config.boot.kernelPackages.v4l2loopback.out
     ];
@@ -160,6 +160,19 @@ in
   };
 
   #==========================#
+  ## Fix broken thermal zone
+  #==========================#
+  systemd.services.disable_broken_thermal_zone = {
+    enable = true;
+    wantedBy = [ "multi-user.target" ];
+    script = ''
+      echo disabled > /sys/class/thermal/thermal_zone0/mode
+      echo disabled > /sys/class/thermal/thermal_zone1/mode
+      echo disabled > /sys/class/thermal/thermal_zone2/mode
+    '';
+  };
+
+  #==========================#
   ## Unfree
   #==========================#
   # nixpkgs.config.allowUnfree = true;
@@ -232,11 +245,6 @@ in
   ## For gtk themes
   #==========================#
   programs.dconf.enable = true;
-
-  #==========================#
-  ## Android
-  #==========================#
-  programs.adb.enable = true;
 
   #==========================#
   ## Shell
