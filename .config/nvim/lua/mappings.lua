@@ -9,6 +9,23 @@ default_bindings.general = {
     ["<C-l>"] = { "<C-w>l" },
     ["<C-j>"] = { "<C-w>j" },
     ["<C-k>"] = { "<C-w>k" },
+    ["<leader>bd"] = {
+      function()
+        vim.cmd(":bp | bd" .. vim.fn.bufnr())
+      end,
+      "close buffer",
+    },
+
+    ["<leader>bca"] = { "<cmd>bufdo bd<CR>" },
+    ["<F1>"] = { "<cmd>LspStop<CR>" },
+    ["<F2>"] = { "<cmd>LspStart<CR>" },
+    ["<leader>fm"] = {
+      function()
+        -- vim.lsp.buf.format({ async = true })
+        require("conform").format({ async = true })
+      end,
+    },
+    ["<leader>fp"] = { "gqap" },
   },
 
   v = {
@@ -25,19 +42,6 @@ default_bindings.general = {
 default_bindings.terminal = {
   t = {
     ["<Esc>"] = { "<C-\\><C-n>" },
-  },
-}
-
-default_bindings.bufferline = {
-  n = {
-    ["<leader>bd"] = {
-      function()
-        vim.cmd(":bp | bd" .. vim.fn.bufnr())
-      end,
-      "close buffer",
-    },
-
-    ["<leader>bca"] = { "<cmd>bufdo bd<CR>" },
   },
 }
 
@@ -82,11 +86,11 @@ local lsp_bindings = {
     -- gri => vim.lsp.buf.implementation()
     -- grn => vim.lsp.buf.rename()
     -- grr => vim.lsp.buf.reference()
-    ["<leader>fm"] = {
-      function()
-        vim.lsp.buf.format({ async = true })
-      end,
-    },
+    -- ["<leader>fm"] = {
+    --   function()
+    --     vim.lsp.buf.format({ async = true })
+    --   end,
+    -- },
   },
 }
 
