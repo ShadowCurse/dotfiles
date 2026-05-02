@@ -17,8 +17,8 @@ default_bindings.general = {
     },
 
     ["<leader>bca"] = { "<cmd>bufdo bd<CR>" },
-    ["<F1>"] = { "<cmd>LspStop<CR>" },
-    ["<F2>"] = { "<cmd>LspStart<CR>" },
+    -- ["<F1>"] = { function() vim.lsp.disable() end },
+    -- ["<F2>"] = { function() vim.lsp.enable() end },
     ["<leader>fm"] = {
       function()
         -- vim.lsp.buf.format({ async = true })
@@ -26,6 +26,15 @@ default_bindings.general = {
       end,
     },
     ["<leader>fp"] = { "gqap" },
+    ["<CR>"] = {
+      function()
+        local cword = vim.fn.expand('<cword>')
+        local searchTerm = [[\v<]] .. cword .. [[>]]
+        vim.fn.setreg('/', searchTerm)
+        vim.fn.histadd('search', searchTerm)
+        vim.opt.hlsearch = true
+      end
+    },
   },
 
   v = {
@@ -117,6 +126,23 @@ Mappings.set_default_bindings = function()
   for _, section_mappings in pairs(Mappings.default_bindings) do
     set_bindings(section_mappings)
   end
+
+-- vim.keymap.set('n', '<CR>', function()
+--     -- Get the word under the cursor and escape for very-magic search
+--     local cword = vim.fn.expand('<cword>')
+--     local searchTerm = [[\v<]] .. cword .. [[>]]
+--
+--     -- Assign to the search register (@/)
+--     vim.fn.setreg('/', searchTerm)
+--
+--     -- Add to search history
+--     vim.fn.histadd('search', searchTerm)
+--
+--     -- Enable search highlighting and echo the pattern
+--     vim.opt.hlsearch = true
+--     print('/' .. searchTerm)
+-- end, { silent = true, desc = "Search word under cursor without jumping" })
+
 end
 
 Mappings.set_lsp_bindings = function(buffer)
