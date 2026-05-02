@@ -116,6 +116,8 @@
         ('https://raw.githubusercontent.com/AssoEchap/stalkerware-indicators/master/generated/hosts', 1), \
         ('https://urlhaus.abuse.ch/downloads/hostfile/', 1), \
         ('https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser', 1); \
+        ('https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/ultimate.txt', 1); \
+        ('https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt', 1); \
     "
 
     podman exec pihole pihole -g

@@ -32,9 +32,9 @@ in
     feh
     pavucontrol
     mupdf
-    xfce.xfconf
-    xfce.thunar-bare
-    xfce.thunar-volman
+    # xfconf
+    thunar-unwrapped
+    thunar-volman
     brave
 
     #==========================#
@@ -54,6 +54,8 @@ in
     blender
     # gimp
     keymapp
+    # for adb
+    # android-tools
 
     aseprite
 
@@ -116,12 +118,14 @@ in
     bat
     htop
     dust
-    bottom
+    # bottom
+    btop
     tmux
     neovim
+    lazygit
     # helix
     starship
-    neofetch
+    fastfetch
     # ranger
     timer
 
@@ -233,10 +237,10 @@ in
 
   fonts.fontconfig.enable = true;
 
-  # programs.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacs;
-  # };
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs;
+  };
 
   home.keyboard.layout = "us";
 
