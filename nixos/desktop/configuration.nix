@@ -1,38 +1,26 @@
 { config, pkgs, ... }:
-let
-  flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-  # hyprland = (import flake-compat {
-  #   src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-  # }).defaultNix;
-in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      # hyprland.nixosModules.default
-      # ./river.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   #==========================#
   ## GRUB 2
   #==========================#
-  boot =
-    {
-      tmp.cleanOnBoot = true;
-      loader = {
-        grub = {
-          enable = true;
-          efiSupport = true;
-          device = "nodev";
-          useOSProber = true;
-        };
-        efi = {
-          canTouchEfiVariables = true;
-          efiSysMountPoint = "/boot/efi";
-        };
+  boot = {
+    tmp.cleanOnBoot = true;
+    loader = {
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        useOSProber = true;
       };
-      binfmt.emulatedSystems = [ "aarch64-linux" ];
+      efi = {
+        canTouchEfiVariables = true;
+        #efiSysMountPoint = "/boot/efi";
+      };
     };
+    #binfmt.emulatedSystems = [ "aarch64-linux" ];
+  };
 
   #==========================#
   ## Kernel
@@ -80,7 +68,7 @@ in
   # Nvidia
   # services.xserver.videoDrivers = [ "nvidia" ];
   # AMD
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  # services.xserver.videoDrivers = [ "amdgpu" ];
   # OpenGl
   hardware.graphics = {
     enable = true;
@@ -111,11 +99,11 @@ in
   nix = {
     settings.auto-optimise-store = true;
     settings.allowed-users = [ "antaraz" ];
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
+    #gc = {
+    #  automatic = true;
+    #  dates = "weekly";
+    #  options = "--delete-older-than 7d";
+    #};
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true
@@ -132,7 +120,6 @@ in
     vim
     ntfs3g
     fuse
-    git
     gnupg
   ];
 
@@ -181,19 +168,16 @@ in
   ## Desktop Manager
   #==========================#
   # Wayland
-  services.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
+  # services.displayManager.gdm.enable = true;
 
   #==========================#
   ## X11
   #==========================#
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
   # Window manager
   # DWM
   # services.xserver.windowManager.dwm.enable = true;
-  services.xserver.xkb.layout = "us";
+  # services.xserver.xkb.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
   #==========================#
@@ -265,6 +249,6 @@ in
   #==========================#
   ## Initial system version
   #==========================#
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
 }
 

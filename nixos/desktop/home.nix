@@ -11,18 +11,13 @@ in
     # allowBroken = true;
   };
 
-  nixpkgs.overlays = [
-    (self: super: {
-      waybar = super.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    })
-  ];
-
-  # needed for obsidian
-  # nixpkgs.config.permittedInsecurePackages = [
-  #   "electron-25.9.0"
-  # ];
+  #nixpkgs.overlays = [
+  #  (self: super: {
+  #    waybar = super.waybar.overrideAttrs (oldAttrs: {
+  #      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+  #    });
+  #  })
+  #];
 
   home.packages = with pkgs; [
     #==========================#
@@ -97,7 +92,7 @@ in
     # rofi
     wofi
     waybar
-    hyprpaper
+    # hyprpaper
     wlr-randr
     wl-clipboard
 
@@ -118,6 +113,7 @@ in
     bat
     htop
     dust
+    delta
     # bottom
     btop
     tmux
@@ -147,6 +143,7 @@ in
     #==========================#
     ## utils
     #==========================#
+    git
     wget
     ripgrep
     strace
@@ -222,8 +219,20 @@ in
   #   rustc-wrapper = "${pkgs.sccache}/bin/sccache"
   # '';
 
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  programs = {
+    direnv = {
+      enable = true;
+      enableFishIntegration = true;
+      nix-direnv.enable = true;
+    };
+  };
+  # Manual fix for 3.1.2 since it has a bug. Already fixed upstream, wait for 3.1.3
+  programs.direnv.nix-direnv.package = pkgs.nix-direnv.overrideAttrs (oldAttrs: {
+    postFixup = (oldAttrs.postFixup or "") + ''
+      sed -i 's/  watch_file files_to_watch$/  watch_file "''${files_to_watch[@]}"/' \
+        $out/share/nix-direnv/direnvrc
+    '';
+  });
 
   # programs.fish.enable = true;
   # programs.nushell.enable = true;
@@ -256,7 +265,7 @@ in
     };
   };
 
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.05";
 
   programs.home-manager.enable = true;
 }
